@@ -1,0 +1,23 @@
+{
+  "name": "autovision",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Gurjot Singh <celica09@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18"
+  }
+}
