@@ -3,9 +3,9 @@
   "description": "",
   "main": "",
   "authors": [
-    "Gurjot Singh <celica09@gmail.com>", 
-    "George Wee <valmsmith39a@gmail.com>", 
-    "Benjamin Huang <coolconfucius@gmail.com>" 
+    "Gurjot Singh <celica09@gmail.com>",
+    "George Wee <valmsmith39a@gmail.com>",
+    "Benjamin Huang <coolconfucius@gmail.com>"
   ],
   "license": "MIT",
   "moduleType": [],
@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "angular": "^1.5.0",
-    "angular-ui-router": "^0.2.18"
+    "angular-ui-router": "^0.2.18",
+    "bootstrap": "^3.3.6"
   }
 }
