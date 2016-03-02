@@ -144,7 +144,7 @@ var User;
 
 var userSchema = Schema({
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  password: { type: String, required: true }
 });
 
 userSchema.methods.token = function() {
@@ -158,22 +158,31 @@ userSchema.methods.token = function() {
 };
 
 userSchema.statics.register = function(user, cb) {
+  console.log("register user", user);
   var email = user.email;
   var password = user.password;
   User.findOne({email: email}, function(err, user){
     console.log("ALL GOOD?", user);
-    if(err || user) return cb(err || 'email already taken.');
-    bcrypt.genSalt(12, function(err1, salt) {
-      bcrypt.hash(password, salt, null, function(err2, hash) {
-        if(err1 || err2) return cb(err1 || err2);
-        var newUser = new User();
-        newUser.email = email;
-        newUser.password = hash;
-        newUser.save(function(err, savedUser){
-          savedUser.password = null;
-          cb(err, savedUser);
-        });
-      });
+    if(user) return cb('email already taken.');
+    bcrypt.genSalt(10, function(err1, salt) {
+      console.log('gensalt', err1, salt);
+      console.log('password:', password);
+      bcrypt.hash("bacon", null, null, function(err, hash) {
+        console.log(hash, 'sya soemthing too');
+      })
+      // bcrypt.hash(password, salt, null, function(err2, hash) {
+      //   console.log('hash', err2, hash);
+      //   if(err1 || err2) return cb(err1 || err2);
+      //   var newUser = new User();
+      //   newUser.email = email;
+      //   newUser.password = hash;
+      //   console.log('newuser', newUser);
+      //   newUser.save(function(err, savedUser){
+      //     console.log('savedUser', savedUser);
+      //     savedUser.password = null;
+      //     cb(err, savedUser);
+      //   });
+      // });
     });
   });
 };
