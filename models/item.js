@@ -21,13 +21,6 @@ var itemSchema = new mongoose.Schema({
   available:{type:Boolean, default:true}
 });
 
-itemSchema.statics.getAll = function(item, cb) {
-  Item.find({}, function(err, items) {
-    if (err) return cb(err);
-    cb(null, items); 
-  })
-};
-
 itemSchema.statics.getUserItems = function(userid, cb) {
   Item.find({ownerObj: userid}, function(err, items) {
     if (err) return cb(err);
@@ -37,7 +30,7 @@ itemSchema.statics.getUserItems = function(userid, cb) {
 
 itemSchema.statics.add = function(item, cb) {
   var newItem = new Item(item); 
-  item.save(function(err, savedItem){
+  newItem.save(function(err, savedItem){
     if (err) return cb(err);
     cb(null, savedItem); 
   });
