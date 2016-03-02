@@ -1,7 +1,17 @@
 body {
-  background-color: #ccc;
+  background-color: white;
 }
 .form-control{
     width: 40%;
 
 }
+
+.navbar{
+	margin-bottom: 0px;
+}
+.splash {
+	background: url('../images/logo.jpg') no-repeat bottom center;
+	background-size: cover;
+	height: 600px;
+}
+
