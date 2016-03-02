@@ -36,8 +36,11 @@ app.service('Auth', function($http, $state, $localStorage){
   //   });
   // }
 
-  // this.logout = () => {
-  //   this.token = null;
-  //   $localStorage.token = null;
-  // }
+  this.logout = () => {
+    console.log('logout successful');
+    this.token = null;
+    $localStorage.token = null;
+    console.log('local is', this.token,$localStorage.token);
+
+  }
 });

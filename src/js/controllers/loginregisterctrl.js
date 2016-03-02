@@ -29,6 +29,9 @@ app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
     Auth.login(user);
   }
 
+  $scope.logout = function() { 
+    Auth.logout();
+  }
 });
 
 // app.service('Auth', function($http, $state, $localStorage){
@@ -54,8 +57,9 @@ app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
 //     });
 //   }
 
-//   this.logout = () => {
-//     this.token = null;
-//     $localStorage.token = null;
-//   }
+  // this.logout = () => {
+  //   this.token = null;
+  //   $localStorage.token = null;
+  //   console.log('logout successful')
+  // }
 // });
