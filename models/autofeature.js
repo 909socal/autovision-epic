@@ -15,7 +15,7 @@ var autofeatureSchema = new mongoose.Schema({
     zip: {type:Number},
     email: {type:String},
     phone: {type:String}
-  }
+  },
   createdAt:{type:Date, default:Date.now},
   ownerObj:{type: mongoose.Schema.Types.ObjectId, ref: "User"},
   available:{type:Boolean, default:true}
