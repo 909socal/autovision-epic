@@ -137,7 +137,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-node');
 var jwt = require('jwt-simple');
 
 var User;
@@ -163,26 +163,26 @@ userSchema.statics.register = function(user, cb) {
   var password = user.password;
   User.findOne({email: email}, function(err, user){
     console.log("ALL GOOD?", user);
-    if(user) return cb('email already taken.');
+    if(err || user) return cb(err || 'email already taken.');
     bcrypt.genSalt(10, function(err1, salt) {
       console.log('gensalt', err1, salt);
       console.log('password:', password);
-      bcrypt.hash("bacon", null, null, function(err, hash) {
-        console.log(hash, 'sya soemthing too');
-      })
-      // bcrypt.hash(password, salt, null, function(err2, hash) {
-      //   console.log('hash', err2, hash);
-      //   if(err1 || err2) return cb(err1 || err2);
-      //   var newUser = new User();
-      //   newUser.email = email;
-      //   newUser.password = hash;
-      //   console.log('newuser', newUser);
-      //   newUser.save(function(err, savedUser){
-      //     console.log('savedUser', savedUser);
-      //     savedUser.password = null;
-      //     cb(err, savedUser);
-      //   });
-      // });
+      // bcrypt.hash("bacon", null, null, function(err, hash) {
+      //   console.log(hash, 'sya soemthing too');
+      // })
+      bcrypt.hash(password, salt, null, function(err2, hash) {
+        console.log('hash', err2, hash);
+        if(err1 || err2) return cb(err1 || err2);
+        var newUser = new User();
+        newUser.email = email;
+        newUser.password = hash;
+        console.log('newuser', newUser);
+        newUser.save(function(err, savedUser){
+          console.log('savedUser', savedUser);
+          savedUser.password = null;
+          cb(err, savedUser);
+        });
+      });
     });
   });
 };
