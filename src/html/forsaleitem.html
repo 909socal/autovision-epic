@@ -1,12 +1,49 @@
-<h1>Add Item </h1>
-  <form>
-    <div class="form-group">
-      <label for="email">Make</label>
-      <input id="email" ng-model="logEmail" type="email" placeholder="Email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="password">Model</label>
-      <input id="password" ng-model="logPass" type="password" placeholder="Password" class="form-control">
-      <button type="submit" class="btn btn-default" ng-click="loginClick()">Login</button>
-    </div>
-  </form>
+<div class='container'>
+  <h1>For Sale Items </h1>
+    <form>
+      <div class="form-group">
+        <label for="modelSearch">Model</label>
+        <input type="text" placeholder="Porshe" class="form-control" ng-model="modelSearch">
+      </div>
+      <div class="form-group">
+        <label for="makeSearch">Make</label>
+        <input type="text" placeholder="911" class="form-control" ng-model="makeSearch">
+      </div>
+      <div class="form-group">
+        <label for="Description">Description</label>
+        <input type="password" placeholder="GT3 wing" class="form-control" ng-model="desSearch">
+      </div>
+      <button type="submit" class="btn btn-default "  ng-click="searchClick()">Search</button>
+    </form>
+</div>
+<hr>
+<div class="container table-responsive">
+  <h2 class='text-center'>For Sale</h2>
+  <table class="table ">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Model</th>
+        <th>Make</th>
+        <th>year</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>e39 Hood</td>
+        <td>BMW</td>
+        <td>M5</td>
+        <td>2003</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Gt3 wing</td>
+        <td>Porshe</td>
+        <td>911 Gt3</td>
+        <td>2014</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
