@@ -9,9 +9,11 @@ body {
 .navbar{
 	margin-bottom: 0px;
 }
+
 .splash {
 	background: url('../images/logo.jpg') no-repeat bottom center;
-	background-size: cover;
-	height: 600px;
+	background-size: contain;
+	height: 500px;
+	width: 100vw;
 }
 
