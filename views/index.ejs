@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html ng-app="app">
-  <head>
-    <title>Autovision</title>
-    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
-    <link rel='stylesheet' href='/css/style.css' />
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/js/bundle.js"></script>
-  </head>
-  <body>
-    <nav  class="navbar navbar-default navbar-static-top">
+<head>
+  <title>Autovision</title>
+  <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+  <link rel='stylesheet' href='/css/style.css' />
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/js/bundle.js"></script>
+</head>
+<body>
+  <nav  class="navbar navbar-default navbar-static-top">
     <div class="container" >
       <div class="navbar-header">
         <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">AutoVision</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-         <ul class="nav navbar-nav navbar-left">
-          <li id="regme" ><a ui-sref="showRoom">Showroom</a></li>
-          <li id="logme" ><a ui-sref="forSale">For Sale</a></li>
-        </ul>
+       <ul class="nav navbar-nav navbar-left">
+        <li id="regme" ><a ui-sref="showRoom">Showroom</a></li>
+        <li id="logme" ><a ui-sref="forSale">For Sale</a></li>
+      </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li id="regme" ><a ui-sref="register">Register</a></li>
-          <li id="logme" ><a ui-sref="login">Login</a></li>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="regme" ><a ui-sref="register">Register</a></li>
+        <li id="logme" ><a ui-sref="login">Login</a></li>
 
-        </ul>
-      </div>
+      </ul>
     </div>
-  </nav>
-    <ui-view></ui-view>
-  </body>
+  </div>
+</nav>
+<ui-view></ui-view>
+</body>
 </html>
