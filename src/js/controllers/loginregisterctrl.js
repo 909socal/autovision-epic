@@ -19,6 +19,16 @@ app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
     }
     Auth.register(user);
   }
+
+  $scope.loginClick = function() { 
+    var user = {
+      email: $scope.logEmail, 
+      password: $scope.logPass, 
+      username: $scope.logUsername 
+    }
+    Auth.login(user);
+  }
+
 });
 
 // app.service('Auth', function($http, $state, $localStorage){

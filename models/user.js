@@ -188,11 +188,16 @@ userSchema.statics.register = function(user, cb) {
 };
 
 userSchema.statics.authenticate = function(inputUser, cb){
+  console.log('authenticate', inputUser);
+
   User.findOne({email: inputUser.email}, function(err, dbUser) {
+    console.log('User.findOne', err, dbUser);
     if(err || !dbUser) return cb(err || 'Incorrect email or password.');
     bcrypt.compare(inputUser.password, dbUser.password, function(err, isGood){
+      console.log('compare', err, isGood);
       if(err || !isGood) return cb(err || 'Incorrect email or password.');
       dbUser.password = null;
+      console.log('successful login', dbUser);
       cb(null, dbUser);
     });
   });
