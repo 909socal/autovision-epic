@@ -9,6 +9,7 @@
 
 	<div class="container table-responsive">
 	  <h2 class='text-center'>Personal For Sale Items</h2>
+	  <a href="#/additem" class="pull-right">Add Item</a>
 	  <table class="table ">
 	    <thead>
 	      <tr>
@@ -20,20 +21,16 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>e39 Hood</td>
-	        <td>BMW</td>
-	        <td>M5</td>
-	        <td>2003</td>
-	        <td></td>
-	      </tr>
-	      <tr>
-	        <td>Gt3 wing</td>
-	        <td>Porshe</td>
-	        <td>911 Gt3</td>
-	        <td>2014</td>
-	        <td></td>
-	      </tr>
+	      <tr ng-repeat="item in items track by $index">
+        <td>{{item.description}}</td>
+        <td>{{item.model}}</td>
+        <td>{{item.make}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.image}}</td>
+        <td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
+        	<span class="glyphicon glyphicon-trash"></span>
+        </button></td>
+      </tr>
 	    </tbody>
 	  </table>
 	</div>

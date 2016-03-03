@@ -11,4 +11,8 @@ app.service('Item', function($http){
     console.log('geta;;items');
     return $http.get('/items');
   };
+
+  this.remove = function(item) {
+    return $http.delete(`/items/${item}`)
+  };
 });
