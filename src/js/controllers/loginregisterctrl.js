@@ -1,4 +1,6 @@
 app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
+  $scope.user = $localStorage.token; 
+  
   $scope.regClick = function(){
     if ($scope.regPass !== $scope.regPass2) {
       alert("Passwords not the same!"); 
