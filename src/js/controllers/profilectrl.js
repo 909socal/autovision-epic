@@ -30,7 +30,17 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
     } else {
       $scope.isEditing = true; 
       $scope.editId = itemId;
-      $scope.editItem = item;
+      // $scope.editItem = item;
+      $scope.editItem = {
+        make: item.make,
+        model: item.model,
+        year: item.year,
+        description: item.description,
+        category: item.category,
+        email: item.email,
+        phone: item.phone,
+        zip: item.zip
+      };
     }
     
     // var realIndex = $scope.items.indexOf(item); 
@@ -39,9 +49,10 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
     // Item.edit(item._id.toString(), $scope.editItem); 
   }
 
-  // $scope.editConfirm = function(itemId){
-  //   var realIndex = $scope.items.indexOf(item); 
-  //   Item.edit(itemId, $scope.editItem);  
-  // }
+  $scope.editConfirm = function(){
+    console.log("Edit confirm", $scope.editId, $scope.editItem);
+    // var realIndex = $scope.items.indexOf(item); 
+    Item.edit($scope.editId, $scope.editItem);  
+  }
   
 });

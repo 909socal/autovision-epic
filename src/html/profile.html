@@ -38,7 +38,7 @@
 		</table>
 	</div>
 
-	<form ng-show="isEditing">
+	<form ng-show="isEditing" ng-submit="editConfirm()">
 		<div class = 'col-md-7 col-xs-12'>
 			<h1>Add Item </h1>
 			<div class="form-group">
@@ -80,7 +80,7 @@
 				<input ng-model="editItem.zip" type="text" placeholder="92232" class="form-control" required>
 			</div>
 		</div>
-		<button class="btn btn-success btn-sm" ng-click="editConfirm(item)">Confirm Edit</button>
+		<button class="btn btn-success btn-sm" type="submit" >Confirm Edit</button>
 	</form>
 	
 	<div class="col-xs-12" style="height:50px;"></div>

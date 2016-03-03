@@ -45,8 +45,7 @@ router.put('/:id', function(req, res, next) {
   console.log("put item", req.params.id);
   Item.findByIdAndUpdate(req.params.id, req.body, function(err, item){
     if(err) return res.status(400).send(err); 
-    console.log("Found one,", item);
-    // item.iscomplete = !item.iscomplete; 
+    console.log("Found one,", item);    
     item.save(function(err, savedItem){
       res.send(err || savedItem);
     })
