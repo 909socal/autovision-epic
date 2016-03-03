@@ -39,7 +39,8 @@
         <ul ng-controller="loginregisterCtrl" class="nav navbar-nav navbar-right ">
           <li ng-if="!user" id="regme" ><a ui-sref="register">Register</a></li>
           <li ng-if="!user" id="logme" ><a ui-sref="login">Login</a></li>
-          <li ng-if="user" id="logme" ><a ng-click="logout()">Logout</a></li>
+          <li ng-if="user"><a ui-sref="profile">Profile</a></li>
+          <li ng-if="user"><a ng-click="logout()">Logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
