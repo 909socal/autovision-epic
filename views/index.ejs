@@ -18,10 +18,8 @@
   <body>
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
-
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-
+      <div  class="navbar-header">
         <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">Auto Vision</a>
 
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -29,7 +27,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          
         </button>
       </div>
 
@@ -38,13 +35,11 @@
         <ul class="nav navbar-nav navbar-left">
          <li id="regme" ><a ui-sref="showroom">Showroom</a></li>
          <li id="logme" ><a ui-sref="forsale">For Sale</a></li>
-
         </ul>
-
-
-        <ul class="nav navbar-nav navbar-right ">
+        <ul ng-controller="loginregisterCtrl" class="nav navbar-nav navbar-right ">
           <li id="regme" ><a ui-sref="register">Register</a></li>
           <li id="logme" ><a ui-sref="login">Login</a></li>
+          <li id="logme" ><a ng-click="logout()">logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
