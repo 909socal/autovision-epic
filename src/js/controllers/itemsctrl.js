@@ -1,7 +1,23 @@
 var app = angular.module('app');
 
-app.controller('addItemCtrl', function($scope, Item) {
-  console.log('ADDITEMCTRL');
+app.controller('itemsCtrl', function($scope, Item) {
+  console.log('items CTRL');
+
+  $scope.addItemClick = function() {
+    console.log('item click');
+    console.log('item object: ', $scope.item);
+
+  //   Item.createItem($scope.item)
+  //   .then(function(res){
+  //    console.log('get all items res', res);
+  // });
+
+
+
+
+  };
+  
+  /*
   var item = {
     make: "Toyota", 
     model: "Camry", 
@@ -20,5 +36,6 @@ app.controller('addItemCtrl', function($scope, Item) {
   .then(function(res){
     console.log(res, 'Hi');
   })
+  */
 
 }); 

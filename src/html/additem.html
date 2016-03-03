@@ -5,19 +5,19 @@
        <h1>Add Item </h1>
         <div class="form-group">
          <label for="Make">Make</label>
-         <input ng-model="addItemMake" placeholder="Porsche" class="form-control" required>
+         <input ng-model="item.make" placeholder="Porsche" class="form-control" required>
        </div>
        <div class="form-group">
          <label for="password">Model</label>
-         <input  ng-model="addItemModel"  placeholder="911" class="form-control" required>
+         <input  ng-model="item.model"  placeholder="911" class="form-control" required>
        </div>
        <div class="form-group">
          <label for="Make">Year</label>
-         <input ng-model="addItemYear" placeholder="2014" class="form-control">
+         <input ng-model="item.year" placeholder="2014" class="form-control">
        </div>
        <div class="form-group">
          <label for="Make">Description</label>
-         <input ng-model="addItemDescription"  placeholder=" Red GT3 Spoiler" class="form-control" required>
+         <input ng-model="item.description"  placeholder=" Red GT3 Spoiler" class="form-control" required>
        </div>
        <div class="form-group">
          <label >Category</label>
@@ -33,14 +33,14 @@
      </div>
      <div class ='col-md-5 col-xs-12'>
          <h3>Contact Info</h3>
-       <div class="form-group">
-         <label for="Make">Email</label>
-         <input ng-model="addItemEmail" type="email" placeholder="Email" class="form-control" required>
-         <label for="Make">Phone Number</label>
-         <input ng-model="addItemPhone" type="email" placeholder="510-898-9232" class="form-control" >
-         <label for="Make">Zip Code</label>
-         <input ng-model="addItemZip" type="email" placeholder="92232" class="form-control" required>
-       </div>
+         <div class="form-group">
+           <label for="Make">Email</label>
+           <input ng-model="item.email" type="text" placeholder="Email" class="form-control" required>
+           <label for="Make">Phone Number</label>
+           <input ng-model="item.phone" type="text" placeholder="510-898-9232" class="form-control">
+           <label for="Make">Zip Code</label>
+           <input ng-model="item.zip" type="text" placeholder="92232" class="form-control" required>
+         </div>
      </div>
        </form>
    </div>

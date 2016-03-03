@@ -10,7 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('forsaleitemdetail', { url: '/forsaleitemdetail', templateUrl: 'html/forsaleitemdetail.html'})
   .state('profile', { url: '/profile', templateUrl: 'html/profile.html'})
   .state('register', { url: '/register', templateUrl: 'html/register.html', controller: 'loginregisterCtrl'})
-  .state('additem', { url: '/additem', templateUrl: 'html/additem.html', controller: 'addItemCtrl'})
+  .state('additem', { url: '/additem', templateUrl: 'html/additem.html', controller: 'itemsCtrl'})
   .state('login', { url: '/login', templateUrl: 'html/login.html', controller: 'loginregisterCtrl'})
   .state('showroom', { url: '/showroom', templateUrl: 'html/showroom.html'})
   .state('features', { url: '/features', templateUrl: 'html/features.html'})
