@@ -16,10 +16,27 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
     Item.remove(item._id.toString()); 
   }
 
+  $scope.isEditing = false; 
+  $scope.editId; 
+
   $scope.edit = function(item){
+    var itemId = item._id.toString();
+    if ($scope.editId === itemId) {
+      $scope.isEditing = false; 
+      $scope.editId = '';       
+    } else {
+      $scope.isEditing = true; 
+      $scope.editId = itemId;
+    }
+    
     var realIndex = $scope.items.indexOf(item); 
-    $scope.items[realIndex].iscomplete = !$scope.items[realIndex].iscomplete;
-    Item.edit(item._id.toString()); 
+    // $scope.items[realIndex].iscomplete = !$scope.items[realIndex].iscomplete;
+
+    // Item.edit(item._id.toString(), $scope.editItem); 
+  }
+
+  $scope.editConfirm = function(itemId){
+    Item.edit(itemId, $scope.editItem);  
   }
   
 });
