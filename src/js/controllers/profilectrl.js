@@ -15,5 +15,11 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
     $scope.items.splice(realIndex, 1);
     Item.remove(item._id.toString()); 
   }
+
+  $scope.edit = function(item){
+    var realIndex = $scope.items.indexOf(item); 
+    $scope.items[realIndex].iscomplete = !$scope.items[realIndex].iscomplete;
+    Item.edit(item._id.toString()); 
+  }
   
 });

@@ -41,4 +41,16 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
+router.put('/:id', function(req, res, next) {
+  console.log("put item", req.params.id);
+  Item.findByIdAndUpdate(req.params.id, req.body, function(err, item){
+    if(err) return res.status(400).send(err); 
+    console.log("Found one,", item);
+    // item.iscomplete = !item.iscomplete; 
+    item.save(function(err, savedItem){
+      res.send(err || savedItem);
+    })
+  });
+});
+
 module.exports = router;

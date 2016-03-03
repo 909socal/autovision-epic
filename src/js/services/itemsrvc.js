@@ -12,7 +12,12 @@ app.service('Item', function($http){
     return $http.get('/items');
   };
 
-  this.remove = function(item) {
-    return $http.delete(`/items/${item}`)
+  this.remove = function(itemId) {
+    return $http.delete(`/items/${itemId}`)
   };
+
+  this.edit = function(itemId, editItem) {
+    return $http.put(`/items/${itemId}`, editItem)
+  };
+
 });
