@@ -30,5 +30,26 @@ router.post('/', function(req, res, next) {
   }); 
 });
 
+router.delete('/:id', function(req, res, next) {
+  console.log("post item", req.params.id);
+  Item.findById(req.params.id, function(err, item){
+    if(err) return res.status(400).send(err); 
+    console.log("Found one,", item);
+    item.remove(function(err){
+      res.status(err ? 400 : 200).send(err || item);
+    })
+  });
+});
+
+router.put('/:id', function(req, res, next) {
+  console.log("put item", req.params.id);
+  Item.findByIdAndUpdate(req.params.id, req.body, function(err, item){
+    if(err) return res.status(400).send(err); 
+    console.log("Found one,", item);    
+    item.save(function(err, savedItem){
+      res.send(err || savedItem);
+    })
+  });
+});
 
 module.exports = router;

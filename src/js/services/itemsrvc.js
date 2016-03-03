@@ -11,4 +11,13 @@ app.service('Item', function($http){
     console.log('geta;;items');
     return $http.get('/items');
   };
+
+  this.remove = function(itemId) {
+    return $http.delete(`/items/${itemId}`)
+  };
+
+  this.edit = function(itemId, editItem) {
+    return $http.put(`/items/${itemId}`, editItem)
+  };
+
 });
