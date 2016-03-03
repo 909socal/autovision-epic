@@ -1,14 +1,49 @@
 <div class='container'>
-  <h1>Add Item </h1>
-  <form>
-    <div class="form-group">
-      <label for="email">Make</label>
-      <input id="email" ng-model="logEmail" type="email" placeholder="Email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="password">Model</label>
-      <input id="password" ng-model="logPass" type="password" placeholder="Password" class="form-control">
-      <button type="submit" class="btn btn-default" ng-click="loginClick()">Login</button>
-    </div>
-  </form>
+   <div class='row'>
+      <form>
+       <div class = 'col-md-7 col-xs-12'>
+       <h1>Add Item </h1>
+        <div class="form-group">
+         <label for="Make">Make</label>
+         <input ng-model="addItemMake" placeholder="Porsche" class="form-control" required>
+       </div>
+       <div class="form-group">
+         <label for="password">Model</label>
+         <input  ng-model="addItemModel"  placeholder="911" class="form-control" required>
+       </div>
+       <div class="form-group">
+         <label for="Make">Year</label>
+         <input ng-model="addItemYear" placeholder="2014" class="form-control">
+       </div>
+       <div class="form-group">
+         <label for="Make">Description</label>
+         <input ng-model="addItemDescription"  placeholder=" Red GT3 Spoiler" class="form-control" required>
+       </div>
+       <div class="form-group">
+         <label >Category</label>
+         <select class="form-control" id="sel1">
+           <option name="Body" value="Body">Choose a Category</option>
+           <option name="Body" value="Body">Body</option>
+           <option name="Lighting" value="Lighting">Lighting</option>
+           <option name="Suspension" value="Suspension">Suspension</option>
+           <option name="Tires" value="Tires">Tires</option>
+           <option name="Wheels" value="Wheels">Wheels</option>
+         </select>
+       </div>
+     </div>
+     <div class ='col-md-5 col-xs-12'>
+         <h3>Contact Info</h3>
+       <div class="form-group">
+         <label for="Make">Email</label>
+         <input ng-model="addItemEmail" type="email" placeholder="Email" class="form-control" required>
+         <label for="Make">Phone Number</label>
+         <input ng-model="addItemPhone" type="email" placeholder="510-898-9232" class="form-control" >
+         <label for="Make">Zip Code</label>
+         <input ng-model="addItemZip" type="email" placeholder="92232" class="form-control" required>
+       </div>
+     </div>
+       </form>
+   </div>
+       <button type="submit" class="btn btn-default pull-right" ng-click="addItemClick()">Add Item</button>
+</div>
 </div>
