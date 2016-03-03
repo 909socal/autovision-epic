@@ -22,11 +22,11 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in items track by $index">
-					<td>{{item.description}}</td>
-					<td>{{item.model}}</td>
-					<td>{{item.make}}</td>
-					<td>{{item.year}}</td>
-					<td>{{item.image}}</td>
+					<td ng-click="details(item)">{{item.description}}</td>
+					<td ng-click="details(item)">{{item.model}}</td>
+					<td ng-click="details(item)">{{item.make}}</td>
+					<td ng-click="details(item)">{{item.year}}</td>
+					<td ng-click="details(item)">{{item.image}}</td>
 					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>

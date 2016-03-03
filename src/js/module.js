@@ -7,7 +7,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('home', { url: '/', templateUrl: 'html/home.html', controller:'forsaleitemCtrl'})
   .state('forsale', { url: '/forsale', templateUrl: 'html/forsale.html', controller:'forsaleCtrl'})
   .state('forsaleitem', { url: '/forsaleitem/:type', templateUrl: 'html/forsaleitem.html', controller:'forsaleitemCtrl'})
-  .state('forsaleitemdetail', { url: '/forsaleitemdetail', templateUrl: 'html/forsaleitemdetail.html'})
+  .state('forsaleitemdetail', { url: '/forsaleitemdetail', params:{itemParams:null}, templateUrl: 'html/forsaleitemdetail.html', controller:'profileCtrl'})
   .state('profile', { url: '/profile', templateUrl: 'html/profile.html', controller: 'profileCtrl'})
   .state('register', { url: '/register', templateUrl: 'html/register.html', controller: 'loginregisterCtrl'})
   .state('additem', { url: '/additem', templateUrl: 'html/additem.html', controller: 'itemsCtrl'})
