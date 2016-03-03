@@ -3,22 +3,23 @@
 </div>
 <div class="container-fluid contact container">
 
-            <div class="row">
+            <div class="row forsale">
             	<h1 class='text-center'>For Sale</h1>
               <div class="footer-col col-md-12">
+
                 <ul class="list-inline text-center">
                   <li class="saletag" ui-sref='forsaleitem({type:"body"})' >Body</li>
                   <li class="saletag" ui-sref='forsaleitem({type:"engine"})' >Engine</li>
                   <li class="saletag" ui-sref='forsaleitem({type:"lighting"})' >Lighting</li>
                   <li class="saletag" ui-sref='forsaleitem({type:"suspension"})' >Suspension</li>
                   <li class="saletag" ui-sref='forsaleitem({type:"tires"})' >Tires</li>
-                  <li class="saletag" ui-sref='forsaleitem({type:"wheels"})' >Wheels</li>                  
-
+                  <li class="saletag" ui-sref='forsaleitem({type:"wheels"})' >Wheels</li>           
                 </ul>
+                
               </div>
             </div>
             <div class="row">
-            	 <ul class="list-inline text-right"><a href="#/additem">Add Item</a></li>
+            	 <ul ng-if="user" class="list-inline text-right"><a href="#/additem">Add Item</a></li>
                 </ul>
             </div>
 </div>
