@@ -1,16 +1,17 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var fs = require('fs');
 
 var Item; 
 
 var itemSchema = new mongoose.Schema({
   make: {type:String}, 
   model: {type:String}, 
-  year:{type:Date},
+  year:{type:String},
   description: {type:String},
   category: {type:String},
-  image: {type:Buffer},
+  image: {type:Buffer, contentType:String},
   contactinfo:{
     zip: {type:Number},
     email: {type:String},
@@ -29,14 +30,21 @@ itemSchema.statics.getUserItems = function(userid, cb) {
 };
 
 itemSchema.statics.add = function(item, cb) {
+  // Set image item here 
+  console.log('in add item model', item);
   var newItem = new Item(item); 
   newItem.save(function(err, savedItem){
+    console.log('err and saved item', err, savedItem);
     if (err) return cb(err);
     cb(null, savedItem); 
   });
 };
 
+itemSchema.statics.image = function(item) {
+  console.log('image function in item model', image);
 
+
+}
 
 Item = mongoose.model('Item', itemSchema);
 module.exports = Item;

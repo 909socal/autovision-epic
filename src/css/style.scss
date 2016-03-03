@@ -25,3 +25,12 @@ body {
    height:50vh;
 
 } 
+
+.saletag {
+  color: blue;
+}
+
+.saletag:hover {
+  color: green; 
+  cursor: pointer;
+}

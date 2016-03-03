@@ -5,11 +5,11 @@
        <h1>Add Item </h1>
         <div class="form-group">
          <label for="Make">Make</label>
-         <input ng-model="item.make" placeholder="Porsche" class="form-control" required>
+         <input ng-model="item.make" placeholder="Porsche" class="form-control" type="text" required>         
        </div>
        <div class="form-group">
          <label for="password">Model</label>
-         <input  ng-model="item.model"  placeholder="911" class="form-control" required>
+         <input  ng-model="item.model"  placeholder="911" class="form-control" type="text" required>
        </div>
        <div class="form-group">
          <label for="Make">Year</label>
@@ -21,7 +21,7 @@
        </div>
        <div class="form-group">
          <label >Category</label>
-         <select class="form-control" id="sel1">
+         <select class="form-control" id="sel1" ng-model="item.category">
            <option name="Body" value="Body">Choose a Category</option>
            <option name="Body" value="Body">Body</option>
            <option name="Lighting" value="Lighting">Lighting</option>
@@ -43,7 +43,9 @@
          </div>
      </div>
        </form>
+
    </div>
+
        <button type="submit" class="btn btn-default pull-right" ng-click="addItemClick()">Add Item</button>
 </div>
 </div>

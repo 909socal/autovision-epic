@@ -1,20 +1,22 @@
 <div class='container'>
   <h1>For Sale Items </h1>
-    <form>
-      <div class="form-group">
-        <label for="modelSearch">Model</label>
-        <input type="text" placeholder="Porshe" class="form-control" ng-model="modelSearch">
-      </div>
-      <div class="form-group">
-        <label for="makeSearch">Make</label>
-        <input type="text" placeholder="911" class="form-control" ng-model="makeSearch">
-      </div>
-      <div class="form-group">
-        <label for="Description">Description</label>
-        <input type="password" placeholder="GT3 wing" class="form-control" ng-model="desSearch">
-      </div>
-      <button type="submit" class="btn btn-default "  ng-click="searchClick()">Search</button>
-    </form>
+  <form>
+    <div class="form-group">
+      <label for="filter">Search:</label>
+      <input ng-model="filterText" class="form-control", type="text", id="filter">
+    </div>
+
+    <div class="form-group">
+      <label for="modelSearch">Filter By Model:</label>
+      <input type="text" placeholder="Porsche" ng-model="filterModel" class="form-control", id="filter" >
+    </div>
+    
+    <div class="form-group">
+      <label for="makeSearch">Filter By Make</label>
+      <input type="text" placeholder="911" class="form-control" ng-model="filterMake" class="form-control", id="filter">
+    </div>
+        
+  </form>
 </div>
 <hr>
 <div class="container table-responsive">
@@ -30,19 +32,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>e39 Hood</td>
-        <td>BMW</td>
-        <td>M5</td>
-        <td>2003</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Gt3 wing</td>
-        <td>Porsche</td>
-        <td>911 Gt3</td>
-        <td>2014</td>
-        <td></td>
+      <tr ng-repeat="item in items | filter: category | filter: filterText | filter: filterModel | filter: filterMake">
+        <td>{{item.description}}</td>
+        <td>{{item.model}}</td>
+        <td>{{item.make}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.image}}</td>
       </tr>
     </tbody>
   </table>
