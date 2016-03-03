@@ -21,7 +21,9 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
 
   $scope.edit = function(item){
     console.log("scope edit");
-    var itemId = item._id.toString();
+    if (item && item._id) {
+      var itemId = item._id.toString();
+    };
     if ($scope.editId === itemId) {
       $scope.isEditing = false; 
       $scope.editId = '';       
@@ -32,6 +34,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
       $scope.editId = itemId;
       $scope.editIndex = $scope.items.indexOf(item); 
       $scope.editItem = {
+        _id: item._id,
         make: item.make,
         model: item.model,
         year: item.year,
@@ -48,7 +51,8 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
     Item.edit($scope.editId, $scope.editItem);  
     $scope.isEditing = false; 
     $scope.editId = '';       
-    $scope.editItem = {};       
+    $scope.editItem = {};
+    $scope.editIndex = -1;   
   }
   
 });
