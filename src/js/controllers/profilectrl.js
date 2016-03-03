@@ -11,6 +11,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
  });
 
   $scope.remove = function(item){
+    console.log('item is: ', item);
     var realIndex = $scope.items.indexOf(item); 
     $scope.items.splice(realIndex, 1);
     Item.remove(item._id.toString()); 
@@ -20,7 +21,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
   $scope.editItem = {}; 
 
   $scope.edit = function(item){
-    console.log("scope edit");
+    console.log("scope edit", item);
     if (item && item._id) {
       var itemId = item._id.toString();
     };
@@ -41,6 +42,20 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
         description: item.description,
         category: item.category
       };
+      if (item.contactinfo) {
+        $scope.editItem.contactinfo = item.contactinfo;
+      };
+      // $scope.editItem._id =item._id; 
+      // $scope.editItem.make =item.make; 
+      // $scope.editItem.model =item.model; 
+      // $scope.editItem.year =item.year; 
+      // $scope.editItem.description =item.description; 
+      // $scope.editItem.category =item.category; 
+      // if (item.contactinfo) {
+      //   $scope.editItem.contactinfo.email = item.contactinfo.email;
+      //   $scope.editItem.contactinfo.phone = item.contactinfo.phone;
+      //   $scope.editItem.contactinfo.zip = item.contactinfo.zip;
+      // };
     }
   }
 
