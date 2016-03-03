@@ -22,7 +22,7 @@ body {
 	width: 100vw;
 }
 .thumbnail img{
-   height:50vh;
+   height: 40vh;
 
 } 
 
@@ -33,4 +33,10 @@ body {
 .saletag:hover {
   color: green; 
   cursor: pointer;
+}
+
+img:hover  {
+    -webkit-filter: brightness(60%);
+   filter: brightness(90%);
+  
 }
