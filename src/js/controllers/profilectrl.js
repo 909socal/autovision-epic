@@ -36,10 +36,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
         model: item.model,
         year: item.year,
         description: item.description,
-        category: item.category,
-        email: item.email,
-        phone: item.phone,
-        zip: item.zip
+        category: item.category
       };
     }
   }
