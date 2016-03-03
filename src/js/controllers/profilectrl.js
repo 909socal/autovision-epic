@@ -3,12 +3,12 @@ var app = angular.module('app');
 app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
   console.log('in profileCtrl', $state.params)
 
- Item.getAllItems()
-      .then(function(res){
-        $scope.items = res.data; 
-        $scope.category = $state.params.type;
-        console.log('Hi', $scope.items);
-      });
+  Item.getAllItems()
+  .then(function(res){
+   $scope.items = res.data; 
+   $scope.category = $state.params.type;
+   console.log('Hi', $scope.items);
+ });
 
   $scope.remove = function(item){
     var realIndex = $scope.items.indexOf(item); 
@@ -18,7 +18,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
 
   $scope.isEditing = false; 
   $scope.editItem = {}; 
-  $scope.editId; 
 
   $scope.edit = function(item){
     console.log("scope edit");
@@ -26,11 +25,12 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
     if ($scope.editId === itemId) {
       $scope.isEditing = false; 
       $scope.editId = '';       
-      $scope.editItem = {};       
+      $scope.editItem = {};     
+      $scope.editIndex = -1; 
     } else {
       $scope.isEditing = true; 
       $scope.editId = itemId;
-      // $scope.editItem = item;
+      $scope.editIndex = $scope.items.indexOf(item); 
       $scope.editItem = {
         make: item.make,
         model: item.model,
@@ -42,17 +42,16 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, Item) {
         zip: item.zip
       };
     }
-    
-    // var realIndex = $scope.items.indexOf(item); 
-    // $scope.items[realIndex].iscomplete = !$scope.items[realIndex].iscomplete;
-
-    // Item.edit(item._id.toString(), $scope.editItem); 
   }
 
   $scope.editConfirm = function(){
     console.log("Edit confirm", $scope.editId, $scope.editItem);
     // var realIndex = $scope.items.indexOf(item); 
+    $scope.items[$scope.editIndex] = $scope.editItem; 
     Item.edit($scope.editId, $scope.editItem);  
+    $scope.isEditing = false; 
+    $scope.editId = '';       
+    $scope.editItem = {};       
   }
   
 });
