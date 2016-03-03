@@ -1,5 +1,8 @@
 body {
   background-color: white;
+   font-family: 'Source Serif Pro', serif;
+
+
 }
 .form-control{
     width: 40%;
@@ -34,9 +37,19 @@ body {
   color: green; 
   cursor: pointer;
 }
-
+img {
+	transition: all .5s;
+}
 img:hover  {
     -webkit-filter: brightness(60%);
    filter: brightness(90%);
   
 }
+.navbar{
+		font-size: 15px;
+}
+.navbar-brand{
+	font-size: 30px;
+
+}
+
