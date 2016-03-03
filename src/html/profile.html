@@ -1,73 +1,118 @@
 <div class= 'container'>
 	<h1>Welcome, JT, George &amp; Ben</h1>
 	<div class="userPic">
-	  <img src="http://placehold.it/350x350">
+		<img src="http://placehold.it/350x350">
 	</div>
 
 	<div class="col-xs-12" style="height:50px;"></div>
 
 
 	<div class="container table-responsive">
-	  <h2 class='text-center'>Personal For Sale Items</h2>
-	  <a href="#/additem" class="pull-right">Add Item</a>
-	  <table class="table ">
-	    <thead>
-	      <tr>
-	        <th>Description</th>
-	        <th>Model</th>
-	        <th>Make</th>
-	        <th>year</th>
-	        <th>Image</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr ng-repeat="item in items track by $index">
-        <td>{{item.description}}</td>
-        <td>{{item.model}}</td>
-        <td>{{item.make}}</td>
-        <td>{{item.year}}</td>
-        <td>{{item.image}}</td>
-        <td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
-        	<span class="glyphicon glyphicon-trash"></span>
-        </button></td>
-        <td><button class="btn btn-sm btn-warning" ng-click="edit(item)">
-        	<span class="glyphicon glyphicon-edit"></span>
-        </button></td>
-      </tr>
-	    </tbody>
-	  </table>
+		<h2 class='text-center'>Personal For Sale Items</h2>
+		<a href="#/additem" class="pull-right">Add Item</a>
+		<table class="table ">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Model</th>
+					<th>Make</th>
+					<th>year</th>
+					<th>Image</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in items track by $index">
+					<td>{{item.description}}</td>
+					<td>{{item.model}}</td>
+					<td>{{item.make}}</td>
+					<td>{{item.year}}</td>
+					<td>{{item.image}}</td>
+					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button></td>
+					<td><button class="btn btn-sm btn-warning" ng-click="edit(item)">
+						<span class="glyphicon glyphicon-edit"></span>
+					</button></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+
+	<form ng-show="isEditing">
+		<div class = 'col-md-7 col-xs-12'>
+			<h1>Add Item </h1>
+			<div class="form-group">
+				<label for="Make">Make</label>
+				<input ng-model="editItem.make" placeholder="Porsche" class="form-control" type="text" required>         
+			</div>
+			<div class="form-group">
+				<label for="password">Model</label>
+				<input  ng-model="editItem.model"  placeholder="911" class="form-control" type="text" required>
+			</div>
+			<div class="form-group">
+				<label for="Make">Year</label>
+				<input ng-model="editItem.year" placeholder="2014" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="Make">Description</label>
+				<input ng-model="editItem.description"  placeholder=" Red GT3 Spoiler" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label >Category</label>
+				<select class="form-control" id="sel1" ng-model="editItem.category">
+					<option name="Body" value="Body">Choose a Category</option>
+					<option name="Body" value="Body">Body</option>
+					<option name="Lighting" value="Lighting">Lighting</option>
+					<option name="Suspension" value="Suspension">Suspension</option>
+					<option name="Tires" value="Tires">Tires</option>
+					<option name="Wheels" value="Wheels">Wheels</option>
+				</select>
+			</div>
+		</div>
+		<div class ='col-md-5 col-xs-12'>
+			<h3>Contact Info</h3>
+			<div class="form-group">
+				<label for="Make">Email</label>
+				<input ng-model="editItem.email" type="text" placeholder="Email" class="form-control" required>
+				<label for="Make">Phone Number</label>
+				<input ng-model="editItem.phone" type="text" placeholder="510-898-9232" class="form-control">
+				<label for="Make">Zip Code</label>
+				<input ng-model="editItem.zip" type="text" placeholder="92232" class="form-control" required>
+			</div>
+		</div>
+		<button class="btn btn-success btn-sm" ng-click="editConfirm(item)">Confirm Edit</button>
+	</form>
 	
 	<div class="col-xs-12" style="height:50px;"></div>
 
-	   <div class="container table-responsive">
-	  <h2 class='text-center'>Personal Features</h2>
-	  <table class="table ">
-	    <thead>
-	      <tr>
-	        <th>Model</th>
-	        <th>Make</th>
-	        <th>year</th>
-	        <th>Image</th>
-	        <th>Details</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>BMW</td>
-	        <td>M5</td>
-	        <td>2003</td>
-	        <td></td>
-	        <td>e39 Hood</td>
-	      </tr>
-	      <tr>
-	        <td>Porsche</td>
-	        <td>911 Gt3</td>
-	        <td>2014</td>
-	        <td></td>
-	        <td>Gt3 wing</td>
-	      </tr>
-	    </tbody>
-	  </table>
+	<div class="container table-responsive">
+		<h2 class='text-center'>Personal Features</h2>
+		<table class="table ">
+			<thead>
+				<tr>
+					<th>Model</th>
+					<th>Make</th>
+					<th>year</th>
+					<th>Image</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>BMW</td>
+					<td>M5</td>
+					<td>2003</td>
+					<td></td>
+					<td>e39 Hood</td>
+				</tr>
+				<tr>
+					<td>Porsche</td>
+					<td>911 Gt3</td>
+					<td>2014</td>
+					<td></td>
+					<td>Gt3 wing</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>
