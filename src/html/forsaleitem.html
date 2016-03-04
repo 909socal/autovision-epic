@@ -33,11 +33,11 @@
     </thead>
     <tbody>
       <tr ng-repeat="item in items | filter: category | filter: filterText | filter: filterModel | filter: filterMake">
-        <td>{{item.description}}</td>
-        <td>{{item.model}}</td>
-        <td>{{item.make}}</td>
-        <td>{{item.year}}</td>
-        <td>{{item.image}}</td>
+        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.description}}</td>
+        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
+        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
+        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
+        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.image}}</td>
       </tr>
     </tbody>
   </table>

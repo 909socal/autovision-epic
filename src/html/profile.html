@@ -1,5 +1,5 @@
 <div class= 'container'>
-	<h1>Welcome, JT, George &amp; Ben</h1>
+	<h1>Welcome, {{user.email}}</h1>
 	<div class="userPic">
 		<img src="http://placehold.it/350x350">
 	</div>
@@ -23,10 +23,10 @@
 			<tbody>
 				<tr ng-repeat="item in items track by $index">
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.description}}</td>
-					<td ng-click="details(item)">{{item.model}}</td>
-					<td ng-click="details(item)">{{item.make}}</td>
-					<td ng-click="details(item)">{{item.year}}</td>
-					<td ng-click="details(item)">{{item.image}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.image}}</td>
 					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>

@@ -17,3 +17,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('featuresadd', { url: '/featuresadd', templateUrl: 'html/featuresadd.html'})
   $urlRouterProvider.otherwise('/');
 });
+
+app.run(function(Auth){
+  Auth.user();
+});

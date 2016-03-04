@@ -1,8 +1,10 @@
 var app = angular.module('app');
 
-app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, Item) {
+app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, Item, $localStorage) {
   console.log('in profileCtrl', $state.params)
 
+  $scope.user = $localStorage.token.config.data; 
+  console.log("\nUser,", $scope.user);
   Item.getAllItems()
   .then(function(res){
    $scope.items = res.data; 
