@@ -20,11 +20,13 @@ app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
       password: $scope.logPass, 
       username: $scope.logUsername 
     }
-    Auth.login(user);
+
+    Auth.login(user); 
   }
 
   $scope.logout = function() { 
     Auth.logout();
+    $scope.user = null;
   }
 });
 

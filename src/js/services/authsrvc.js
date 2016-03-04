@@ -10,10 +10,10 @@ app.service('Auth', function($http, $state, $localStorage) {
     return $http({method: 'POST', url: '/users/login', data: user}).then((data)=>{
       this.token = data;
       $localStorage.token = this.token;
-      $state.go('home');
-      window.location.reload();
+      $state.go('profile');
     },
     function err(err) {
+      console.log('inside err', err);
     });    
   }
   
@@ -21,6 +21,5 @@ app.service('Auth', function($http, $state, $localStorage) {
     this.token = null;
     $localStorage.token = null;
     $state.go('home');
-    window.location.reload();
   }
 });
