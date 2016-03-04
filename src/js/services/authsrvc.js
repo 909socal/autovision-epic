@@ -11,9 +11,9 @@ app.service('Auth', function($http, $state, $localStorage) {
       this.token = data;
       $localStorage.token = this.token;
       $state.go('profile');
-      window.location.reload();
     },
     function err(err) {
+      console.log('inside err', err);
     });    
   }
   
@@ -21,7 +21,6 @@ app.service('Auth', function($http, $state, $localStorage) {
     this.token = null;
     $localStorage.token = null;
     $state.go('home');
-    window.location.reload();
   }
 
   this.user = () => {
