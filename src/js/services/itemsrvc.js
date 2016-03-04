@@ -20,4 +20,7 @@ app.service('Item', function($http){
     return $http.put(`/items/${itemId}`, editItem)
   };
 
+  this.getItem = function(itemId) {
+    return $http.get(`/items/single/${itemId}`);
+  }
 });

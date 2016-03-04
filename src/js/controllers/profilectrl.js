@@ -68,21 +68,5 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.editId = '';       
     $scope.editItem = {};
     $scope.editIndex = -1;   
-  }
-
-  //$scope.testItem1 = "test1";
-  $scope.itemDetails = $stateParams.itemParam;
-
-  $scope.details = function(item){
-    console.log('details');
-    // $scope.itemDetails = item;
-    console.log('item param is: ', $stateParams.itemParam);
-    //$scope.testItem1 = $stateParams.itemParam;
-    $scope.itemDetails = item; //$stateParams.itemParam; 
-
-    // $rootScope.testItem1 = "TESTING TESTING"; 
-    //$state.go('forsaleitemdetail', {itemParam:"test param"});
-    $state.go('forsaleitemdetail');
-  }
-  
+  }  
 });

@@ -15,11 +15,20 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/single/:itemId', function(req, res, next) {
+  console.log('inside single router file');
+  Item.findById(req.params.itemId, function(err, item) {
+    console.log('item obtained in router file', item);
+    res.status(err ? 400:200).send(err||item);
+  });
+});
+
 router.get('/:userid', function(req, res, next) {
   Item.getUserItems(req.params.userid, function(err, userItems) {
     res.status(err ? 400:200).send(err||userItems);
   });
 });
+
 
 // router.post('/', User.isAuthenticated, function(req, res, next) {
 router.post('/', function(req, res, next) {

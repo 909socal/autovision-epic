@@ -22,7 +22,7 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in items track by $index">
-					<td ng-click="details(item)">{{item.description}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.description}}</td>
 					<td ng-click="details(item)">{{item.model}}</td>
 					<td ng-click="details(item)">{{item.make}}</td>
 					<td ng-click="details(item)">{{item.year}}</td>
