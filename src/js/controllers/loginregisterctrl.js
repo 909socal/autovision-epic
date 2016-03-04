@@ -1,6 +1,6 @@
 app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
-  $scope.user = Auth.user(); 
-  // $scope.user = $localStorage.token; 
+  // $scope.user = Auth.user(); 
+  $scope.user = $localStorage.token; 
 
   $scope.regClick = function(){
     if ($scope.regPass !== $scope.regPass2) {
@@ -26,6 +26,7 @@ app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
 
   $scope.logout = function() { 
     Auth.logout();
+    $scope.user = null; 
   }
 });
 

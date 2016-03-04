@@ -6,9 +6,9 @@ var User = require('../models/user');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  User.isAuthenticated(req, res, function(err, token){
-    res.send(err || token);
-  })
+  // User.isAuthenticated(req, res, function(err, token){
+  //   res.send(err || token);
+  // })
 });
 
 router.post('/register', function(req, res, next){

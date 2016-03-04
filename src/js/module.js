@@ -18,6 +18,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 });
 
-app.run(function(Auth){
-  Auth.user();
-});
+// app.run(function(Auth){
+//   Auth.user();
+// });

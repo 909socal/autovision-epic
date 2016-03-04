@@ -21,19 +21,19 @@ app.service('Auth', function($http, $state, $localStorage) {
     this.token = null;
     $localStorage.token = null;
     $state.go('home');
-    window.location.reload();
+    // window.location.reload();
   }
 
-  this.user = () => {
-    // return $localStorage.token; 
-    return $http({method: 'GET', url: '/users'}).then((data)=>{
-      this.token = data;
-      $localStorage.token = this.token;
-      $state.go('profile');
-      window.location.reload();
-    },
-    function err(err) {
-    });    
-  }
+  // this.user = () => {
+  //   // return $localStorage.token; 
+  //   return $http({method: 'GET', url: '/users'}).then((data)=>{
+  //     this.token = data;
+  //     $localStorage.token = this.token;
+  //     $state.go('profile');
+  //     window.location.reload();
+  //   },
+  //   function err(err) {
+  //   });    
+  // }
 
 });
