@@ -8,9 +8,9 @@ var User = require('../models/user');
 
 
 router.get('/', function(req, res, next) {
-  console.log("getitems");
+  // console.log("getitems");
   Item.find({}, function(err, items) {
-    console.log("find items,", items);
+    // console.log("find items,", items);
     res.status(err ? 400:200).send(err||items);
   });
 });
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 router.get('/single/:itemId', function(req, res, next) {
   console.log('inside single router file');
   Item.findById(req.params.itemId, function(err, item) {
-    console.log('item obtained in router file', item);
+    // console.log('item obtained in router file', item);
     res.status(err ? 400:200).send(err||item);
   });
 });
@@ -32,9 +32,9 @@ router.get('/:userid', function(req, res, next) {
 
 // router.post('/', User.isAuthenticated, function(req, res, next) {
 router.post('/', function(req, res, next) {
-  console.log('reqbody', req.body);
+  // console.log('reqbody', req.body);
   Item.add(req.body, function(err, savedItem){
-    console.log('Item.add');
+    // console.log('Item.add');
     res.status(err ? 400:200).send(err||savedItem);
   }); 
 });

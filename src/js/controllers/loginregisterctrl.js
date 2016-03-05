@@ -1,6 +1,10 @@
-app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
+app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage, $rootScope) {
   // $scope.user = Auth.user(); 
-  $scope.user = $localStorage.token; 
+  console.log("Auth.data: \n", Auth.data);
+  // $scope.user = $localStorage.token; 
+  // $rootScope.user = Auth.data; 
+  $rootScope.user = $localStorage.token; 
+  // $scope.user = $rootScope.user;
 
   $scope.regClick = function(){
     if ($scope.regPass !== $scope.regPass2) {
@@ -22,12 +26,26 @@ app.controller('loginregisterCtrl', function($scope, Auth, $localStorage) {
       username: $scope.logUsername 
     }
 
-    Auth.login(user); 
+    // $scope.user = Auth.login(user); 
+    Auth.login(user)
+    .then((data)=>{
+      this.token = data;
+      $localStorage.token = this.token;
+      $rootScope.user = data; 
+      // $scope.user = $rootScope.user;
+      $state.go('profile');
+      // return data;
+      // return true;
+    },
+    function err(err) {
+      console.log('inside err', err);
+    });
   }
 
   $scope.logout = function() { 
     Auth.logout();
-    $scope.user = null; 
+    $rootScope.user = null; 
+    // $scope.user = null; 
   }
 });
 

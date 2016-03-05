@@ -1,13 +1,15 @@
 var app = angular.module('app');
 
-app.controller('forsaleitemCtrl', function($scope, $rootScope, $state, Item) {
-  console.log('in forsaleitemsCtrl', $state.params)
+app.controller('forsaleitemCtrl', function($scope, $rootScope, $state, Item, Auth, $localStorage) {
+  // console.log('in forsaleitemsCtrl', $state.params)
+  $rootScope.user = $localStorage.token; 
+  // $scope.user = $rootScope.user;
 
  Item.getAllItems()
       .then(function(res){
         $scope.items = res.data; 
         $scope.category=$state.params.type;
-        console.log('Hi', $scope.items);
+        // console.log('Hi', $scope.items);
       });
 
   
