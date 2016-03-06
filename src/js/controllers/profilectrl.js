@@ -1,18 +1,18 @@
 var app = angular.module('app');
 
-app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, Item, $localStorage) {
-  console.log('in profileCtrl', $state.params)
-
+app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, Item, $localStorage, Auth) {
+  // console.log('in profileCtrl', $state.params)
+  // $rootScope.user = Auth.data; 
+  console.log(Auth.data, "AUTH DATA \n");
   if ($localStorage.token && $localStorage.token.config) {
-    $scope.user = $localStorage.token.config.data; 
+    $rootScope.user = $localStorage.token;
   };
-  // $scope.user = $localStorage.token;
   console.log("\nUser,", $scope.user);
   Item.getAllItems()
   .then(function(res){
    $scope.items = res.data; 
    $scope.category = $state.params.type;
-   console.log('Hi', $scope.items);
+   // console.log('Hi', $scope.items);
  });
 
   $scope.remove = function(item){
