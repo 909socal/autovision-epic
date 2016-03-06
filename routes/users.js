@@ -5,19 +5,6 @@ var router = express.Router();
 var authMiddleware = require('../config/auth');
 var User = require('../models/user'); 
 
-
-/* GET users listing. */
-// router.get('/', User.isAuthenticated, function(req, res, next) {
-//   console.log('USERS GET');
-//   // User.isAuthenticated(req, res, function(err, token){
-//   //   if (err) return res.send(err);
-//   //   console.log('OKTKEN ', token);
-//   //   // res.send(token);
-//   //   res.send(req.user);
-//   // })
-//   res.send(req.user);
-// });
-
 router.get('/', authMiddleware, function(req, res, next) {
   console.log("Middlewherare? ");
   if (!req.user) { console.log("No user!"); return; };
@@ -26,7 +13,6 @@ router.get('/', authMiddleware, function(req, res, next) {
     console.log('found user!', user);
     res.send(user); 
   });
-  // res.send(req.user);
 })
 
 router.post('/register', function(req, res, next){
