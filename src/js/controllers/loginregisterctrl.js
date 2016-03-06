@@ -32,6 +32,7 @@ app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage
       this.token = data;
       console.log("AUTHSERVICE LOGIN TOKEN", data);
       $localStorage.token = this.token;
+      // ^ The Token contains the user's password, unhashed. Is this normal? Perhaps only the current user will only see it if they look into it. If there's a chance for other users to get other users' passwords, this may be something to look into. 
       $rootScope.user = data; 
       // $scope.user = $rootScope.user;
       $state.go('profile');
