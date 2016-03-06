@@ -2,7 +2,6 @@ var app = angular.module('app');
 
 app.controller('itemsCtrl', function($scope, $state, Item, $rootScope, Auth, $localStorage) {
   $rootScope.user = $localStorage.token; 
-  // $scope.user = $rootScope.user;
   console.log('items CTRL');
   $scope.addItemClick = function() {
     console.log('item click');
