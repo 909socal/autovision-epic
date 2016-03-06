@@ -58,6 +58,7 @@ app.service('Auth', function($http, $state, $localStorage, $rootScope) {
     //   this.data = res.data; 
     // });  
     this.data = $localStorage.token; 
+    console.log($localStorage.token, "LOCALSTORAGE TOKEN \n");
     $rootScope.user = $localStorage.token; 
   }
 

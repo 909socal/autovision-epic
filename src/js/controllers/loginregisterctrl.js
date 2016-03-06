@@ -30,6 +30,7 @@ app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage
     Auth.login(user)
     .then((data)=>{
       this.token = data;
+      console.log("AUTHSERVICE LOGIN TOKEN", data);
       $localStorage.token = this.token;
       $rootScope.user = data; 
       // $scope.user = $rootScope.user;
