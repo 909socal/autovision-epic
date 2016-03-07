@@ -15,7 +15,6 @@ mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
 });
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -67,6 +66,5 @@ app.use(function(req, res, next) {
 //     error: {}
 //   });
 // });
-
 
 module.exports = app;

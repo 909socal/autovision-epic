@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var authMiddleware = require('../config/auth');
-var User = require('../models/user'); 
+var User = require('../models/user');
 
 router.get('/', authMiddleware, function(req, res, next) {
   console.log("Middlewherare? ");
@@ -11,21 +11,22 @@ router.get('/', authMiddleware, function(req, res, next) {
   console.log('get user \n \n');
   User.findById(req.user._id, function(err, user) {
     console.log('found user!', user);
-    res.send(user); 
+    res.send(user);
   });
 })
 
 router.post('/register', function(req, res, next){
   User.register(req.body, function(err, user){
+    console.log('user in register backend:', user);
     res.send(user);
-  }); 
+  });
 })
 
 router.post('/login', function(req, res, next){
   User.authenticate(req.body, function(err, user){
-    var token = user.token(); 
+    var token = user.token();
     res.cookie('token', token).send(token);
-  }); 
+  });
 })
 
 module.exports = router;

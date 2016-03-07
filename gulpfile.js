@@ -15,13 +15,13 @@ var config = {
   paths: {
     dest: {
       js: './public/js/',
-      css: './public/css/', 
+      css: './public/css/',
       html: './public/html/',
       images: './public/images/'
     },
     src: {
       js: './src/js/**/*.js',
-      sass: './src/css/**/*.scss', 
+      sass: './src/css/**/*.scss',
       html: './src/html/**/*.html',
       images: './src/images/**/*.jpg'
     }
@@ -41,7 +41,6 @@ gulp.task('clean-images', function(cb) {
   rimraf(config.paths.dest.images, cb);
 });
 
-
 gulp.task('js', ['clean-js'], function() {
   return gulp.src(config.paths.src.js)
     .pipe(plumber())
@@ -56,7 +55,6 @@ gulp.task('js', ['clean-js'], function() {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.paths.dest.js));
 });
-
 
 gulp.task('css', ['clean-css'], function() {
   return gulp.src(config.paths.src.sass)
