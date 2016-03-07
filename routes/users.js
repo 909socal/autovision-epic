@@ -23,6 +23,9 @@ router.post('/register', function(req, res, next){
 
 router.post('/login', function(req, res, next){
   User.authenticate(req.body, function(err, user){
+    // if (err) return res.send(err);
+    if (err) return res.status(401).send(err);
+    console.log("Hitting token");
     var token = user.token(); 
     res.cookie('token', token).send(token);
   }); 
