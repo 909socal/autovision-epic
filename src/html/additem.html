@@ -8,11 +8,13 @@
        <input ng-model="item.make" placeholder="Porsche" class="form-control" type="text" required>         
        <label for="password">Model</label>
        <input  ng-model="item.model"  placeholder="911" class="form-control" type="text" required>
-       <label for="Make">Year</label>
+       <label for="Year">Year</label>
        <input ng-model="item.year" placeholder="2014" type='number' class="form-control" required>
-       <label for="Make">Description</label>
+       <label for="Description">Description</label>
        <input ng-model="item.description"  placeholder=" Red GT3 Spoiler" class="form-control" required>
-       <label for="Make">Image</label>
+       <label for="Price">Price</label>
+       <input ng-model="item.price"  placeholder="" class="form-control" required>
+       <label for="Image">Image</label>
        <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this)"/>
        <label >Category</label>
        <select class="form-control" id="sel1" ng-model="item.category">
