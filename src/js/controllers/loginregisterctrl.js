@@ -3,9 +3,15 @@ app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage
   $rootScope.user = $localStorage.token;
 
   $scope.regClick = function(){
+<<<<<<< HEAD
     if ($scope.regPass !== $scope.regPass2) {
       alert("Passwords not the same!");
       return;
+=======
+    if ($scope.regPass !== $scope.regPass2) {      
+      swal("Passwords not the same!"); 
+      return; 
+>>>>>>> master
     };
     var user = {
       email: $scope.regEmail,
@@ -32,6 +38,7 @@ app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage
       $state.go('profile');
     },
     function err(err) {
+      swal("Invalid Password or Username");
       console.log('inside err', err);
     });
   }
