@@ -3,15 +3,9 @@ app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage
   $rootScope.user = $localStorage.token;
 
   $scope.regClick = function(){
-<<<<<<< HEAD
     if ($scope.regPass !== $scope.regPass2) {
-      alert("Passwords not the same!");
+      swal("Passwords not the same!");
       return;
-=======
-    if ($scope.regPass !== $scope.regPass2) {      
-      swal("Passwords not the same!"); 
-      return; 
->>>>>>> master
     };
     var user = {
       email: $scope.regEmail,

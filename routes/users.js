@@ -27,7 +27,7 @@ router.post('/login', function(req, res, next){
     // if (err) return res.send(err);
     if (err) return res.status(401).send(err);
     console.log("Hitting token");
-    var token = user.token(); 
+    var token = user.token();
     res.cookie('token', token).send(token);
   });
 })
