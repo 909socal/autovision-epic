@@ -35,10 +35,20 @@ router.get('/:token', function(req, res, next) {
 });
 
 
-// router.post('/', User.isAuthenticated, function(req, res, next) {
-router.post('/', function(req, res, next) {
-  // console.log('reqbody', req.body);
-  Item.add(req.body, function(err, savedItem){
+// router.post('/', authMiddleware, function(req, res, next) {
+// router.post('/', function(req, res, next) {
+//   console.log('reqbody', req.body);
+//   // console.log('req.user', req.user);
+//   // req.body.ownerObj = req.user; 
+//   Item.add(req.body, function(err, savedItem){
+//     console.log('Item.add in post route', savedItem);
+//     res.status(err ? 400:200).send(err||savedItem);
+//   }); 
+// });
+
+router.post('/:token', function(req, res, next) {
+  console.log('reqbody', req.body);
+  Item.add(req.body, req.params.token, function(err, savedItem){
     console.log('Item.add in post route', savedItem);
     res.status(err ? 400:200).send(err||savedItem);
   }); 
