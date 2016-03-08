@@ -2,8 +2,14 @@ var app = angular.module('app');
 
 app.controller('itemsCtrl', function($scope, $state, Item, $rootScope, Auth, $localStorage) {
   $rootScope.user = $localStorage.token; 
+  // $scope.addItemClick = function() {
+  //   Item.createItem($scope.item)
+  //   .then(function(res){
+  //     $state.go('forsale');
+  //   });
+  // };
   $scope.addItemClick = function() {
-    Item.createItem($scope.item)
+    Item.createItem($scope.item, $rootScope.user.data)
     .then(function(res){
       $state.go('forsale');
     });
