@@ -34,7 +34,7 @@ router.get('/:userid', function(req, res, next) {
 router.post('/', function(req, res, next) {
   // console.log('reqbody', req.body);
   Item.add(req.body, function(err, savedItem){
-    // console.log('Item.add');
+    console.log('Item.add in post route', savedItem);
     res.status(err ? 400:200).send(err||savedItem);
   }); 
 });

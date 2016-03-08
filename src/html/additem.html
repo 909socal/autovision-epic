@@ -15,7 +15,8 @@
        <label for="Price">Price</label>
        <input ng-model="item.price"  placeholder="" class="form-control" required>
        <label for="Image">Image</label>
-       <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this)"/>
+       <!-- <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this)"/> -->
+       <input type="file">
        <label >Category</label>
        <select class="form-control" id="sel1" ng-model="item.category">
          <option name="Body" value="Body">Choose a Category</option>

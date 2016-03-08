@@ -2,7 +2,6 @@
 
 var mongoose = require('mongoose');
 var fs = require('fs');
-
 var Item; 
 
 var itemSchema = new mongoose.Schema({
@@ -12,7 +11,11 @@ var itemSchema = new mongoose.Schema({
   description:{type:String},
   category:{type:String},
   price:{type:Number},
-  image:{type:Buffer, contentType:String},
+  image:{
+    data:{type:Buffer},
+    contentType:{type:String},
+    url:{type:String}
+  },
   contactinfo:{
     zip:{type:Number},
     email:{type:String},
@@ -31,20 +34,25 @@ itemSchema.statics.getUserItems = function(userid, cb) {
 };
 
 itemSchema.statics.add = function(item, cb) {
-  // Set image item here 
-  console.log('in add item model', item);
-  var newItem = new Item(item); 
-  newItem.save(function(err, savedItem){
-    console.log('err and saved item', err, savedItem);
-    if (err) return cb(err);
-    cb(null, savedItem); 
+  // Set image item here
+  var imgURL = '/Users/georgewee/Downloads/1-3QvdESc0T4lPkrQj-uVyXQ.jpg';
+  fs.readFile(imgURL, function(err, data){
+    console.log('data is: ', data);
+
+    var newItem = new Item(item); 
+    newItem.image.data = data; 
+    newItem.image.contentType = 'image/png'; 
+    newItem.save(function(err, savedItem){
+      console.log('saved item is: ', savedItem);
+      if (err) return cb(err);
+      cb(null, savedItem); 
+    });
   });
+
+    
 };
 
 itemSchema.statics.image = function(item) {
-  console.log('image function in item model', image);
-
-
 }
 
 Item = mongoose.model('Item', itemSchema);
