@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var fs = require('fs');
+var jwt = require('jwt-simple');
 var Item; 
 
 var itemSchema = new mongoose.Schema({
@@ -26,8 +27,19 @@ var itemSchema = new mongoose.Schema({
   available:{type:Boolean, default:true}
 });
 
-itemSchema.statics.getUserItems = function(userid, cb) {
+// itemSchema.statics.getUserItems = function(userid, cb) {
+//   Item.find({ownerObj: userid}, function(err, items) {
+//     if (err) return cb(err);
+//     cb(null, items); 
+//   })
+// };
+
+itemSchema.statics.getUserItems = function(token, cb) {
+  var payload = jwt.decode(token, process.env.JWT_SECRET);
+  console.log('JWT DECODED: \n', payload);
+  var userid = payload._id; 
   Item.find({ownerObj: userid}, function(err, items) {
+    console.log("Items, \n \n", items);
     if (err) return cb(err);
     cb(null, items); 
   })

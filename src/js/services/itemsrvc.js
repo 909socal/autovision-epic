@@ -12,6 +12,11 @@ app.service('Item', function($http){
     return $http.get('/items');
   };
 
+  this.getUserItems = function(token) {
+    console.log('get user items');
+    return $http.get(`/items/${token}`);
+  };
+
   this.remove = function(itemId) {
     return $http.delete(`/items/${itemId}`)
   };

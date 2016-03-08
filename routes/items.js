@@ -5,7 +5,7 @@ var router = express.Router();
 
 var Item = require('../models/item'); 
 var User = require('../models/user'); 
-
+var authMiddleware = require('../config/auth');
 
 router.get('/', function(req, res, next) {
   // console.log("getitems");
@@ -23,8 +23,13 @@ router.get('/single/:itemId', function(req, res, next) {
   });
 });
 
-router.get('/:userid', function(req, res, next) {
-  Item.getUserItems(req.params.userid, function(err, userItems) {
+// router.get('/:userid', function(req, res, next) {
+//   Item.getUserItems(req.params.userid, function(err, userItems) {
+//     res.status(err ? 400:200).send(err||userItems);
+//   });
+// });
+router.get('/:token', function(req, res, next) {
+  Item.getUserItems(req.params.token, function(err, userItems) {
     res.status(err ? 400:200).send(err||userItems);
   });
 });
