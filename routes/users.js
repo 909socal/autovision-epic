@@ -5,6 +5,10 @@ var router = express.Router();
 var authMiddleware = require('../config/auth');
 var User = require('../models/user');
 
+var api_key = 'key-50a933ab7e14e4cc21f23d9dbe377bdc';
+var domain = 'sandbox19714487a4e84db7abe48144d77098b7.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
 router.get('/', authMiddleware, function(req, res, next) {
   console.log("Middlewherare? ");
   if (!req.user) { console.log("No user!"); return; };
@@ -17,7 +21,15 @@ router.get('/', authMiddleware, function(req, res, next) {
 
 router.post('/register', function(req, res, next){
   User.register(req.body, function(err, user){
-    console.log('user in register backend:', user);
+    var data = {
+      from: 'Autovision <mdeggies@sandbox19714487a4e84db7abe48144d77098b7.mailgun.org>', //sent from here
+      to: user.email,
+      subject: 'Thanks for Registering at AutoVision!',
+      text: 'https://autovision.herokuapp.com/#/'
+    };
+    mailgun.messages().send(data, function (error, body) {
+      console.log('mailgun data:',body);
+    });
     res.send(user);
   });
 })
