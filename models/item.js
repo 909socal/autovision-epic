@@ -44,7 +44,6 @@ itemSchema.statics.add = function(item, cb) {
       if (err) return cb(err);
       cb(null, savedItem); 
     });
-  });
 };
 
 itemSchema.statics.image = function(item) {
