@@ -1,15 +1,26 @@
 var app = angular.module('app');
 
 app.service('Item', function($http){
-  this.createItem = function(newItemObj) {
+  // this.createItem = function(newItemObj) {
+  //   console.log('createItem() in items Srvc.js');
+  //   console.log('new item is: ', newItemObj);
+  //   return $http.post('/items', newItemObj);
+  // };
+
+  this.createItem = function(newItemObj, token) {
     console.log('createItem() in items Srvc.js');
     console.log('new item is: ', newItemObj);
-    return $http.post('/items', newItemObj);
+    return $http.post(`/items/${token}`, newItemObj);
   };
 
   this.getAllItems = function() {
     console.log('geta;;items');
     return $http.get('/items');
+  };
+
+  this.getUserItems = function(token) {
+    console.log('get user items');
+    return $http.get(`/items/${token}`);
   };
 
   this.remove = function(itemId) {
