@@ -62,21 +62,24 @@ itemSchema.statics.getUserItems = function(token, cb) {
 //   });    
 // };
 
-itemSchema.statics.add = function(item, cb) {
+itemSchema.statics.add = function(item, token, cb) {
   // Set image item here
-  var imgURL = '/Users/georgewee/Downloads/1-3QvdESc0T4lPkrQj-uVyXQ.jpg';
-  fs.readFile(imgURL, function(err, data){
-    console.log('data is: ', data);
-
+  // var imgURL = '/Users/georgewee/Downloads/1-3QvdESc0T4lPkrQj-uVyXQ.jpg';
+  // fs.readFile(imgURL, function(err, data){
+  //   console.log('data is: ', data);
+    var payload = jwt.decode(token, process.env.JWT_SECRET);
+    console.log('JWT DECODED: \n', payload);
+    var userid = payload._id; 
     var newItem = new Item(item); 
-    newItem.image.data = data; 
-    newItem.image.contentType = 'image/png'; 
+    newItem.ownerObj = userid; 
+    // newItem.image.data = data; 
+    // newItem.image.contentType = 'image/png'; 
     newItem.save(function(err, savedItem){
       console.log('saved item is: ', savedItem);
       if (err) return cb(err);
       cb(null, savedItem); 
     });
-  });    
+  // });    
 };
 
 itemSchema.statics.image = function(item) {
