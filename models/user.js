@@ -8,8 +8,8 @@ var jwt = require('jwt-simple');
 var User;
 
 var userSchema = Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  email:{ type: String, required: true, unique: true },
+  password:{ type: String, required: true }
 });
 
 userSchema.methods.token = function() {
