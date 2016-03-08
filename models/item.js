@@ -48,8 +48,6 @@ itemSchema.statics.add = function(item, cb) {
       cb(null, savedItem); 
     });
   });
-
-    
 };
 
 itemSchema.statics.image = function(item) {
