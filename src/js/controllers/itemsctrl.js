@@ -34,7 +34,8 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
           data: new FormData(this),
           processData: false,
           contentType: false,
-          complete: function() {
+          complete: function(err, data) {
+            console.log("data is: ", data);
             $state.go('home');
           }
       });        

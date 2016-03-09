@@ -39,7 +39,8 @@ router.get('/:token', function(req, res, next) {
 
 // router.post('/', User.isAuthenticated, function(req, res, next) {
 router.post('/', upload.array('images'), function(req, res, next) {
-  console.log(req.files);
+  console.log('req.files: ', req.files);
+  console.log('req.body', req.body);
   // req.body.image = req.files[0].buffer; 
   // Item.add(req.body, function(err, savedItem) {
   //   res.send(savedItem);
