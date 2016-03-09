@@ -35,10 +35,13 @@ router.get('/:userid', function(req, res, next) {
 
 // router.post('/', User.isAuthenticated, function(req, res, next) {
 router.post('/', upload.array('images'), function(req, res, next) {
-  req.body.image = req.files[0].buffer 
-  Item.add(req.body, function(err, savedItem) {
-    res.status(err ? 400:200).send(err||savedItem);
-  }); 
+  console.log(req.files);
+  // req.body.image = req.files[0].buffer; 
+  // Item.add(req.body, function(err, savedItem) {
+  //   res.send(savedItem);
+  //   //res.status(err ? 400:200).send(err||savedItem);
+  // }); 
+  res.status(200).send(':)');
 });
 
 router.delete('/:id', function(req, res, next) {
@@ -48,7 +51,7 @@ router.delete('/:id', function(req, res, next) {
     console.log("Found one,", item);
     item.remove(function(err){
       res.status(err ? 400 : 200).send(err || item);
-    })
+    });
   });
 });
 

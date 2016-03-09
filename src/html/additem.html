@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <div class='container'>
   <div class="form-group"> 
-  <form action="/items" method="post" enctype="multipart/form-data">
+  <form action="/items" method="post">
     <label for="Make">Make</label>
     <input name="make" class="form-control" placeholder="Porsche" type="text">
     <label for="password">Model</label>
     <input name="model" class="form-control" placeholder="911" type="text" >
     <label for="Year">Year</label>
-    <input name="year" class="form-control" placeholder="2014" type='number' required>
+    <input name="year" class="form-control" placeholder="2014" type='number'>
     <label for="Description">Description</label>
-    <input name="description" class="form-control" placeholder=" Red GT3 Spoiler"  required>
+    <input name="description" class="form-control" placeholder=" Red GT3 Spoiler" >
     <label for="Price">Price</label>
-    <input name="price" class="form-control" placeholder="" required>
+    <input name="price" class="form-control" placeholder="">
     <br>
-    <input name="images" class="form-control" type="file" id="image" multiple="multiple" required="required"></input>
+    <input name="images" class="form-control" type="file" id="image" multiple></input>
     <br>
     <button type="submit" class="btn btn-success pull-left form-control">Add Item</button>
   </form>
   </div>
 </div>
-
-
-
 
