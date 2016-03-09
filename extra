@@ -1,12 +1,10 @@
-<div class='container'>
- <div class='row'>
-  <form ng-submit="addItemClick()">
+ <form ng-submit="addItemClick()" enctype="multipart/form-data">
    <div class = 'col-md-6 col-xs-12'>
      <h1>Add Item </h1>
      <div class="form-group"> 
        <label for="Make">Make</label>
-       <!-- <input ng-model="item.make" placeholder="Porsche" class="form-control" type="text" required>  -->
-       <input ng-model="item.make" placeholder="Porsche" class="form-control" type="text"> 
+       <!-- <input ng-model="item.make" placeholder="Porsche" class="form-control" type="text" required> -->
+       <input ng-model="item.make" placeholder="Porsche" class="form-control" type="text">
        <label for="password">Model</label>
        <!-- <input  ng-model="item.model"  placeholder="911" class="form-control" type="text" required> -->
        <input  ng-model="item.model"  placeholder="911" class="form-control" type="text">
@@ -17,12 +15,15 @@
        <!-- <input ng-model="item.description"  placeholder=" Red GT3 Spoiler" class="form-control" required> -->
        <input ng-model="item.description"  placeholder=" Red GT3 Spoiler" class="form-control">
        <label for="Price">Price</label>
-
        <!-- <input ng-model="item.price"  placeholder="" class="form-control" required> -->
        <input ng-model="item.price"  placeholder="" class="form-control">
        <!-- <label for="Image">Image</label> -->
        <!-- <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this)"/> -->
-       <!-- <input type="file"> -->
+       <div id="addImageForm" class="jumbotron">
+        <h1>Add an Image</h1>
+        <!-- <input type='file' id="imageFile"> -->      
+       </div>
+
        <label >Category</label>
        <select class="form-control" id="sel1" ng-model="item.category">
          <option name="Body" value="Body">Choose a Category</option>
@@ -32,37 +33,7 @@
          <option name="Tires" value="Tires">Tires</option>
          <option name="Wheels" value="Wheels">Wheels</option>
        </select>
-      </div>
-     </div>
-     <!-- <div class ='col-md-6 col-xs-12'>
-       <h3>Contact Info</h3>
-       <div class="form-group">
-         <label for="Make">Email</label>
-         <input ng-model="item.email" type="text" placeholder="Email" class="form-control" required>
-         <label for="Make">Phone Number</label>
-         <input ng-model="item.phone" type="text" placeholder="510-898-9232" class="form-control">
-         <label for="Make">Zip Code</label>
-         <input ng-model="item.zip" type="text" placeholder="92232" class="form-control" required>
-       </div>
-     </div> -->
-    <button type="submit" class="btn btn-success pull-right">Add Item</button>
-  </form>
- </div>
- <div class ='col-md-6 col-xs-12'>
-   <h3>Contact Info</h3>
-   <div class="form-group">
-     <label for="Make">Email</label>
-     <input ng-model="item.email" type="text" placeholder="Email" class="form-control" required>
-     <label for="Make">Phone Number</label>
-     <input ng-model="item.phone" type="text" placeholder="510-898-9232" class="form-control">
-     <label for="Make">Zip Code</label>
-     <input ng-model="item.zip" type="text" placeholder="92232" class="form-control" required>
    </div>
  </div>
  <button type="submit" class="btn btn-success pull-right">Add Item</button>
 </form>
-</div>
-
-</div>
-
-</div>

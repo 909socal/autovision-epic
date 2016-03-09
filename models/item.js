@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var fs = require('fs');
+var jwt = require('jwt-simple');
 var Item; 
 
 var itemSchema = new mongoose.Schema({
@@ -26,17 +27,34 @@ var itemSchema = new mongoose.Schema({
   available:{type:Boolean, default:true}
 });
 
-itemSchema.statics.getUserItems = function(userid, cb) {
+// itemSchema.statics.getUserItems = function(userid, cb) {
+//   Item.find({ownerObj: userid}, function(err, items) {
+//     if (err) return cb(err);
+//     cb(null, items); 
+//   })
+// };
+
+itemSchema.statics.getUserItems = function(token, cb) {
+  var payload = jwt.decode(token, process.env.JWT_SECRET);
+  console.log('JWT DECODED: \n', payload);
+  var userid = payload._id; 
   Item.find({ownerObj: userid}, function(err, items) {
+    console.log("Items, \n \n", items);
     if (err) return cb(err);
     cb(null, items); 
   })
 };
 
-itemSchema.statics.add = function(item, cb) {
+itemSchema.statics.add = function(item, token, cb) {
   // Set image item here
-
-  var newItem = new Item(item); 
+  // var imgURL = '/Users/georgewee/Downloads/1-3QvdESc0T4lPkrQj-uVyXQ.jpg';
+  // fs.readFile(imgURL, function(err, data){
+  //   console.log('data is: ', data);
+    var payload = jwt.decode(token, process.env.JWT_SECRET);
+    console.log('JWT DECODED: \n', payload);
+    var userid = payload._id; 
+    var newItem = new Item(item); 
+    newItem.ownerObj = userid; 
     // newItem.image.data = data; 
     // newItem.image.contentType = 'image/png'; 
     newItem.save(function(err, savedItem){
@@ -44,12 +62,6 @@ itemSchema.statics.add = function(item, cb) {
       if (err) return cb(err);
       cb(null, savedItem); 
     });
-  // var imgURL = '/Users/georgewee/Downloads/1-3QvdESc0T4lPkrQj-uVyXQ.jpg';
-  // fs.readFile(imgURL, function(err, data){
-  //   console.log('data is: ', data);
-  // });
-
-    
 };
 
 itemSchema.statics.image = function(item) {

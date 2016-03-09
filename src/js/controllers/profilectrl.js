@@ -7,13 +7,20 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   if ($localStorage.token && $localStorage.token.config) {
     $rootScope.user = $localStorage.token;
   };
-  console.log("\nUser,", $scope.user);
-  Item.getAllItems()
+
+  console.log("\nUser,", $rootScope.user);
+  // Item.getAllItems()
+  // .then(function(res){
+  //   $scope.items = res.data; 
+  //   $scope.category = $state.params.type;
+  //   // console.log('Hi', $scope.items);
+  // });
+  Item.getUserItems($rootScope.user.data)
   .then(function(res){
-   $scope.items = res.data; 
-   $scope.category = $state.params.type;
-   // console.log('Hi', $scope.items);
- });
+    $scope.items = res.data; 
+    $scope.category = $state.params.type;
+    // console.log('Hi', $scope.items);
+  });
 
   $scope.remove = function(item){
     console.log('item is: ', item);

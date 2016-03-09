@@ -9,7 +9,6 @@ var multer = require('multer');
 // var upload = multer({ dest: './uploads/' });
 var upload = multer({ storage: multer.memoryStorage() });
 
-
 router.get('/', function(req, res, next) {
   // console.log("getitems");
   Item.find({}, function(err, items) {
@@ -26,8 +25,13 @@ router.get('/single/:itemId', function(req, res, next) {
   });
 });
 
-router.get('/:userid', function(req, res, next) {
-  Item.getUserItems(req.params.userid, function(err, userItems) {
+// router.get('/:userid', function(req, res, next) {
+//   Item.getUserItems(req.params.userid, function(err, userItems) {
+//     res.status(err ? 400:200).send(err||userItems);
+//   });
+// });
+router.get('/:token', function(req, res, next) {
+  Item.getUserItems(req.params.token, function(err, userItems) {
     res.status(err ? 400:200).send(err||userItems);
   });
 });
