@@ -19,7 +19,7 @@ app.controller('featuresCtrl', function ($rootScope, $state, $localStorage) {
           contentType: false,
           complete: function(res) {
             console.log('features are: ', res);
-            $state.go('features');
+            $state.go('showroom');
           }
       });        
   });
