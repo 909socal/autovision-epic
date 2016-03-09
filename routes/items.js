@@ -34,7 +34,8 @@ router.get('/:token', function(req, res, next) {
 
 // router.post('/', User.isAuthenticated, function(req, res, next) {
 router.post('/:token', upload.array('images'), function(req, res, next) {
-  req.body.image = req.files[0].buffer; 
+  var base64EncodedBuffer = new Buffer(req.files[0].buffer, 'base64').toString('ascii');
+  req.body.image = base64EncodedBuffer;
   Item.add(req.body, req.params.token, function(err, savedItem) {
     res.status(err ? 400:200).send(err||savedItem);
   }); 

@@ -28,8 +28,11 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
           processData: false,
           contentType: false,
           complete: function(res) {
-            console.log("data is: ", res.responseJSON);
-            $state.go('home');
+            Item.image = res.responseJSON.image.data[0].data;
+            /*$scope.image = res.responseJSON.image.data[0];
+            console.log("data is: ", $scope.image);
+            Item.image = $scope.image;*/
+            $state.go('profile');
           }
       });        
   });

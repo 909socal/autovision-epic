@@ -6,6 +6,8 @@ app.service('Item', function($http){
   //   console.log('new item is: ', newItemObj);
   //   return $http.post('/items', newItemObj);
   // };
+
+  this.image;
   
   this.createItem = function(newItemObj, token) {
     console.log('createItem() in items Srvc.js');
