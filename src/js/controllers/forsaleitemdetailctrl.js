@@ -9,6 +9,5 @@ app.controller('forsaleitemdetailCtrl', function($scope, $rootScope, $state, $st
     console.log('item is', res.data);
     //$scope.itemDetails = res.data; 
     //$scope.mainImg = $scope.itemDetails.image.data;
-    
   });
 });
