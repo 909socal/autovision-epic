@@ -1,57 +1,25 @@
+<!DOCTYPE html>
 <div class='container'>
- <div class='row'>
-  <form ng-submit="addItemClick()">
-   <div class = 'col-md-6 col-xs-12'>
-     <h1>Add Item </h1>
-     <div class="form-group"> 
-       <label for="Make">Make</label>
-       <input ng-model="item.make" placeholder="Porsche" class="form-control" type="text" required>         
-       <label for="password">Model</label>
-       <input  ng-model="item.model"  placeholder="911" class="form-control" type="text" required>
-       <label for="Year">Year</label>
-       <input ng-model="item.year" placeholder="2014" type='number' class="form-control" required>
-       <label for="Description">Description</label>
-       <input ng-model="item.description"  placeholder=" Red GT3 Spoiler" class="form-control" required>
-       <label for="Price">Price</label>
-       <input ng-model="item.price"  placeholder="" class="form-control" required>
-       <!-- <label for="Image">Image</label> -->
-       <!-- <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this)"/> -->
-       <div id="addImageForm" class="jumbotron">
-        <h1>Add an Image</h1>
-        <form action="/images/undefined" method="post" enctype="multipart/form-data">
-          <br/>
-          <input type="file" name="images" id="image" multiple="multiple" required="required"/>
-          <br/>
-          <button class="btn btn-primary btn-lg">Upload image</button>
-        </form>
-      </div>
-      <input type="file">
-      <label >Category</label>
-      <select class="form-control" id="sel1" ng-model="item.category">
-       <option name="Body" value="Body">Choose a Category</option>
-       <option name="Body" value="Body">Body</option>
-       <option name="Lighting" value="Lighting">Lighting</option>
-       <option name="Suspension" value="Suspension">Suspension</option>
-       <option name="Tires" value="Tires">Tires</option>
-       <option name="Wheels" value="Wheels">Wheels</option>
-     </select>
-   </div>
- </div>
- <div class ='col-md-6 col-xs-12'>
-   <h3>Contact Info</h3>
-   <div class="form-group">
-     <label for="Make">Email</label>
-     <input ng-model="item.email" type="text" placeholder="Email" class="form-control" required>
-     <label for="Make">Phone Number</label>
-     <input ng-model="item.phone" type="text" placeholder="510-898-9232" class="form-control">
-     <label for="Make">Zip Code</label>
-     <input ng-model="item.zip" type="text" placeholder="92232" class="form-control" required>
-   </div>
- </div>
- <button type="submit" class="btn btn-success pull-right">Add Item</button>
-</form>
+  <div class="form-group"> 
+  <form action="/items" method="post" enctype="multipart/form-data">
+    <label for="Make">Make</label>
+    <input name="make" class="form-control" placeholder="Porsche" type="text">
+    <label for="password">Model</label>
+    <input name="model" class="form-control" placeholder="911" type="text" >
+    <label for="Year">Year</label>
+    <input name="year" class="form-control" placeholder="2014" type='number' required>
+    <label for="Description">Description</label>
+    <input name="description" class="form-control" placeholder=" Red GT3 Spoiler"  required>
+    <label for="Price">Price</label>
+    <input name="price" class="form-control" placeholder="" required>
+    <br>
+    <input name="images" class="form-control" type="file" id="image" multiple="multiple" required="required"></input>
+    <br>
+    <button type="submit" class="btn btn-success pull-left form-control">Add Item</button>
+  </form>
+  </div>
 </div>
 
-</div>
 
-</div>
+
+

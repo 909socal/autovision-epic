@@ -11,11 +11,7 @@ var itemSchema = new mongoose.Schema({
   description:{type:String},
   category:{type:String},
   price:{type:Number},
-  image:{
-    data:{type:Buffer},
-    contentType:{type:String},
-    url:{type:String}
-  },
+  image:{type:Buffer},
   contactinfo:{
     zip:{type:Number},
     email:{type:String},
@@ -37,13 +33,10 @@ itemSchema.statics.add = function(item, cb) {
   // Set image item here
 
   var newItem = new Item(item); 
-    // newItem.image.data = data; 
-    // newItem.image.contentType = 'image/png'; 
-    newItem.save(function(err, savedItem){
-      console.log('saved item is: ', savedItem);
-      if (err) return cb(err);
-      cb(null, savedItem); 
-    });
+  newItem.save(function(err, savedItem){
+    if (err) return cb(err);
+    cb(null, savedItem); 
+  });
 };
 
 itemSchema.statics.image = function(item) {

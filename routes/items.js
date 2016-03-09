@@ -6,6 +6,7 @@ var router = express.Router();
 var Item = require('../models/item'); 
 var User = require('../models/user'); 
 var multer = require('multer');
+var fs = require('fs');
 // var upload = multer({ dest: './uploads/' });
 var upload = multer({ storage: multer.memoryStorage() });
 
@@ -32,16 +33,10 @@ router.get('/:userid', function(req, res, next) {
   });
 });
 
-
 // router.post('/', User.isAuthenticated, function(req, res, next) {
 router.post('/', upload.array('images'), function(req, res, next) {
-  // console.log('reqbody', req.body);
-  console.log("WRECK DAT FILE,", req.file);
-
-  req.body.image.data = req.file.buffer; 
-  
-  Item.add(req.body, function(err, savedItem){
-    console.log('Item.add in post route', savedItem);
+  req.body.image = req.files[0].buffer 
+  Item.add(req.body, function(err, savedItem) {
     res.status(err ? 400:200).send(err||savedItem);
   }); 
 });
