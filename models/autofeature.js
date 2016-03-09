@@ -35,14 +35,15 @@ autofeatureSchema.statics.getUserFeatures = function(token, cb) {
 };
 
 autofeatureSchema.statics.add = function(feature, token, cb) {
-    var payload = jwt.decode(token, process.env.JWT_SECRET);
-    var userid = payload._id; 
-    var newFeature = new Autofeature(feature); 
-    newFeature.ownerObj = userid; 
-    newFeature.save(function(err, savedFeature){
-      if (err) return cb(err);
-      cb(null, savedFeature); 
-    });
+  console.log("ADDING IN AUTOFEATURES \n\n");
+  var payload = jwt.decode(token, process.env.JWT_SECRET);
+  var userid = payload._id; 
+  var newFeature = new Autofeature(feature); 
+  newFeature.ownerObj = userid; 
+  newFeature.save(function(err, savedFeature){
+    if (err) return cb(err);
+    cb(null, savedFeature); 
+  });
 };
 
 autofeatureSchema.statics.edit = function(autofeatureObj, autofeatureId, cb) {

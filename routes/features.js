@@ -18,7 +18,9 @@ router.get('/single/:featureId', function(req, res, next) {
 router.post('/:token', upload.array('images'), function(req, res, next) {
   console.log('req.body', req.body);
   console.log('req.files', req.files);
-  req.body.image = req.files[0].buffer;
+  if (req.files && req.files[0]) {
+    req.body.image = req.files[0].buffer;
+  };
   Autofeature.add(req.body, req.params.token, function(err, savedFeature) {
     res.status(err ? 400:200).send(err||savedFeature);
   }); 
