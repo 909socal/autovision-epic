@@ -2,7 +2,6 @@
 
 var jwt = require('jwt-simple');
 var JWT_SECRET = process.env.JWT_SECRET;
-var User = require('../models/user'); 
 
 var authMiddleware = function(req, res, next) {
   // console.log('REQ.COOKIES', req.cookies);
