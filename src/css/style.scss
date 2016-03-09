@@ -110,8 +110,9 @@ td:hover{
 /* image thumbnail */
 .thumb {
     display: block;
-  width: 100%;
-  margin: 0;
+    width: 100%;
+    height: 350px;
+    margin: 0;
 }
 
 /* Style to article Author */
@@ -127,7 +128,7 @@ td:hover{
 * have a image and a text title.
 */
 .featured-article {
-  width: 482px;
+  width: 95%;
   height: 350px;
   position: relative;
   margin-bottom: 1em;
