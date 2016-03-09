@@ -4,17 +4,11 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
   $rootScope.user = $localStorage.token; 
 
   // $scope.addItemClick = function() {
-  //   Item.createItem($scope.item)
+  //   Item.createItem($scope.item, $rootScope.user.data)
   //   .then(function(res){
   //     $state.go('forsale');
   //   });
   // };
-  $scope.addItemClick = function() {
-    Item.createItem($scope.item, $rootScope.user.data)
-    .then(function(res){
-      $state.go('forsale');
-    });
-  };
 
   $scope.getAllItemsClick = function() {
     Item.getAllItems()
@@ -23,22 +17,20 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
     })
   };
   
-  $(document).on("submit", "form", function(event)
-  {
+  $(document).on("submit", "form", function(event) {
       event.preventDefault();
-      var url=$(this).attr("action");
+      var url = 'items/' + $rootScope.user.data;
       $.ajax({
           url: url,
-          type: $(this).attr("method"),
+          type: 'POST',
           dataType: "JSON",
           data: new FormData(this),
           processData: false,
           contentType: false,
-          complete: function(err, data) {
-            console.log("data is: ", data);
+          complete: function(res) {
+            console.log("data is: ", res.responseJSON);
             $state.go('home');
           }
       });        
   });
-
 });

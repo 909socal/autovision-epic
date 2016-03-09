@@ -7,21 +7,16 @@ var Item = require('../models/item');
 var User = require('../models/user'); 
 var multer = require('multer');
 var fs = require('fs');
-// var upload = multer({ dest: './uploads/' });
 var upload = multer({ storage: multer.memoryStorage() });
 
 router.get('/', function(req, res, next) {
-  // console.log("getitems");
   Item.find({}, function(err, items) {
-    // console.log("find items,", items);
     res.status(err ? 400:200).send(err||items);
   });
 });
 
 router.get('/single/:itemId', function(req, res, next) {
-  console.log('inside single router file');
   Item.findById(req.params.itemId, function(err, item) {
-    // console.log('item obtained in router file', item);
     res.status(err ? 400:200).send(err||item);
   });
 });
@@ -38,22 +33,16 @@ router.get('/:token', function(req, res, next) {
 });
 
 // router.post('/', User.isAuthenticated, function(req, res, next) {
-router.post('/', upload.array('images'), function(req, res, next) {
-  console.log('req.files: ', req.files);
-  console.log('req.body', req.body);
-  // req.body.image = req.files[0].buffer; 
-  // Item.add(req.body, function(err, savedItem) {
-  //   res.send(savedItem);
-  //   //res.status(err ? 400:200).send(err||savedItem);
-  // }); 
-  res.status(200).send(':)');
+router.post('/:token', upload.array('images'), function(req, res, next) {
+  req.body.image = req.files[0].buffer; 
+  Item.add(req.body, req.params.token, function(err, savedItem) {
+    res.status(err ? 400:200).send(err||savedItem);
+  }); 
 });
 
 router.delete('/:id', function(req, res, next) {
-  console.log("post item", req.params.id);
   Item.findById(req.params.id, function(err, item){
     if(err) return res.status(400).send(err); 
-    console.log("Found one,", item);
     item.remove(function(err){
       res.status(err ? 400 : 200).send(err || item);
     });
@@ -71,7 +60,6 @@ router.put('/:id', function(req, res, next) {
   // });
   Item.findById(req.params.id, function(err, item){
     if(err) return res.status(400).send(err); 
-    console.log("Found one,", item);    
       item._id = req.body._id; 
       item.make = req.body.make; 
       item.model = req.body.model; 

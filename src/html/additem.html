@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <div class='container'>
   <div class="form-group"> 
-  <form action="/items" method="post">
+  <form>
     <label for="Make">Make</label>
     <input name="make" class="form-control" placeholder="Porsche" type="text">
     <label for="password">Model</label>
@@ -12,10 +12,17 @@
     <input name="description" class="form-control" placeholder=" Red GT3 Spoiler" >
     <label for="Price">Price</label>
     <input name="price" class="form-control" placeholder="">
-    <label for="Price">Price</label>
-    <input name="price" class="form-control" placeholder="">
+    <label >Category</label>
+    <select name="category" class="form-control" id="sell">
+      <option name="Body" value="Body">Choose a Category</option>
+      <option name="Body" value="Body">Body</option>
+      <option name="Lighting" value="Lighting">Lighting</option>
+      <option name="Suspension" value="Suspension">Suspension</option>
+      <option name="Tires" value="Tires">Tires</option>
+      <option name="Wheels" value="Wheels">Wheels</option>
+    </select>
     <br>
-    <input name="images" class="form-control" type="file" id="image" multiple></input>
+    <input name="images" class="form-control" type="file" multiple></input>
     <br>
     <button type="submit" class="btn btn-success pull-left form-control">Add Item</button>
   </form>

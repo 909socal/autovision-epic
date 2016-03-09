@@ -43,12 +43,10 @@ itemSchema.statics.getUserItems = function(token, cb) {
 
 itemSchema.statics.add = function(item, token, cb) {
     var payload = jwt.decode(token, process.env.JWT_SECRET);
-    console.log('JWT DECODED: \n', payload);
     var userid = payload._id; 
     var newItem = new Item(item); 
     newItem.ownerObj = userid; 
     newItem.save(function(err, savedItem){
-      console.log('saved item is: ', savedItem);
       if (err) return cb(err);
       cb(null, savedItem); 
     });
