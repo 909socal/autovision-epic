@@ -18,7 +18,8 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
 
   $scope.getAllItemsClick = function() {
     Item.getAllItems()
-    .then(function(res){
+    .then(function(res) {
+
     })
   };
   
