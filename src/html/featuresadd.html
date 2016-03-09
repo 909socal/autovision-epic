@@ -1,23 +1,28 @@
 <div class='container'>
  <form>
    <div class = 'col-xs-12'>
-     <h1>Add Item </h1>
+     <h1>Add Feature </h1>
      <div class="form-group">
        <label for="Make">Make</label>
-       <input ng-model="addFeatureMake" placeholder="Porsche" class="form-control" required>
+       <input name='make' placeholder="Porsche" class="form-control">
      </div>
      <div class="form-group">
        <label for="password">Model</label>
-       <input  ng-model="addFeatureModel"  placeholder="911" class="form-control" required>
+       <input  name='model' placeholder="911" class="form-control">
      </div>
      <div class="form-group">
        <label for="Make">Year</label>
-       <input ng-model="addFeatureYear" placeholder="2014" class="form-control">
+       <input name='year' placeholder="2014" class="form-control">
      </div>
      <div class="form-group">
        <label for="Make">UserName</label>
-       <input ng-model="addFeatureUsername"  placeholder=" Red GT3 Spoiler" class="form-control" required>
+       <input name='images' placeholder=" Red GT3 Spoiler" class="form-control">
      </div>  
-     <button type="submit" class="btn btn-default pull-right">Add Feature</button>
+     <br>
+     <div class="form-group">
+     <input name="images" class="form-control" type="file" multiple></input>
+     <br>
+     </div>
+     <button type="submit" class="btn btn-default pull-left">Add Feature</button>
    </form>
  </div>

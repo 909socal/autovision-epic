@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Item = require('../models/item'); 
+var Feature = require('../models/autofeature'); 
 var User = require('../models/user'); 
 var multer = require('multer');
 var fs = require('fs');
@@ -17,11 +17,12 @@ router.get('/single/:featureId', function(req, res, next) {
 
 router.post('/:token', upload.array('images'), function(req, res, next) {
   console.log('req.body', req.body);
-  console.log('req.files', req.files[0].buffer);
-  req.body.image = base64EncodedBuffer;
-  // Feature.add(req.body, req.params.token, function(err, savedFeature) {
-  //   res.status(err ? 400:200).send(err||savedFeature);
-  // }); 
+  console.log('req.files', req.files);
+  req.body.image = req.files[0].buffer;
+  Feature.add(req.body, req.params.token, function(err, savedFeature) {
+    res.status(err ? 400:200).send(err||savedFeature);
+  }); 
+  
 });
 
 router.delete('/:id', function(req, res, next) {
