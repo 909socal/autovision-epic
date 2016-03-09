@@ -27,7 +27,7 @@
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
-					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.image}}</td>
+					<!-- <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.image}}</td> -->
 					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>
@@ -44,11 +44,11 @@
 			<h1>Edit Item </h1>
 			<div class="form-group">
 				<label for="Make">Make</label>
-				<input ng-model="editItem.make" placeholder="Porsche" class="form-control" type="text" required>         
+				<input ng-model="editItem.make" placeholder="Porsche" class="form-control" type="text">         
 			</div>
 			<div class="form-group">
 				<label for="password">Model</label>
-				<input  ng-model="editItem.model"  placeholder="911" class="form-control" type="text" required>
+				<input  ng-model="editItem.model"  placeholder="911" class="form-control" type="text">
 			</div>
 			<div class="form-group">
 				<label for="Make">Year</label>
@@ -56,7 +56,7 @@
 			</div>
 			<div class="form-group">
 				<label for="Make">Description</label>
-				<input ng-model="editItem.description"  placeholder=" Red GT3 Spoiler" class="form-control" required>
+				<input ng-model="editItem.description"  placeholder=" Red GT3 Spoiler" class="form-control">
 			</div>
 			<div class="form-group">
 				<label >Category</label>
@@ -68,8 +68,9 @@
 					<option name="Wheels" value="Wheels">Wheels</option>
 				</select>
 			</div>
+			<button class="btn btn-success btn-sm" type="submit" >Confirm Edit</button>
 		</div>
-		<div class ='col-md-5 col-xs-12'>
+		<!-- <div class ='col-md-5 col-xs-12'>
 			<h3>Contact Info</h3>
 			<div class="form-group">
 				<label for="Make">Email</label>
@@ -79,8 +80,7 @@
 				<label for="Make">Zip Code</label>
 				<input ng-model="editItem.contactinfo.zip" type="text" placeholder="92232" class="form-control" required>
 			</div>
-		</div>
-		<button class="btn btn-success btn-sm" type="submit" >Confirm Edit</button>
+		</div> -->
 	</form>
 	
 	<div class="col-xs-12" style="height:50px;"></div>

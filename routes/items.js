@@ -44,6 +44,7 @@ router.post('/:token', upload.array('images'), function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
+
   Item.findById(req.params.id, function(err, item){
     if(err) return res.status(400).send(err); 
     item.remove(function(err){
@@ -61,23 +62,13 @@ router.put('/:id', function(req, res, next) {
   //     res.send(err || savedItem);
   //   })
   // });
-  Item.findById(req.params.id, function(err, item){
-    if(err) return res.status(400).send(err); 
-      item._id = req.body._id; 
-      item.make = req.body.make; 
-      item.model = req.body.model; 
-      item.year = req.body.year; 
-      item.description = req.body.description; 
-      item.category = req.body.category; 
-      if (req.body.contactinfo) {
-        item.contactinfo.email = req.body.contactinfo.email;
-        item.contactinfo.phone = req.body.contactinfo.phone;
-        item.contactinfo.zip = req.body.contactinfo.zip;
-      };
-    item.save(function(err, savedItem){
-      res.send(err || savedItem);
-    })
-  });
+
+  
+  
+  Item.edit(req.body, req.params.id, function(err, item){
+    res.status(err ? 400 : 200).send(err || item);
+  })
+  
 });
 
 module.exports = router;

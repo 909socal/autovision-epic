@@ -52,6 +52,27 @@ itemSchema.statics.add = function(item, token, cb) {
     });
 };
 
+itemSchema.statics.edit = function(itemObj, itemId, cb) {
+  Item.findById(itemId, function(err, item){
+    if(err) return res.status(400).send(err); 
+    item._id = itemObj._id; 
+    item.make = itemObj.make; 
+    item.model = itemObj.model; 
+    item.year = itemObj.year; 
+    item.description = itemObj.description; 
+    item.category = itemObj.category; 
+    if (itemObj.contactinfo) {
+      item.contactinfo.email = itemObj.contactinfo.email;
+      item.contactinfo.phone = itemObj.contactinfo.phone;
+      item.contactinfo.zip = itemObj.contactinfo.zip;
+    };
+    item.save(function(err, savedItem){
+      if (err) return cb(err);
+      cb(null, savedItem); 
+    })
+  });
+}
+
 itemSchema.statics.image = function(item) {
 }
 

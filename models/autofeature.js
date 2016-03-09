@@ -45,6 +45,28 @@ autofeatureSchema.statics.add = function(feature, token, cb) {
     });
 };
 
+autofeatureSchema.statics.edit = function(autofeatureObj, autofeatureId, cb) {
+  Autofeature.findById(autofeatureId, function(err, autofeature){
+    if(err) return res.status(400).send(err); 
+    autofeature._id = autofeatureObj._id; 
+    autofeature.make = autofeatureObj.make; 
+    autofeature.model = autofeatureObj.model; 
+    autofeature.year = autofeatureObj.year; 
+    autofeature.description = autofeatureObj.description; 
+    autofeature.category = autofeatureObj.category; 
+    if (autofeatureObj.contactinfo) {
+      autofeature.contactinfo.email = autofeatureObj.contactinfo.email;
+      autofeature.contactinfo.phone = autofeatureObj.contactinfo.phone;
+      autofeature.contactinfo.zip = autofeatureObj.contactinfo.zip;
+    };
+    autofeature.save(function(err, savedAutofeature){
+      if (err) return cb(err);
+      cb(null, savedAutofeature); 
+    })
+  });
+}
+
+
 Autofeature = mongoose.model('Autofeature', autofeatureSchema);
 
 module.exports = Autofeature;
