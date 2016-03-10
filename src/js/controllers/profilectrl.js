@@ -51,6 +51,8 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       $scope.isEditing = true; 
       $scope.editId = itemId;
       $scope.editIndex = $scope.items.indexOf(item); 
+      console.log('edit index: ', $scope.editIndex);
+
       $scope.editItem = {
         _id: item._id,
         make: item.make,
@@ -96,9 +98,11 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       $scope.autofeatureEditItem = {};     
       $scope.autofeatureEditIndex = -1; 
     } else {
+      console.log('in editing');
       $scope.autofeatureIsEditing = true; 
       $scope.autofeatureEditId = autofeatureId;
-      $scope.autofeatureEditIndex = $scope.items.indexOf(autofeature); 
+      $scope.autofeatureEditIndex = $scope.autofeatures.indexOf(autofeature); 
+      console.log('auto feature edit index: ', $scope.autofeatureEditIndex);
       $scope.autofeatureEditItem = {
         _id: autofeature._id,
         make: autofeature.make,
@@ -129,6 +133,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     console.log('auto feature edit confirm');
     
     // var realIndex = $scope.items.indexOf(item); 
+    console.log('auto feature edit item in confirm',$scope.autofeatureEditItem);
     $scope.autofeatures[$scope.autofeatureEditIndex] = $scope.autofeatureEditItem; 
     Autofeature.edit($scope.autofeatureEditId, $scope.autofeatureEditItem);  
     
