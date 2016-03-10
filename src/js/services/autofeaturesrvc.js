@@ -19,7 +19,8 @@ app.service('Autofeature', function($http) {
     return $http.delete(`/features/${autofeatureId}`)
   };
 
-  this.edit = function(autofeatureId, editItem) {
+  this.edit = function(autofeatureId, editAutofeature) {
+    console.log('autofeaturesrvc ', autofeatureId, editAutofeature);
     return $http.put(`/features/${autofeatureId}`, editAutofeature)
   };
 

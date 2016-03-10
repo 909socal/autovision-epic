@@ -86,11 +86,12 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   }
 
     $scope.editAutofeature = function(autofeature) {
+      console.log('edit auto feature');
     
     if (autofeature && autofeature._id) {
       var autofeatureId = autofeature._id.toString();
     };
-    if ($scope.editId === autofeatureId) {
+    if ($scope.autofeatureEditId === autofeatureId) {
       $scope.autofeatureIsEditing = false; 
       $scope.autofeatureEditId = '';       
       $scope.autofeatureEditItem = {};     
@@ -122,18 +123,21 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       //   $scope.editItem.contactinfo.zip = autofeature.contactinfo.zip;
       // };
     }
-    
   }
 
-  $scope.editAutofeatureConfirm = function(){
-    /*
+  $scope.autofeatureEditConfirm = function(){
+
+    console.log('auto feature edit confirm');
+    
     // var realIndex = $scope.items.indexOf(item); 
-    $scope.items[$scope.editIndex] = $scope.editItem; 
-    Item.edit($scope.editId, $scope.editItem);  
-    $scope.isEditing = false; 
-    $scope.editId = '';       
-    $scope.editItem = {};
-    $scope.editIndex = -1;   
-    */
+    $scope.autofeatures[$scope.autofeatureEditIndex] = $scope.autofeatureEditItem; 
+    Autofeature.edit($scope.autofeatureEditId, $scope.autofeatureEditItem);  
+    /*
+    $scope.autofeatureIsEditing = false; 
+    $scope.autofeatureEditId = '';       
+    $scope.autofeatureEditItem = {};
+    $scope.autofeatureEditIndex = -1;  
+    */ 
+  
   }    
 });
