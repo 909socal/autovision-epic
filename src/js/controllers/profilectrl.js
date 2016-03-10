@@ -1,32 +1,44 @@
 var app = angular.module('app');
 
-app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, Item, $localStorage, Auth) {
-  // console.log('in profileCtrl', $state.params)
+app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, $localStorage, Item, Autofeature, Auth) {
   // $rootScope.user = Auth.data; 
-  console.log(Auth.data, "AUTH DATA \n");
+  $scope.isEditing = false; 
+  $scope.editItem = {}; 
+
+  $scope.autofeatureIsEditing = false; 
+  $scope.autofeatureEditItem = {}; 
+
   if ($localStorage.token && $localStorage.token.config) {
     $rootScope.user = $localStorage.token;
   };
-  console.log("\nUser,", $scope.user);
-  Item.getAllItems()
+
+  Item.getUserItems($rootScope.user.data)
   .then(function(res){
-   $scope.items = res.data; 
-   $scope.category = $state.params.type;
-   // console.log('Hi', $scope.items);
- });
+    $scope.items = res.data; 
+    $scope.category = $state.params.type;
+    // console.log('Hi', $scope.items);
+  });
+
+  Autofeature.getUserAutofeatures($rootScope.user.data)
+  .then(function(res){
+    $scope.autofeatures = res.data; 
+    $scope.category = $state.params.type;
+    //console.log('Hi', $scope.items);
+  });
 
   $scope.remove = function(item){
-    console.log('item is: ', item);
     var realIndex = $scope.items.indexOf(item); 
     $scope.items.splice(realIndex, 1);
     Item.remove(item._id.toString()); 
   }
 
-  $scope.isEditing = false; 
-  $scope.editItem = {}; 
+  $scope.removeAutofeature = function(autofeature) {
+    var realIndex = $scope.autofeatures.indexOf(autofeature); 
+    $scope.autofeatures.splice(realIndex, 1);
+    Autofeature.remove(autofeature._id.toString()); 
+  }
 
   $scope.edit = function(item){
-    console.log("scope edit", item);
     if (item && item._id) {
       var itemId = item._id.toString();
     };
@@ -39,6 +51,8 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       $scope.isEditing = true; 
       $scope.editId = itemId;
       $scope.editIndex = $scope.items.indexOf(item); 
+      console.log('edit index: ', $scope.editIndex);
+
       $scope.editItem = {
         _id: item._id,
         make: item.make,
@@ -65,7 +79,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   }
 
   $scope.editConfirm = function(){
-    console.log("Edit confirm", $scope.editId, $scope.editItem);
     // var realIndex = $scope.items.indexOf(item); 
     $scope.items[$scope.editIndex] = $scope.editItem; 
     Item.edit($scope.editId, $scope.editItem);  
@@ -73,5 +86,60 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.editId = '';       
     $scope.editItem = {};
     $scope.editIndex = -1;   
-  }  
+  }
+
+    $scope.editAutofeature = function(autofeature) {    
+    if (autofeature && autofeature._id) {
+      var autofeatureId = autofeature._id.toString();
+    };
+    if ($scope.autofeatureEditId === autofeatureId) {
+      $scope.autofeatureIsEditing = false; 
+      $scope.autofeatureEditId = '';       
+      $scope.autofeatureEditItem = {};     
+      $scope.autofeatureEditIndex = -1; 
+    } else {
+      console.log('in editing');
+      $scope.autofeatureIsEditing = true; 
+      $scope.autofeatureEditId = autofeatureId;
+      $scope.autofeatureEditIndex = $scope.autofeatures.indexOf(autofeature); 
+      console.log('auto feature edit index: ', $scope.autofeatureEditIndex);
+      $scope.autofeatureEditItem = {
+        _id: autofeature._id,
+        make: autofeature.make,
+        model: autofeature.model,
+        year: autofeature.year,
+        description: autofeature.description,
+        category: autofeature.category
+      };
+      if (autofeature.contactinfo) {
+        $scope.autofeatureEditItem.contactinfo = autofeature.contactinfo;
+      };
+      // $scope.editItem._id = autofeature._id; 
+      // $scope.editItem.make = autofeature.make; 
+      // $scope.editItem.model = autofeature.model; 
+      // $scope.editItem.year = autofeature.year; 
+      // $scope.editItem.description =autofeature.description; 
+      // $scope.editItem.category =autofeature.category; 
+      // if (autofeature.contactinfo) {
+      //   $scope.editItem.contactinfo.email = autofeature.contactinfo.email;
+      //   $scope.editItem.contactinfo.phone = autofeature.contactinfo.phone;
+      //   $scope.editItem.contactinfo.zip = autofeature.contactinfo.zip;
+      // };
+    }
+  }
+
+  $scope.autofeatureEditConfirm = function(){
+
+    console.log('auto feature edit confirm');
+    
+    // var realIndex = $scope.items.indexOf(item); 
+    console.log('auto feature edit item in confirm',$scope.autofeatureEditItem);
+    $scope.autofeatures[$scope.autofeatureEditIndex] = $scope.autofeatureEditItem; 
+    Autofeature.edit($scope.autofeatureEditId, $scope.autofeatureEditItem);  
+    
+    $scope.autofeatureIsEditing = false; 
+    $scope.autofeatureEditId = '';       
+    $scope.autofeatureEditItem = {};
+    $scope.autofeatureEditIndex = -1;  
+  }    
 });
