@@ -114,10 +114,10 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       if (autofeature.contactinfo) {
         $scope.autofeatureEditItem.contactinfo = autofeature.contactinfo;
       };
-      // $scope.editItem._id =autofeature._id; 
-      // $scope.editItem.make =autofeature.make; 
-      // $scope.editItem.model =autofeature.model; 
-      // $scope.editItem.year =autofeature.year; 
+      // $scope.editItem._id = autofeature._id; 
+      // $scope.editItem.make = autofeature.make; 
+      // $scope.editItem.model = autofeature.model; 
+      // $scope.editItem.year = autofeature.year; 
       // $scope.editItem.description =autofeature.description; 
       // $scope.editItem.category =autofeature.category; 
       // if (autofeature.contactinfo) {

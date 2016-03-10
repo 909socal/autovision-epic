@@ -6,6 +6,7 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
   $(document).on("submit", "form", function(event) {
     event.preventDefault();
     var url = 'items/' + $rootScope.user.data;
+    console.log('url is: ', url);
     $.ajax({
       url: url,
       type: 'POST',
@@ -14,7 +15,8 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
       processData: false,
       contentType: false,
       complete: function(res) {
-        Item.image = res.responseJSON.image.data[0].data;
+        console.log('res.data is: ', res);
+        // Item.image = res.responseJSON.image.data[0].data;
             /*$scope.image = res.responseJSON.image.data[0];
             console.log("data is: ", $scope.image);
             Item.image = $scope.image;*/

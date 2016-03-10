@@ -2,6 +2,7 @@ var app = angular.module('app');
 
 app.service('Item', function($http){  
   this.createItem = function(newItemObj, token) {
+    console.log('in create item post');
     return $http.post(`/items/${token}`, newItemObj);
   };
 
@@ -10,6 +11,7 @@ app.service('Item', function($http){
   };
 
   this.getUserItems = function(token) {
+    console.log('in get user items ');
     return $http.get(`/items/${token}`);
   };
 

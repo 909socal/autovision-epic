@@ -1,5 +1,5 @@
 'use strict';
-
+require('dotenv').config(); // Loads environment variables 
 var mongoose = require('mongoose');
 var fs = require('fs');
 var jwt = require('jwt-simple');
@@ -46,19 +46,33 @@ itemSchema.statics.getUserItems = function(token, cb) {
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
   Item.find({ownerObj: userid}, function(err, items) {
-    console.log("Items, \n \n", items);
+    //console.log("Items, \n \n", items);
     if (err) return cb(err);
     cb(null, items); 
   })
 };
 
-itemSchema.statics.add = function(item, token, cb) {
+itemSchema.statics.add = function(item, file, token, cb) {
+  /*
+  var payload = jwt.decode(token, process.env.JWT_SECRET);
+  var userid = payload._id; 
+  var newItem = new Item(item); 
+  newItem.ownerObj = userid; 
+
+  newItem.save(function(err, savedItem){
+    if (err) return cb(err);
+    cb(null, savedItem); 
+  });
+  */
   var filename = file.originalname;  
   var imageBuffer = file.buffer;
   // $ : last , + : one or more
   var ext = filename.match(/\.\w+$/)[0] || '';
   var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
   
+  console.log('key is: ', uuid.v1());
+
+
   var imageToUpload = {
     Bucket:process.env.AWS_BUCKET,
     Key:key, 
@@ -67,6 +81,9 @@ itemSchema.statics.add = function(item, token, cb) {
 
   s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
     var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
+
+    console.log('AWSURL is: ', process.env.AWS_URL);
+    console.log('AWS BUCKET is: ', process.env.AWS_BUCKET);
 
     var payload = jwt.decode(token, process.env.JWT_SECRET);
     var userid = payload._id; 
@@ -84,6 +101,7 @@ itemSchema.statics.add = function(item, token, cb) {
     newItem.image.name = filename; 
     newItem.save(function(err, savedItem){
       if (err) return cb(err);
+      console.log("Saved item is: ", savedItem);
       cb(null, savedItem); 
     });
   }); // s3.putObject()
