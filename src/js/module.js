@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('register', { url: '/register', templateUrl: 'html/register.html', controller: 'loginregisterCtrl'})
   .state('additem', { url: '/additem', templateUrl: 'html/additem.html', controller: 'itemsCtrl'})
   .state('login', { url: '/login', templateUrl: 'html/login.html', controller: 'loginregisterCtrl'})
-  .state('showroom', { url: '/showroom', templateUrl: 'html/showroom.html'})
+  .state('showroom', { url: '/showroom', templateUrl: 'html/showroom.html', controller: 'showroomCtrl'})
   .state('features', { url: '/features', templateUrl: 'html/features.html'})
   .state('featuresadd', { url: '/featuresadd', templateUrl: 'html/featuresadd.html'})
   $urlRouterProvider.otherwise('/');
