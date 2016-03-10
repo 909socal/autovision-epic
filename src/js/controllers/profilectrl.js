@@ -5,6 +5,9 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   $scope.isEditing = false; 
   $scope.editItem = {}; 
 
+  $scope.autofeatureIsEditing = false; 
+  $scope.autofeatureEditItem = {}; 
+
   if ($localStorage.token && $localStorage.token.config) {
     $rootScope.user = $localStorage.token;
   };
@@ -19,8 +22,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   Autofeature.getUserAutofeatures($rootScope.user.data)
   .then(function(res){
     $scope.autofeatures = res.data; 
-    console.log('autofeatures are: ', res.data);
-    //$scope.category = $state.params.type;
+    $scope.category = $state.params.type;
     //console.log('Hi', $scope.items);
   });
 
@@ -31,7 +33,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   }
 
   $scope.removeAutofeature = function(autofeature) {
-    console.log('inside remove autofeature');
     var realIndex = $scope.autofeatures.indexOf(autofeature); 
     $scope.autofeatures.splice(realIndex, 1);
     Autofeature.remove(autofeature._id.toString()); 
@@ -85,9 +86,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.editIndex = -1;   
   }
 
-    $scope.editAutofeature = function(autofeature) {
-      console.log('edit auto feature');
-    
+    $scope.editAutofeature = function(autofeature) {    
     if (autofeature && autofeature._id) {
       var autofeatureId = autofeature._id.toString();
     };
@@ -132,12 +131,10 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     // var realIndex = $scope.items.indexOf(item); 
     $scope.autofeatures[$scope.autofeatureEditIndex] = $scope.autofeatureEditItem; 
     Autofeature.edit($scope.autofeatureEditId, $scope.autofeatureEditItem);  
-    /*
+    
     $scope.autofeatureIsEditing = false; 
     $scope.autofeatureEditId = '';       
     $scope.autofeatureEditItem = {};
     $scope.autofeatureEditIndex = -1;  
-    */ 
-  
   }    
 });

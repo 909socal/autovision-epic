@@ -1,7 +1,6 @@
 var app = angular.module('app');
 
 app.service('Autofeature', function($http) {  
-  console.log('autofeature srvc');
   this.createAutofeature = function(newAutofeature, token) {
     return $http.post(`/features/${token}`, newAutofeature);
   };
@@ -11,7 +10,6 @@ app.service('Autofeature', function($http) {
   };
 
   this.getUserAutofeatures = function(token) {
-    console.log('getUserAutofeatures');
     return $http.get(`/features/${token}`);
   };
 
@@ -20,7 +18,6 @@ app.service('Autofeature', function($http) {
   };
 
   this.edit = function(autofeatureId, editAutofeature) {
-    console.log('autofeaturesrvc ', autofeatureId, editAutofeature);
     return $http.put(`/features/${autofeatureId}`, editAutofeature)
   };
 
