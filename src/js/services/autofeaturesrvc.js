@@ -1,27 +1,29 @@
 var app = angular.module('app');
 
 app.service('Autofeature', function($http) {  
-  this.createItem = function(newAutofeature, token) {
-    return $http.post(`/autofeatures/${token}`, newAutofeature);
+  console.log('autofeature srvc');
+  this.createAutofeature = function(newAutofeature, token) {
+    return $http.post(`/features/${token}`, newAutofeature);
   };
 
-  this.getAllItems = function() {
-    return $http.get('/autofeatures');
+  this.getAllAutofeatures = function() {
+    return $http.get('/features');
   };
 
   this.getUserAutofeatures = function(token) {
-    return $http.get(`/autofeatures/${token}`);
+    console.log('getUserAutofeatures');
+    return $http.get(`/features/${token}`);
   };
 
   this.remove = function(autofeatureId) {
-    return $http.delete(`/autofeatures/${autofeatureId}`)
+    return $http.delete(`/features/${autofeatureId}`)
   };
 
   this.edit = function(autofeatureId, editItem) {
-    return $http.put(`/autofeatures/${autofeatureId}`, editAutofeature)
+    return $http.put(`/features/${autofeatureId}`, editAutofeature)
   };
 
-  this.getItem = function(autofeatureId) {
-    return $http.get(`/autofeatures/single/${autofeatureId}`);
+  this.getAutofeatures = function(autofeatureId) {
+    return $http.get(`/features/single/${autofeatureId}`);
   }
 });

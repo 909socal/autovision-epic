@@ -34,10 +34,10 @@ router.get('/:token', function(req, res, next) {
 
 // router.post('/', User.isAuthenticated, function(req, res, next) {
 router.post('/:token', upload.array('images'), function(req, res, next) {
-  console.log('req.body', req.body);
+  // console.log('req.body', req.body);
   if (req.files && req.files[0]) {
     // var base64EncodedBuffer = new Buffer(req.files[0].buffer, 'base64').toString('ascii');
-    console.log('req.files', req.files[0].buffer);
+    // console.log('req.files', req.files[0].buffer);
     // req.body.image = base64EncodedBuffer;
     req.body.image = req.files[0].buffer;
   }
@@ -57,7 +57,7 @@ router.delete('/:id', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-  console.log("put item", req.params.id);
+  // console.log("put item", req.params.id);
   // Item.findByIdAndUpdate(req.params.id, req.body, function(err, item){
   //   if(err) return res.status(400).send(err); 
   //   console.log("Found one,", item);    
@@ -65,13 +65,9 @@ router.put('/:id', function(req, res, next) {
   //     res.send(err || savedItem);
   //   })
   // });
-
-  
-  
   Item.edit(req.body, req.params.id, function(err, item){
     res.status(err ? 400 : 200).send(err || item);
   })
-
 });
 
 module.exports = router;

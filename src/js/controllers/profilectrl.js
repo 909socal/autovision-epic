@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, Item, $localStorage, Auth) {
+app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, $localStorage, Item, Autofeature, Auth) {
   // $rootScope.user = Auth.data; 
   if ($localStorage.token && $localStorage.token.config) {
     $rootScope.user = $localStorage.token;
@@ -16,6 +16,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   Autofeature.getUserAutofeatures($rootScope.user.data)
   .then(function(res){
     $scope.autofeatures = res.data; 
+    console.log('autofeatures are: ', res.data);
     //$scope.category = $state.params.type;
     //console.log('Hi', $scope.items);
   });

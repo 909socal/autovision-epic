@@ -24,7 +24,8 @@ var autofeatureSchema = new mongoose.Schema({
   available:{type:Boolean, default:true}
 });
 
-autofeatureSchema.statics.getUserFeatures = function(token, cb) {
+autofeatureSchema.statics.getUserAutofeatures = function(token, cb) {
+  console.log('in get user auto features model');
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
   Autofeature.find({ownerObj: userid}, function(err, features) {
@@ -35,7 +36,7 @@ autofeatureSchema.statics.getUserFeatures = function(token, cb) {
 };
 
 autofeatureSchema.statics.add = function(feature, token, cb) {
-  console.log("ADDING IN AUTOFEATURES \n\n");
+  console.log('autofeature model ADD');
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
   var newFeature = new Autofeature(feature); 
