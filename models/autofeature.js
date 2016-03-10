@@ -6,7 +6,6 @@ var jwt = require('jwt-simple');
 
 var Autofeature; 
 
-
 var autofeatureSchema = new mongoose.Schema({
   make:{type:String}, 
   model:{type:String}, 
@@ -25,18 +24,15 @@ var autofeatureSchema = new mongoose.Schema({
 });
 
 autofeatureSchema.statics.getUserAutofeatures = function(token, cb) {
-  console.log('in get user auto features model');
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
   Autofeature.find({ownerObj: userid}, function(err, features) {
-    console.log("Features, \n \n", features);
     if (err) return cb(err);
     cb(null, features); 
   })
 };
 
 autofeatureSchema.statics.add = function(feature, token, cb) {
-  console.log('autofeature model ADD');
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
   var newFeature = new Autofeature(feature); 
@@ -67,7 +63,6 @@ autofeatureSchema.statics.edit = function(autofeatureObj, autofeatureId, cb) {
     })
   });
 }
-
 
 Autofeature = mongoose.model('Autofeature', autofeatureSchema);
 

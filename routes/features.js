@@ -33,7 +33,6 @@ router.post('/:token', upload.array('images'), function(req, res, next) {
   Autofeature.add(req.body, req.params.token, function(err, savedFeature) {
     res.status(err ? 400:200).send(err||savedFeature);
   }); 
-  
 });
 
 /* Remove an autofeature */
