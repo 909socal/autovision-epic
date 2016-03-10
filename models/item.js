@@ -4,6 +4,12 @@ var mongoose = require('mongoose');
 var fs = require('fs');
 var jwt = require('jwt-simple');
 
+var AWS = require('aws-sdk');
+var s3 = new AWS.S3(); 
+var uuid = require('node-uuid');
+var multer = require('multer');
+var async = require('async');
+
 var Item; 
 
 var itemSchema = new mongoose.Schema({
@@ -13,7 +19,12 @@ var itemSchema = new mongoose.Schema({
   description:{type:String},
   category:{type:String},
   price:{type:Number},
-  image:{type:Buffer},
+  // image:{type:Buffer},
+  image:{
+    key:{type:String},
+    url:{type:String},
+    name:{type:String}
+  },
   contactinfo:{
     zip:{type:Number},
     email:{type:String},
@@ -42,14 +53,40 @@ itemSchema.statics.getUserItems = function(token, cb) {
 };
 
 itemSchema.statics.add = function(item, token, cb) {
+  var filename = file.originalname;  
+  var imageBuffer = file.buffer;
+  // $ : last , + : one or more
+  var ext = filename.match(/\.\w+$/)[0] || '';
+  var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
+  
+  var imageToUpload = {
+    Bucket:process.env.AWS_BUCKET,
+    Key:key, 
+    Body:imageBuffer 
+  };
+
+  s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
+    var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
+
     var payload = jwt.decode(token, process.env.JWT_SECRET);
     var userid = payload._id; 
     var newItem = new Item(item); 
     newItem.ownerObj = userid; 
+    // var imageObj = {
+    //   key:key, 
+    //   url:url, 
+    //   name:filename; 
+    // }
+    // var image = new Image(imageObj);
+    // newItem.images.push(image);
+    newItem.image.key = key; 
+    newItem.image.url = url; 
+    newItem.image.name = filename; 
     newItem.save(function(err, savedItem){
       if (err) return cb(err);
       cb(null, savedItem); 
     });
+  }); // s3.putObject()
 };
 
 itemSchema.statics.edit = function(itemObj, itemId, cb) {
