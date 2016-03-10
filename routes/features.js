@@ -11,7 +11,6 @@ var upload = multer({ storage: multer.memoryStorage() });
 
 /* Get all the user's autofeatures */
 router.get('/:token', function(req, res, next) {
-  console.log('in get route of autofeatures');
   Autofeature.getUserAutofeatures(req.params.token, function(err, userAutofeatures) {
     res.status(err ? 400:200).send(err||userAutofeatures);
   });

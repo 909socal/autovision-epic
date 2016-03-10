@@ -99,10 +99,10 @@
 					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.year}}</td>
 					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.description}}</td>
 					<!-- <td ui-sref="forsaleitemdetail({itemId:autofeature._id})">{{autofeature.image}}</td> -->
-					<td><button class="btn btn-sm btn-danger" ng-click="remove(autofeature)">
+					<td><button class="btn btn-sm btn-danger" ng-click="removeAutofeature(autofeature)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>
-					<td><button class="btn btn-sm btn-warning" ng-click="edit(autofeature)">
+					<td><button class="btn btn-sm btn-warning" ng-click="editAutofeature(autofeature)">
 						<span class="glyphicon glyphicon-edit"></span>
 					</button></td>
 				</tr>
