@@ -1,20 +1,11 @@
 var app = angular.module('app');
 
 app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, Item, $localStorage, Auth) {
-  // console.log('in profileCtrl', $state.params)
   // $rootScope.user = Auth.data; 
-  console.log(Auth.data, "AUTH DATA \n");
   if ($localStorage.token && $localStorage.token.config) {
     $rootScope.user = $localStorage.token;
   };
 
-  console.log("\nUser,", $rootScope.user);
-  // Item.getAllItems()
-  // .then(function(res){
-  //   $scope.items = res.data; 
-  //   $scope.category = $state.params.type;
-  //   // console.log('Hi', $scope.items);
-  // });
   Item.getUserItems($rootScope.user.data)
   .then(function(res){
     $scope.items = res.data; 
@@ -22,8 +13,14 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     // console.log('Hi', $scope.items);
   });
 
+  Autofeature.getUserAutofeatures($rootScope.user.data)
+  .then(function(res){
+    $scope.autofeatures = res.data; 
+    //$scope.category = $state.params.type;
+    //console.log('Hi', $scope.items);
+  });
+
   $scope.remove = function(item){
-    console.log('item is: ', item);
     var realIndex = $scope.items.indexOf(item); 
     $scope.items.splice(realIndex, 1);
     Item.remove(item._id.toString()); 
@@ -33,7 +30,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   $scope.editItem = {}; 
 
   $scope.edit = function(item){
-    console.log("scope edit", item);
     if (item && item._id) {
       var itemId = item._id.toString();
     };
@@ -72,7 +68,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   }
 
   $scope.editConfirm = function(){
-    console.log("Edit confirm", $scope.editId, $scope.editItem);
     // var realIndex = $scope.items.indexOf(item); 
     $scope.items[$scope.editIndex] = $scope.editItem; 
     Item.edit($scope.editId, $scope.editItem);  
