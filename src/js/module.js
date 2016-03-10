@@ -14,7 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('login', { url: '/login', templateUrl: 'html/login.html', controller: 'loginregisterCtrl'})
   .state('showroom', { url: '/showroom', templateUrl: 'html/showroom.html'})
   .state('features', { url: '/features', templateUrl: 'html/features.html'})
-  .state('featuresadd', { url: '/featuresadd', templateUrl: 'html/featuresadd.html'})
+  .state('featuresadd', { url: '/featuresadd', templateUrl: 'html/featuresadd.html', controller:'featuresCtrl'})
   $urlRouterProvider.otherwise('/');
 });
 

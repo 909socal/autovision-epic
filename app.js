@@ -15,7 +15,6 @@ mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
 });
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -30,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', require('./routes/users'));
 app.use('/items', require('./routes/items'));
+app.use('/features', require('./routes/features'));
 app.use('/', require('./routes/index'));
 
 // catch 404 and forward to error handler
@@ -67,6 +67,5 @@ app.use(function(req, res, next) {
 //     error: {}
 //   });
 // });
-
 
 module.exports = app;
