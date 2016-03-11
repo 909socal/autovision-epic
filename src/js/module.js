@@ -5,7 +5,7 @@ var app = angular.module('app', ['ui.router', 'ngStorage']);
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('home', { url: '/', templateUrl: 'html/home.html', controller:'forsaleitemCtrl'})
-  .state('forsale', { url: '/forsale', templateUrl: 'html/forsale.html', controller:'forsaleCtrl'})
+  .state('forsale', { url: '/forsale', templateUrl: 'html/home.html', controller:'forsaleCtrl'})
   .state('forsaleitem', { url: '/forsaleitem/:type', templateUrl: 'html/forsaleitem.html', controller:'forsaleitemCtrl'})
   .state('forsaleitemdetail', { url: '/forsaleitemdetail/:itemId', templateUrl: 'html/forsaleitemdetail.html', controller:'forsaleitemdetailCtrl'})
   .state('profile', { url: '/profile', templateUrl: 'html/profile.html', controller: 'profileCtrl'})
