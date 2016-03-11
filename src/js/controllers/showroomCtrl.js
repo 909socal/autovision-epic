@@ -1,6 +1,73 @@
 var app = angular.module('app');
 
-app.controller('showroomCtrl', function($scope) {
+app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autofeature) {
+
+  $rootScope.user = $localStorage.token; 
+
+	Autofeature.getUserAutofeatures($rootScope.user.data)
+  .then(function(res){
+  	console.log('res.data is: ', res.data);
+    //$scope.autofeatures = res.data; 
+    //$scope.category = $state.params.type;
+
+    var arrOfAutofeatures = res.data; 
+    
+    /*
+    $scope.showroomUsersCars = arrOfAutofeatures.map(function(autofeature) {
+    	var displayFeature = {
+    		imgSrc: ''
+				paragraph: {
+					model: 'Model: Nissan',
+					make: 'Make: Skyline',
+					user: 'UserName: laugh_drive'
+				}
+    	};
+    });
+    */
+
+    $scope.showBool = false; 
+    $scope.showButton = "Show Features";
+    $scope.showroomArray = $scope.showroomCars; 
+    $scope.toggleArray = function(){
+    	$scope.showBool = !$scope.showBool; 
+    	// if ($scope.showButton === "Show Features") {
+    	// 	$scope.showButton = "Hide Features"; 
+    	// } else {
+    	// 	$scope.showButton = "Show Features"
+    	// }
+    	$scope.showButton = $scope.showBool ? "Hide Features" : "Show Features"; 
+    	$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
+    }
+
+    $scope.showroomUsersCars = [
+    	{
+				imgSrc: 'http://www.m5board.com/vbulletin/attachment.php?attachmentid=96957&stc=1&thumb=1&d=1262574914',
+				paragraph: {
+					model: 'Model: Nissan',
+					make: 'Make: Skyline',
+					user: 'UserName: laugh_drive'
+				}
+			},
+			{
+		
+				imgSrc: 'http://images.cdn.stuff.tv/sites/stuff.tv/files/Mercedes-AMG-GT-front.JPG',
+				paragraph: {
+					model: 'Model: Nissan',
+					make: 'Make: Skyline',
+					user: 'UserName: laugh_drive'
+				}
+			},
+			{
+				imgSrc: 'http://media.caranddriver.com/images/media/51/2013-maserati-granturismo-sport-inline-2-photo-482273-s-original.jpg',
+				paragraph: {
+					model: 'Model: Nissan',
+					make: 'Make: Skyline',
+					user: 'UserName: laugh_drive'
+				}
+			}
+    ]
+    
+  });
   
 
 	$scope.showroomCars = [
@@ -9,7 +76,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -18,7 +85,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -26,7 +93,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -34,7 +101,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -42,7 +109,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -50,7 +117,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -58,7 +125,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -66,7 +133,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -74,7 +141,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -82,7 +149,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -90,7 +157,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -98,7 +165,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -106,7 +173,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -114,7 +181,7 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
 		},
 		{
@@ -122,11 +189,9 @@ app.controller('showroomCtrl', function($scope) {
 			paragraph: {
 				model: 'Model: Nissan',
 				make: 'Make: Skyline',
-				user: 'UserName: laugh_drive',
+				user: 'UserName: laugh_drive'
 			}
-		},
-		
-	]
-
+		}	
+	]	
 });
 

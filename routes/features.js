@@ -9,9 +9,13 @@ var multer = require('multer');
 var fs = require('fs');
 var upload = multer({ storage: multer.memoryStorage() });
 
-/* Get all the user's autofeatures */
+/* Get user's autofeatures */
 router.get('/:token', function(req, res, next) {
+  console.log('in get route features');
   Autofeature.getUserAutofeatures(req.params.token, function(err, userAutofeatures) {
+    console.log('user auto features in get route', userAutofeatures);
+    console.log('err in route', err);
+
     res.status(err ? 400:200).send(err||userAutofeatures);
   });
 });

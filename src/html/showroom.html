@@ -11,20 +11,26 @@
 			</ul>
 		</div>
 		
-		<div class="col-xs-12 col-sm-4" ng-repeat="car in showroomCars">
+		<div>
+			<button class="btn btn-lg" ng-click="toggleArray()">{{showButton}}</button>
+		</div>
+		
+		<div class="col-xs-12 col-sm-4" ng-repeat="car in showroomArray">
 			<div class="card">
-				<div class="card-header card-image waves-effect waves-block waves-light">
-					<img src="{{car.imgSrc}}" class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
-				</div>
+				<!-- <div class="card-header card-image waves-effect waves-block waves-light"> -->
+					<!-- <img src="{{car.imgSrc}}" class="img-rounded activator" alt="Cinque Terre" width="350" height="280"> -->
+					<img src={{car.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
+				<!-- </div> -->
 				<div class="card-content">
-					
 					<p ng-repeat="detail in car.paragraph">
 						{{detail}}
 						<br>
 					</p>
-
 				</div>
 			</div>
 		</div>
+
+		
+
 	</div>
 </div>
