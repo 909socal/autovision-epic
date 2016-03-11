@@ -15,6 +15,8 @@
 					<th>Model</th>
 					<th>Make</th>
 					<th>Year</th>
+					<th>Zip</th>
+          <th>Price</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,6 +25,8 @@
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
+          <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.zip}}</td>
+          <td ui-sref="forsaleitemdetail({itemId:item._id})">${{item.price}}</td>
 					<!-- <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.image}}</td> -->
 					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
 						<span class="glyphicon glyphicon-trash"></span>
