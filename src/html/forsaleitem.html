@@ -1,5 +1,5 @@
 <div class='container'>
-  <h1>For Sale Items </h1>
+  <h1>For Sale {{category}} Items </h1>
   <form>
     <div class="form-group">
       <label for="filter">Search:</label>
@@ -29,6 +29,7 @@
         <th>Make</th>
         <th>year</th>
         <th>Price</th>
+        <th>Zip</th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +39,7 @@
         <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
         <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
         <td ui-sref="forsaleitemdetail({itemId:item._id})">${{item.price}}</td>
+        <td ui-sref="forsaleitemdetail({itemId:item._id})">${{item.zip}}</td>
 
       </tr>
     </tbody>

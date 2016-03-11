@@ -10,8 +10,7 @@ app.controller('forsaleitemdetailCtrl', function($scope, $rootScope, $state, $st
     console.log('AWS URL is: ', res.data.image.url);
 
     $scope.imageURL = res.data.image.url;
-    
-    //$scope.itemDetails = res.data; 
+    $scope.itemDetails = res.data; 
     //$scope.mainImg = $scope.itemDetails.image.data;
   });
 });
