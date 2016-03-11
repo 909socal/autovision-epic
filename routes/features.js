@@ -34,7 +34,7 @@ router.post('/:token', upload.array('images'), function(req, res, next) {
   if (req.files && req.files[0]) {
     req.body.image = req.files[0].buffer;
   };
-  Autofeature.add(req.body, req.params.token, function(err, savedFeature) {
+  Autofeature.add(req.body, req.files[0], req.params.token, function(err, savedFeature) {
     res.status(err ? 400:200).send(err||savedFeature);
   }); 
 });

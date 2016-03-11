@@ -39,33 +39,18 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
     	$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
     }
 
-    $scope.showroomUsersCars = [
-    	{
-				imgSrc: 'http://www.m5board.com/vbulletin/attachment.php?attachmentid=96957&stc=1&thumb=1&d=1262574914',
+    
+    $scope.showroomUsersCars = res.data.map(function(car){
+    	var displayFeature = {
+    		imgSrc: car.image.url,
 				paragraph: {
-					model: 'Model: BMW',
-					make: 'Make: m5',
-					user: 'UserName: AutoVision'
+					model: car.model,
+					make: car.make,
+					user: $rootScope.user.config.data.email
 				}
-			},
-			{
-		
-				imgSrc: 'http://images.cdn.stuff.tv/sites/stuff.tv/files/Mercedes-AMG-GT-front.JPG',
-				paragraph: {
-					model: 'Model: Mercedes',
-					make: 'Make: AMG GT',
-					user: 'UserName: AutoVision'
-				}
-			},
-			{
-				imgSrc: 'http://media.caranddriver.com/images/media/51/2013-maserati-granturismo-sport-inline-2-photo-482273-s-original.jpg',
-				paragraph: {
-					model: 'Model: Nissan',
-					make: 'Make: Skyline',
-					user: 'UserName: laugh_drive'
-				}
-			}
-    ]
+    	};
+    	return displayFeature; 
+    })
     
   });
   
