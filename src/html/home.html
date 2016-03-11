@@ -1,7 +1,12 @@
-<div class="container-fluid junkyard" id='home'>
+<!-- <div class="container-fluid junkyard" id='home'>
   
+</div> -->
+
+<div class="container-fluid" id="test">
+	<img src="../images/002.jpg" alt="">
 </div>
-<div class="container-fluid contact container">
+
+<div class="">
 
            <!--  <div class="row forsale">
               <h1 class='text-center'>For Sale</h1>
@@ -16,17 +21,92 @@
                   <li class="saletag" ui-sref='forsaleitem({type:"wheels"})' >Wheels</li>           
                 </ul> -->
   <div class="row text-center">
-    <h1 class='text-center' id='#homeFeatures'>For Sale </h1>
+    <h2 class='text-center' id='#homeFeatures'>For Sale </h2>
     <div class="row">
-               <ul ng-if="user" class="list-inline text-right"><a href="#/additem"><h3>Add Item</h3></a></li>
-                </ul>
-            </div>
-    <div class="col-xs-12 col-sm-4">
+      <a class='btn' href="#/additem">Add Item</a>          
+     </div>
+     		<div class="col-xs-12 col-md-4 col-sm-4">
+			<div class="card"  ui-sref='forsaleitem({type:"body"})'>
+				<div class="card-header card-image waves-effect waves-block waves-light">
+					<img src="http://i.imgur.com/jmYBSLx.jpg" class="img-rounded activator" alt="Cinque Terre" width="300" height="250">
+				</div>
+				<div class="card-content">
+					
+				<h5 class='text-center'>Body</h5>
+
+				</div>
+			</div>
+		</div>
+				<div class="col-xs-12 col-md-4 col-sm-4" >
+			<div class="card"  ui-sref='forsaleitem({type:"engine"})'>
+				<div class="card-header card-image waves-effect waves-block waves-light">
+					<img src="http://images.hgmsites.net/lrg/2013-dodge-viper_100407980_l.jpg" class="img-rounded activator" alt="Cinque Terre" width="300" height="250">
+				</div>
+				<div class="card-content">
+					
+					<h5 class='text-center'>Engine</h5>
+
+				</div>
+			</div>
+		</div>
+				<div class="col-xs-12 col-md-4 col-sm-4" >
+			<div class="card" ui-sref='forsaleitem({type:"lighting"})'>
+				<div class="card-header card-image waves-effect waves-block waves-light">
+					<img src="https://cdn.shopify.com/s/files/1/0257/3399/products/image028_9d758d22-ff99-443f-ae49-29874b17a68f_1024x1024.png?v=1398631353" class="img-rounded activator" alt="Cinque Terre" width="300" height="250">
+				</div>
+				<div class="card-content">
+					
+				<h5 class='text-center'>Lighting</h5>
+
+				</div>
+			</div>
+		</div>
+	</div>
+  <div class="row text-center">
+
+			<div class="col-xs-12 col-md-4 col-sm-4" >
+			<div class="card" ui-sref='forsaleitem({type:"suspension"})'>
+				<div class="card-header card-image waves-effect waves-block waves-light">
+					<img src="http://www.carid.com/images/kw-suspensions/page/03.jpg" class="img-rounded activator" alt="Cinque Terre" width="300" height="250">
+				</div>
+				<div class="card-content">
+					
+				<h5 class='text-center'>Suspension</h5>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-4 col-sm-4" >
+			<div class="card" ui-sref='forsaleitem({type:"tires"})'>
+				<div class="card-header card-image waves-effect waves-block waves-light">
+					<img src="https://www.tirestickers.com/wp-content/uploads/2015/01/Tire-Stickers-Michelin-Tires-600x355.jpg" class="img-rounded activator" alt="Cinque Terre" width="300" height="250">
+				</div>
+				<div class="card-content">
+					
+				<h5 class='text-center'>Tires</h5>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-4 col-sm-4" >
+			<div class="card"  ui-sref='forsaleitem({type:"wheels"})'>
+				<div class="card-header card-image waves-effect waves-block waves-light">
+					 <img src="http://www.gtrblog.com/wp-content/uploads/2008/12/series-II-R35-Brakes-GTRBLOG-002.jpg" alt="Cinque Terre" width="300" height="250">
+				</div>
+				<div class="card-content">
+					
+				<h5 class='text-center'>Wheels</h5>
+
+				</div>
+			</div>
+		</div>
+	</div>
+<!--     <div class="col-xs-12 col-sm-4">
       <div class='thumbnail saletag' ui-sref='forsaleitem({type:"body"})'>
         <img src="http://i.imgur.com/jmYBSLx.jpg" class="img-rounded" alt="Cinque Terre" width="350" height="320">
       
         <div>       
-         <h3 class='text-center'>Body</h3>
+         <h5 class='text-center'>Body</h5>
         </div>
       </div>
     </div>
@@ -34,7 +114,7 @@
       <div class='thumbnail saletag' ui-sref='forsaleitem({type:"engine"})'>
         <img src="http://images.hgmsites.net/lrg/2013-dodge-viper_100407980_l.jpg" alt="Cinque Terre" width="350" height="280">
         <div>
-         <h3 class='text-center'>Engine</h3>
+         <h5 class='text-center'>Engine</h5>
         </div>
       </div>
     </div>
@@ -42,7 +122,7 @@
       <div class='thumbnail saletag' ui-sref='forsaleitem({type:"lighting"})'>
         <img src="https://cdn.shopify.com/s/files/1/0257/3399/products/image028_9d758d22-ff99-443f-ae49-29874b17a68f_1024x1024.png?v=1398631353" class="img-rounded" alt="Cinque Terre" width="350" height="240">
         <div>
-         <h3 class='text-center'>Lighting</h3>
+         <h5 class='text-center'>Lighting</h5>
 
         </div>
       </div>
@@ -53,7 +133,7 @@
         <img src="http://www.carid.com/images/kw-suspensions/page/03.jpg" alt="Cinque Terre" width="350" height="280">
       
         <div>       
-         <h3 class='text-center'>Suspension</h3>
+         <h5 class='text-center'>Suspension</h5>
 
         </div>
       </div>
@@ -62,7 +142,7 @@
       <div class='thumbnail saletag' ui-sref='forsaleitem({type:"tires"})'>
         <img src="https://www.tirestickers.com/wp-content/uploads/2015/01/Tire-Stickers-Michelin-Tires-600x355.jpg" class="img-rounded" alt="Cinque Terre" width="370" height="340">
         <div>
-         <h3 class='text-center'>Tires</h3>
+         <h5 class='text-center'>Tires</h5>
 
         </div>
       </div>
@@ -71,11 +151,11 @@
       <div class='thumbnail saletag' ui-sref='forsaleitem({type:"wheels"})'>
         <img src="http://www.gtrblog.com/wp-content/uploads/2008/12/series-II-R35-Brakes-GTRBLOG-002.jpg" alt="Cinque Terre" width="350" height="240">
         <div>
-         <h3 class='text-center'>Wheels</h3>
+         <h5 class='text-center'>Wheels</h5>
 
         </div>
       </div>
-    </div>
+    </div> -->
               <!-- </div>
             </div> -->
             
@@ -85,8 +165,8 @@
 
 
 
-
 <!-- 
+
 <div class="container table-responsive">
   <h2 class='text-center'>For Sale</h2>
   <h4 class='text-center'>Items for Sale</h4>
@@ -179,21 +259,22 @@
 		</div>
 	</div>
  -->
-<div class="container">
+<section class='bg-gray'>
+<div class="">
 <div class="row">
- 	<h1 class='text-center'>Car Features</h1>
-    <p class='text-center'>SHOWCASING SOME OF THE FINEST CARS AROUND THE WORLD.</p>
+ 	<h2 class='text-center'>Car Features</h2>
+    <h6 class='text-center'>SHOWCASING SOME OF THE FINEST CARS AROUND THE WORLD.</h6>
 </div>
     <div class="row">
 		
-		<div class="col-md-7 col-lg-7">
+		<div class="col-md-6 col-lg-6">
 			<ul class="media-list main-list">
 			  <li class="media">
 			    <a class="pull-left" href="#">
-			      <img class="media-object" src="http://o.aolcdn.com/hss/storage/midas/4a793fd003ed637e43e8761eb2136342/202325231/lead2-2016-dodge-viper-acr-fd.jpg" height="110" width="180" alt="...">
+			      <img class="media-object img-rounded" src="http://o.aolcdn.com/hss/storage/midas/4a793fd003ed637e43e8761eb2136342/202325231/lead2-2016-dodge-viper-acr-fd.jpg" height="150" width="210" alt="...">
 			    </a>
 			    <div class="media-body">
-			      <h4 class="media-heading">Dodge Viper ACR</h4>
+			      <h5 class="media-heading">Dodge Viper ACR</h5>
 			      <p class='by-author'>
 					Model: Dodge <br>
 					Make: Viper ACR <br>
@@ -203,10 +284,10 @@
 			  </li>
 			  <li class="media">
 			    <a class="pull-left" href="#">
-			      <img class="media-object" src="http://superbvehicles.com/wp-content/uploads/2015/10/Nissan-GTR-7-1024x576.jpg" height="110" width="180" alt="...">
+			      <img class="media-object img-rounded" src="http://superbvehicles.com/wp-content/uploads/2015/10/Nissan-GTR-7-1024x576.jpg" height="150" width="210" alt="...">
 			    </a>
 			    <div class="media-body">
-			     <h4 class="media-heading">Nissan GTR</h4>
+			     <h5 class="media-heading">Nissan GTR</h5>
 			      <p class='by-author'>
 					Model: Nissan <br>
 					Make: GTR <br>
@@ -216,10 +297,10 @@
 			  </li>
 			  <li class="media">
 			    <a class="pull-left" href="#">
-			      <img class="media-object" src="https://farm4.staticflickr.com/3627/3545539886_0dbc99c2d4_z.jpg?zz=1" height="110" width="180" alt="...">
+			      <img class="media-object img-rounded" src="https://farm4.staticflickr.com/3627/3545539886_0dbc99c2d4_z.jpg?zz=1" height="150" width="210" alt="...">
 			    </a>
 			    <div class="media-body">
-			      <h4 class="media-heading">Mercedes G Class</h4>
+			      <h5 class="media-heading">Mercedes G Class</h5>
 			      <p class='by-author'>
 					Model: Mercedes  <br>
 					Make: G Class<br>
@@ -229,11 +310,11 @@
 			  </li>
 			</ul>
 		</div>
-        <div class="col-md-5 col-lg-5">
+        <div class="col-md-6 col-lg-6">
     		<!-- artigo em destaque -->
 			<div class="featured-article">
 				<a href="#">
-					<img src="https://i.ytimg.com/vi/uQ-QcKjuhUk/maxresdefault.jpg" alt="" class="thumb" >
+					<img src="https://i.ytimg.com/vi/uQ-QcKjuhUk/maxresdefault.jpg" alt="" class="thumb img-rounded" >
 				</a>
 				<div class="block-title">
 					<div class="block-title">
@@ -249,3 +330,4 @@
 			<!-- /.featured-article -->
 		</div>
 	</div>
+</section>
