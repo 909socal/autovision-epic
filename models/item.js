@@ -19,17 +19,18 @@ var itemSchema = new mongoose.Schema({
   description:{type:String},
   category:{type:String},
   price:{type:Number},
+  zip:{type:Number},
   // image:{type:Buffer},
   image:{
     key:{type:String},
     url:{type:String},
     name:{type:String}
   },
-  contactinfo:{
-    zip:{type:Number},
-    email:{type:String},
-    phone:{type:String}
-  },
+  // contactinfo:{
+  //   zip:{type:Number},
+  //   email:{type:String},
+  //   phone:{type:String}
+  // },
   createdAt:{type:Date, default:Date.now},
   ownerObj:{type: mongoose.Schema.Types.ObjectId, ref: "User"},
   available:{type:Boolean, default:true}

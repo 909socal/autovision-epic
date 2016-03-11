@@ -3,24 +3,22 @@
 </div>
 
 <div class="container-fluid">
-	<div class="row text-center">
+	<div class="row">
 		<h4 class='text-center' id='#homeFeatures'>Car Features</h4>
-		<h5>SHOWCASING SOME OF THE FINEST CARS AROUND THE WORLD.</h5>
+		<h5 class='text-center'>SHOWCASING SOME OF THE FINEST CARS AROUND THE WORLD.</h5>
 		<div >
-			<ul class="list-inline text-right"><a class='btn' href="#/featuresadd">Add Feature</a></li>
+			<ul class="list-inline">
+				<li><a class="btn btn-lg pull-left" ng-click="toggleArray()">{{showButton}}</a></li>
+				<li><a class='btn pull-right' href="#/featuresadd">Add Feature</a></li>
 			</ul>
-		</div>
-		
-		<div>
-			<button class="btn btn-lg" ng-click="toggleArray()">{{showButton}}</button>
 		</div>
 		
 		<div class="col-xs-12 col-sm-4" ng-repeat="car in showroomArray">
 			<div class="card">
-				<!-- <div class="card-header card-image waves-effect waves-block waves-light"> -->
+				<div class="card-header card-image waves-effect waves-block waves-light">
 					<!-- <img src="{{car.imgSrc}}" class="img-rounded activator" alt="Cinque Terre" width="350" height="280"> -->
 					<img src={{car.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
-				<!-- </div> -->
+				</div>
 				<div class="card-content">
 					<p ng-repeat="detail in car.paragraph">
 						{{detail}}
