@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autofeature) {
+app.controller('showroomCtrl', function($scope, $rootScope, $state, $localStorage, Autofeature) {
 
 	$rootScope.user = $localStorage.token; 
 
@@ -8,9 +8,12 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
 		$scope.displayCar = car; 
 	} 
 
+	$scope.goToAutofeatureDetails = function(detail) {
+		$state.go('autofeaturedetail({autofeatureId:detail._id})');
+	}
+
 	Autofeature.getUserAutofeatures($rootScope.user.data)
 	.then(function(res){
-		console.log("RES . DATA: in showroom: \n", res.data);
 		var arrOfAutofeatures = res.data; 
 		
 		$scope.showBool = false; 
@@ -30,6 +33,7 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
 			};
 
 			var displayFeature = {
+				_id: car._id, 
 				imgSrc: imageurl,
 				paragraph: {
 					model: car.model,
@@ -37,6 +41,7 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
 					user: $rootScope.user.config.data.email
 				}
 			};
+
 			return displayFeature; 
 		})
 	});

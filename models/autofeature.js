@@ -39,14 +39,13 @@ autofeatureSchema.statics.getUserAutofeatures = function(token, cb) {
 autofeatureSchema.statics.add = function(autofeature, file, token, cb) {
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
-  console.log("Iin autofeature add");
+
   if (file) {
-    console.log("file true");
+    console.log('file true');
     var filename = file.originalname;  
     var imageBuffer = file.buffer;
     var ext = filename.match(/\.\w+$/)[0] || '';
     var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
-    
 
     var imageToUpload = {
       Bucket:process.env.AWS_BUCKET,
