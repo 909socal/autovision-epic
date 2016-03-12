@@ -98,7 +98,9 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.editIndex = -1;   
   }
 
-    $scope.editAutofeature = function(autofeature) {    
+    $scope.editAutofeature = function(autofeature, id) { 
+     $location.hash(id);
+    $anchorScroll();   
     if (autofeature && autofeature._id) {
       var autofeatureId = autofeature._id.toString();
     };

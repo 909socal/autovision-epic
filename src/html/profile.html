@@ -28,10 +28,10 @@
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.zip}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.price | currency}}</td>
 					<!-- <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.image}}</td> -->
-					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
+					<td><button class="btn btn-sm" ng-click="remove(item)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>
-					<td><button class="btn btn-sm btn-warning" ng-click="edit(item, 'editForm')">
+					<td><button class="btn btn-sm" ng-click="edit(item, 'editForm')">
 						<span class="glyphicon glyphicon-edit"></span>
 					</button></td>
 				</tr>
@@ -110,10 +110,10 @@
 					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.year}}</td>
 					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.description}}</td>
 					<!-- <td ui-sref="forsaleitemdetail({itemId:autofeature._id})">{{autofeature.image}}</td> -->
-					<td><button class="btn btn-sm btn-danger" ng-click="removeAutofeature(autofeature)">
+					<td><button class="btn btn-sm" ng-click="removeAutofeature(autofeature)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>
-					<td><button class="btn btn-sm btn-warning" ng-click="editAutofeature(autofeature)">
+					<td><button class="btn btn-sm" ng-click="editAutofeature(autofeature, 'autofeatureEditForm')">
 						<span class="glyphicon glyphicon-edit"></span>
 					</button></td>
 				</tr>
@@ -121,7 +121,7 @@
 		</table>
 	</div>
 
-	<form ng-show="autofeatureIsEditing" ng-submit="autofeatureEditConfirm()">
+	<form ng-show="autofeatureIsEditing" ng-submit="autofeatureEditConfirm()" id="autofeatureEditForm">
 		<div class = 'col-md-7 col-xs-12'>
 			<h1>Edit Auto Feature </h1>
 			<div class="form-group">
