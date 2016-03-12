@@ -116,6 +116,8 @@ itemSchema.statics.edit = function(itemObj, itemId, cb) {
     item.model = itemObj.model; 
     item.year = itemObj.year; 
     item.description = itemObj.description; 
+    item.zip = itemObj.zip; 
+    item.price = itemObj.price; 
     item.category = itemObj.category; 
     if (itemObj.contactinfo) {
       item.contactinfo.email = itemObj.contactinfo.email;
