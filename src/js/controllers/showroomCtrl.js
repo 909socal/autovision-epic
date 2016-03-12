@@ -17,12 +17,12 @@ app.controller('showroomCtrl', function($scope, $rootScope, $state, $localStorag
 		var arrOfAutofeatures = res.data; 
 		
 		$scope.showBool = false; 
-		$scope.showButton = "Users Features";
+		$scope.showButton = "Users Showroom";
 		$scope.showroomArray = $scope.showroomCars; 
 		
 		$scope.toggleArray = function(){
 			$scope.showBool = !$scope.showBool; 
-			$scope.showButton = $scope.showBool ? "AutoVision Features" : "Users Features"; 
+			$scope.showButton = $scope.showBool ? "AutoVision Showroom" : "Users Showroom"; 
 			$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
 		}
 
