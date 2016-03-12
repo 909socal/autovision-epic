@@ -19,14 +19,10 @@ app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage,
       processData: false,
       contentType: false,
       complete: function(res) {
-        console.log('POST res.data is: ', res, '\n in items controller');
-        // Item.image = res.responseJSON.image.data[0].data;
-            /*$scope.image = res.responseJSON.image.data[0];
-            console.log("data is: ", $scope.image);
-            Item.image = $scope.image;*/
-            $state.go('profile');
-          }
-        });        
+        console.log('POST res.data is: ', res, '\n in items controller');        
+        $state.go('profile');
+      }
+    });        
   });
   // $scope.addItemClick = function() {
   //   Item.createItem($scope.item, $rootScope.user.data)
