@@ -4,6 +4,11 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
 
   $rootScope.user = $localStorage.token; 
 
+  $scope.displayModal = function(car) {
+  	console.log('display modal')
+  	$scope.displayCar = car; 
+  } 
+
 	Autofeature.getUserAutofeatures($rootScope.user.data)
   .then(function(res){
   	console.log('res.data is: ', res.data);
