@@ -4,22 +4,22 @@
 
 <div class="container-fluid ">
 	<div class="row text-center">
-		<h4 class='text-center' id='#homeFeatures'>Car Features</h4>
+		<h4 class='text-center' id='#homeFeatures'>Car Showroom</h4>
 		<h5 class='text-center'>SHOWCASING SOME OF THE FINEST CARS AROUND THE WORLD.</h5>
 		<div>
 			<ul class="list-inline">
 				<li><a class="btn pull-left" ng-click="toggleArray()">{{showButton}}</a></li>
-				<li><a class='btn pull-right' href="#/featuresadd">Add Car Feature</a></li>
+				<li><a class='btn pull-right' href="#/featuresadd">Add to Showroom</a></li>
 			</ul>
 		</div>
 
 		<div class="col-xs-12 col-sm-4" ng-repeat="car in showroomArray">
 			<div class="card">
-				<div class="card-header card-image waves-effect waves-block waves-light" ng-click="displayModal(car)"data-toggle="modal" data-target="#myModal">
-					<img src={{car.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
+				<div class="card-header card-image waves-effect waves-block waves-light"  >
+					<img ng-click="displayModal(car)" data-toggle="modal" data-target="#myModal" src={{car.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
 				</div>
 				<div class="card-content text-center">
-					<p ng-repeat="detail in car.paragraph">
+					<p ui-sref="autofeaturedetail({autofeatureId:car._id})" ng-repeat="detail in car.paragraph">
 						{{detail}}
 						<br>
 					</p>

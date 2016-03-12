@@ -21,7 +21,7 @@ app.service('Autofeature', function($http) {
     return $http.put(`/features/${autofeatureId}`, editAutofeature)
   };
 
-  this.getAutofeatures = function(autofeatureId) {
+  this.getAutofeature = function(autofeatureId) {
     return $http.get(`/features/single/${autofeatureId}`);
   }
 });
