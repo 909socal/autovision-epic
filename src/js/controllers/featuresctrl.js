@@ -16,7 +16,7 @@ app.controller('featuresCtrl', function ($rootScope, $state, $localStorage) {
           processData: false,
           contentType: false,
           complete: function(res) {
-            $state.go('showroom');
+            $state.go('profile');
           }
       });        
   });
