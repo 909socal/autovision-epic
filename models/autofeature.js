@@ -31,8 +31,6 @@ autofeatureSchema.statics.getUserAutofeatures = function(token, cb) {
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
   Autofeature.find({ownerObj: userid}, function(err, autofeatures) {
-    console.log('err in model is: ', err);
-    console.log('autofeatures in model is: ', autofeatures);
     if (err) return cb(err);
     cb(null, autofeatures); 
   })

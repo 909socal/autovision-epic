@@ -10,7 +10,6 @@ app.service('Autofeature', function($http) {
   };
 
   this.getUserAutofeatures = function(token) {
-    console.log('getUserAutofeatures');
     return $http.get(`/features/${token}`);
   };
 
