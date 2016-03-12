@@ -14,7 +14,7 @@ var Autofeature;
 var autofeatureSchema = new mongoose.Schema({
   make:{type:String}, 
   model:{type:String}, 
-  year:{type:Date},
+  year:{type:String},
   description:{type:String},
   category:{type:String},
   image:{
