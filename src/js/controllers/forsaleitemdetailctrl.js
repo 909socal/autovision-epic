@@ -5,7 +5,7 @@ app.controller('forsaleitemdetailCtrl', function($scope, $rootScope, $state, $st
 
   Item.getItem($state.params.itemId)
   .then(function(res) {
-    $scope.imageURL = res.data.image.url;
+    // $scope.imageURL = res.data.image.url;
     $scope.itemDetails = res.data; 
   });
 });
