@@ -5,46 +5,24 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
   $rootScope.user = $localStorage.token; 
 
   $scope.displayModal = function(car) {
-  	console.log('display modal')
   	$scope.displayCar = car; 
   } 
 
 	Autofeature.getUserAutofeatures($rootScope.user.data)
   .then(function(res){
-  	console.log('res.data is: ', res.data);
-    //$scope.autofeatures = res.data; 
-    //$scope.category = $state.params.type;
 
     var arrOfAutofeatures = res.data; 
     
-    /*
-    $scope.showroomUsersCars = arrOfAutofeatures.map(function(autofeature) {
-    	var displayFeature = {
-    		imgSrc: ''
-				paragraph: {
-					model: 'Model: Nissan',
-					make: 'Make: Skyline',
-					user: 'UserName: laugh_drive'
-				}
-    	};
-    });
-    */
-
     $scope.showBool = false; 
     $scope.showButton = "Show Features";
     $scope.showroomArray = $scope.showroomCars; 
+    
     $scope.toggleArray = function(){
     	$scope.showBool = !$scope.showBool; 
-    	// if ($scope.showButton === "Show Features") {
-    	// 	$scope.showButton = "Hide Features"; 
-    	// } else {
-    	// 	$scope.showButton = "Show Features"
-    	// }
     	$scope.showButton = $scope.showBool ? "Hide Features" : "Show Features"; 
     	$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
     }
 
-    
     $scope.showroomUsersCars = res.data.map(function(car){
     	var displayFeature = {
     		imgSrc: car.image.url,
@@ -56,10 +34,8 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
     	};
     	return displayFeature; 
     })
-    
   });
   
-
 	$scope.showroomCars = [
 		{
 			imgSrc: 'http://www.m5board.com/vbulletin/attachment.php?attachmentid=96957&stc=1&thumb=1&d=1262574914',
@@ -70,7 +46,6 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
 			}
 		},
 		{
-	
 			imgSrc: 'http://images.cdn.stuff.tv/sites/stuff.tv/files/Mercedes-AMG-GT-front.JPG',
 			paragraph: {
 				  model: 'Model: Mercedes',
