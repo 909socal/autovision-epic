@@ -8,6 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('forsale', { url: '/forsale', templateUrl: 'html/home.html', controller:'forsaleCtrl'})
   .state('forsaleitem', { url: '/forsaleitem/:type', templateUrl: 'html/forsaleitem.html', controller:'forsaleitemCtrl'})
   .state('forsaleitemdetail', { url: '/forsaleitemdetail/:itemId', templateUrl: 'html/forsaleitemdetail.html', controller:'forsaleitemdetailCtrl'})
+  .state('autofeaturedetail', { url: '/autofeaturedetail/:itemId', templateUrl: 'html/autofeaturedetail.html', controller:'autofeaturedetailCtrl'})
   .state('profile', { url: '/profile', templateUrl: 'html/profile.html', controller: 'profileCtrl'})
   .state('register', { url: '/register', templateUrl: 'html/register.html', controller: 'loginregisterCtrl'})
   .state('additem', { url: '/additem', templateUrl: 'html/additem.html', controller: 'itemsCtrl'})
@@ -18,6 +19,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 });
 
-app.run(function(Auth){
+app.run(function(Auth) {
   Auth.user();
 });

@@ -93,10 +93,10 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="autofeature in autofeatures track by $index">
-					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.model}}</td>
-					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.make}}</td>
-					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.year}}</td>
-					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.description}}</td>
+					<td ui-sref="autofeaturedetail({autofeatureId:autofeature._id})">{{autofeature.model}}</td>
+					<td ui-sref="autofeaturedetail({autofeatureId:autofeature._id})">{{autofeature.make}}</td>
+					<td ui-sref="autofeaturedetail({autofeatureId:autofeature._id})">{{autofeature.year}}</td>
+					<td ui-sref="autofeaturedetail({autofeatureId:autofeature._id})">{{autofeature.description}}</td>
 					<td><button class="btn btn-sm" ng-click="removeAutofeature(autofeature)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>
@@ -137,7 +137,7 @@
 					<option name="Wheels" value="Wheels">Wheels</option>
 				</select>
 			</div>
-			<button class="btn btn-success btn-sm" type="submit" >Confirm Edit</button>
+			<button class="btn btn-success btn-sm" type="submit">Confirm Edit</button>
 		</div>
 	</form>
 
