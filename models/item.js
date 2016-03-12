@@ -39,6 +39,9 @@ itemSchema.statics.getUserItems = function(token, cb) {
 };
 
 itemSchema.statics.add = function(item, file, token, cb) {
+  var payload = jwt.decode(token, process.env.JWT_SECRET);
+  var userid = payload._id; 
+  
   if (file) {
     var filename = file.originalname;
     var imageBuffer = file.buffer;
@@ -53,8 +56,6 @@ itemSchema.statics.add = function(item, file, token, cb) {
     s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
       var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
 
-      var payload = jwt.decode(token, process.env.JWT_SECRET);
-      var userid = payload._id; 
       var newItem = new Item(item); 
       newItem.ownerObj = userid; 
       newItem.image.key = key; 
@@ -67,8 +68,6 @@ itemSchema.statics.add = function(item, file, token, cb) {
       });
     }); // s3.putObject()
   } else {
-    var payload = jwt.decode(token, process.env.JWT_SECRET);
-    var userid = payload._id; 
     var newItem = new Item(item); 
     newItem.ownerObj = userid; 
     newItem.save(function(err, savedItem){
