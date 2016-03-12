@@ -7,7 +7,7 @@ app.controller('forsaleitemdetailCtrl', function($scope, $rootScope, $state, $st
   Item.getItem($state.params.itemId)
   .then(function(res) {
     console.log('item is', res.data);
-    console.log('AWS URL is: ', res.data.image.url);
+    // console.log('AWS URL is: ', res.data.image.url);
     console.log('make: ', res.data.make);
     console.log('year: ', res.data.year);
 

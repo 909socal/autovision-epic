@@ -53,6 +53,7 @@ itemSchema.statics.getUserItems = function(token, cb) {
 };
 
 itemSchema.statics.add = function(item, file, token, cb) {
+  console.log('inside add of Item schema')
   /*
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
@@ -63,7 +64,8 @@ itemSchema.statics.add = function(item, file, token, cb) {
     if (err) return cb(err);
     cb(null, savedItem); 
   });
-  */
+*/
+  
   var filename = file.originalname;  
   var imageBuffer = file.buffer;
   // $ : last , + : one or more
@@ -105,6 +107,16 @@ itemSchema.statics.add = function(item, file, token, cb) {
       cb(null, savedItem); 
     });
   }); // s3.putObject()
+  
+/*
+  var newItem = new Item(item); 
+  newItem.save(function(err, savedItem){
+    if (err) return cb(err);
+    console.log("Saved item is: ", savedItem);
+    cb(null, savedItem); 
+  });
+*/
+
 };
 
 itemSchema.statics.edit = function(itemObj, itemId, cb) {

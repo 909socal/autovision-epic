@@ -42,6 +42,7 @@ router.post('/:token', upload.array('images'), function(req, res, next) {
   //   // req.body.image = base64EncodedBuffer;
   //   req.body.image = req.files[0].buffer;
   // }
+  console.log("In post route \n");
   Item.add(req.body, req.files[0], req.params.token, function(err, savedItem) {
     res.status(err ? 400:200).send(err||savedItem);
   }); 

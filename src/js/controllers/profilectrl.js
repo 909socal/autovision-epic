@@ -14,6 +14,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
 
   Item.getUserItems($rootScope.user.data)
   .then(function(res){
+    console.log('user items in profileCtrl.js ', res.data);
     $scope.items = res.data; 
     $scope.category = $state.params.type;
   });

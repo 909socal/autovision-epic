@@ -7,7 +7,7 @@ app.controller('forsaleitemCtrl', function($scope, $rootScope, $state, Item, Aut
   Item.getAllItems()
   .then(function(res){
     $scope.items = res.data; 
-    $scope.category=$state.params.type.charAt(0).toUpperCase() + $state.params.type.slice(1);
+    $scope.category=$state.params.type; //.charAt(0).toUpperCase() + $state.params.type.slice(1);
         // console.log('Hi', $scope.items);
   });
 
