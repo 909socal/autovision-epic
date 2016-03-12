@@ -1,7 +1,6 @@
 var app = angular.module('app');
 
 app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, $localStorage, $location, $anchorScroll, Item, Autofeature, Auth) {
-  // $rootScope.user = Auth.data; 
   $scope.isEditing = false; 
   $scope.editItem = {}; 
 
@@ -14,7 +13,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
 
   Item.getUserItems($rootScope.user.data)
   .then(function(res){
-    console.log('user items in profileCtrl.js ', res.data);
     $scope.items = res.data; 
     $scope.category = $state.params.type;
   });
@@ -53,7 +51,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       $scope.isEditing = true; 
       $scope.editId = itemId;
       $scope.editIndex = $scope.items.indexOf(item); 
-      console.log('edit index: ', $scope.editIndex);
 
       $scope.editItem = {
         _id: item._id,
@@ -92,11 +89,11 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       $scope.autofeatureEditItem = {};     
       $scope.autofeatureEditIndex = -1; 
     } else {
-      console.log('in editing');
+
       $scope.autofeatureIsEditing = true; 
       $scope.autofeatureEditId = autofeatureId;
       $scope.autofeatureEditIndex = $scope.autofeatures.indexOf(autofeature); 
-      console.log('auto feature edit index: ', $scope.autofeatureEditIndex);
+
       $scope.autofeatureEditItem = {
         _id: autofeature._id,
         make: autofeature.make,
