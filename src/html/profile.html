@@ -31,7 +31,7 @@
 					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>
-					<td><button class="btn btn-sm btn-warning" ng-click="edit(item)">
+					<td><button class="btn btn-sm btn-warning" ng-click="edit(item, 'editForm')">
 						<span class="glyphicon glyphicon-edit"></span>
 					</button></td>
 				</tr>
@@ -39,7 +39,7 @@
 		</table>
 	</div>
 
-	<form ng-show="isEditing" ng-submit="editConfirm()">
+	<form ng-show="isEditing" ng-submit="editConfirm()" id="editForm">
 		<div class = 'col-md-7 col-xs-12'>
 			<h1>Edit Item </h1>
 			<div class="form-group">

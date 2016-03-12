@@ -15,6 +15,4 @@ app.controller('forsaleitemCtrl', function($scope, $rootScope, $state, Item, Aut
     console.log('gotoshowroom');
     $state.go('showroom');
   }
-
-
 });
