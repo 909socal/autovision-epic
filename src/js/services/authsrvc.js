@@ -16,7 +16,6 @@ app.service('Auth', function($http, $state, $localStorage, $rootScope) {
     $state.go('home');
   }
 
-
   this.user = function() {
     this.data = $localStorage.token; 
     $rootScope.user = $localStorage.token; 

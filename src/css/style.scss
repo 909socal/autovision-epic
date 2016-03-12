@@ -95,10 +95,12 @@ img:hover  {
 
 }
 
-.navi{
+
+
+
+.navi {
  margin-top: 5px;
 }
-
 
 td {
   color: black;
@@ -276,4 +278,17 @@ footer .footer-below {
 
 .black{
   background-color: black;
+}
+
+
+
+a {
+  color: black;
+  text-decoration: none;
+
+}
+
+a:hover{
+  color: blue; 
+  text-decoration: none;
 }

@@ -11,11 +11,7 @@ var upload = multer({ storage: multer.memoryStorage() });
 
 /* Get user's autofeatures */
 router.get('/:token', function(req, res, next) {
-  console.log('in get route features');
   Autofeature.getUserAutofeatures(req.params.token, function(err, userAutofeatures) {
-    console.log('user auto features in get route', userAutofeatures);
-    console.log('err in route', err);
-
     res.status(err ? 400:200).send(err||userAutofeatures);
   });
 });
@@ -29,11 +25,6 @@ router.get('/single/:featureId', function(req, res, next) {
 
 /* Create an autofeature */
 router.post('/:token', upload.array('images'), function(req, res, next) {
-  // console.log('req.body', req.body);
-  // console.log('req.files', req.files);
-  if (req.files && req.files[0]) {
-    req.body.image = req.files[0].buffer;
-  };
   Autofeature.add(req.body, req.files[0], req.params.token, function(err, savedFeature) {
     res.status(err ? 400:200).send(err||savedFeature);
   }); 

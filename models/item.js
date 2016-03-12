@@ -19,60 +19,31 @@ var itemSchema = new mongoose.Schema({
   category:{type:String},
   price:{type:Number},
   zip:{type:Number},
-  // image:{type:Buffer},
   image:{
     key:{type:String},
     url:{type:String},
     name:{type:String}
   },
-  // contactinfo:{
-  //   zip:{type:Number},
-  //   email:{type:String},
-  //   phone:{type:String}
-  // },
   createdAt:{type:Date, default:Date.now},
   ownerObj:{type: mongoose.Schema.Types.ObjectId, ref: "User"},
   available:{type:Boolean, default:true}
 });
 
-// itemSchema.statics.getUserItems = function(userid, cb) {
-//   Item.find({ownerObj: userid}, function(err, items) {
-//     if (err) return cb(err);
-//     cb(null, items); 
-//   })
-// };
-
 itemSchema.statics.getUserItems = function(token, cb) {
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
   Item.find({ownerObj: userid}, function(err, items) {
-    //console.log("Items, \n \n", items);
     if (err) return cb(err);
     cb(null, items); 
   })
 };
 
 itemSchema.statics.add = function(item, file, token, cb) {
-  /*
-  var payload = jwt.decode(token, process.env.JWT_SECRET);
-  var userid = payload._id; 
-  var newItem = new Item(item); 
-  newItem.ownerObj = userid; 
-
-  newItem.save(function(err, savedItem){
-    if (err) return cb(err);
-    cb(null, savedItem); 
-  });
-  */
   var filename = file.originalname;  
   var imageBuffer = file.buffer;
-  // $ : last , + : one or more
   var ext = filename.match(/\.\w+$/)[0] || '';
   var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
   
-  console.log('key is: ', uuid.v1());
-
-
   var imageToUpload = {
     Bucket:process.env.AWS_BUCKET,
     Key:key, 
@@ -82,26 +53,16 @@ itemSchema.statics.add = function(item, file, token, cb) {
   s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
     var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
 
-    console.log('AWSURL is: ', process.env.AWS_URL);
-    console.log('AWS BUCKET is: ', process.env.AWS_BUCKET);
-
     var payload = jwt.decode(token, process.env.JWT_SECRET);
     var userid = payload._id; 
     var newItem = new Item(item); 
     newItem.ownerObj = userid; 
-    // var imageObj = {
-    //   key:key, 
-    //   url:url, 
-    //   name:filename; 
-    // }
-    // var image = new Image(imageObj);
-    // newItem.images.push(image);
     newItem.image.key = key; 
     newItem.image.url = url; 
     newItem.image.name = filename; 
     newItem.save(function(err, savedItem){
       if (err) return cb(err);
-      console.log("Saved item is: ", savedItem);
+      
       cb(null, savedItem); 
     });
   }); // s3.putObject()
@@ -128,9 +89,6 @@ itemSchema.statics.edit = function(itemObj, itemId, cb) {
       cb(null, savedItem); 
     })
   });
-}
-
-itemSchema.statics.image = function(item) {
 }
 
 Item = mongoose.model('Item', itemSchema);
