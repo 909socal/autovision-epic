@@ -59,6 +59,8 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
         model: item.model,
         year: item.year,
         description: item.description,
+        zip: item.zip,
+        price: item.price,
         category: item.category
       };
       if (item.contactinfo) {

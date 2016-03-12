@@ -15,6 +15,8 @@
 					<th>Model</th>
 					<th>Make</th>
 					<th>Year</th>
+					<th>Zip</th>
+					<th>Price</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,6 +25,8 @@
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.zip}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.price | currency}}</td>
 					<!-- <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.image}}</td> -->
 					<td><button class="btn btn-sm btn-danger" ng-click="remove(item)">
 						<span class="glyphicon glyphicon-trash"></span>
@@ -43,16 +47,24 @@
 				<input ng-model="editItem.make" placeholder="Porsche" class="form-control" type="text">         
 			</div>
 			<div class="form-group">
-				<label for="password">Model</label>
+				<label>Model</label>
 				<input  ng-model="editItem.model"  placeholder="911" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-				<label for="Make">Year</label>
+				<label>Year</label>
 				<input ng-model="editItem.year" placeholder="2014" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="Make">Description</label>
+				<label>Description</label>
 				<input ng-model="editItem.description"  placeholder=" Red GT3 Spoiler" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Zip</label>
+				<input ng-model="editItem.zip"  placeholder="" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Price</label>
+				<input ng-model="editItem.price"  placeholder="" class="form-control">
 			</div>
 			<div class="form-group">
 				<label >Category</label>
@@ -80,37 +92,36 @@
 	</form>
 	
 	<div class="col-xs-12" style="height:50px;"></div>
-		<div class="container table-responsive">
-			<h2 class='text-center'>Personal Features</h2>
-			<table class="table ">
-				<thead>
-					<tr>
-						<th>Model</th>
-						<th>Make</th>
-						<th>Year</th>
-						<th>Details</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="autofeature in autofeatures track by $index">
-						<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.model}}</td>
-						<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.make}}</td>
-						<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.year}}</td>
-						<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.description}}</td>
-						<!-- <td ui-sref="forsaleitemdetail({itemId:autofeature._id})">{{autofeature.image}}</td> -->
-						<td><button class="btn btn-sm btn-danger" ng-click="removeAutofeature(autofeature)">
-							<span class="glyphicon glyphicon-trash"></span>
-						</button></td>
-						<td><button class="btn btn-sm btn-warning" ng-click="editAutofeature(autofeature)">
-							<span class="glyphicon glyphicon-edit"></span>
-						</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-  </div>
+	<div class="container table-responsive">
+		<h2 class='text-center'>Personal Features</h2>
+		<table class="table ">
+			<thead>
+				<tr>
+					<th>Model</th>
+					<th>Make</th>
+					<th>Year</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="autofeature in autofeatures track by $index">
+					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.model}}</td>
+					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.make}}</td>
+					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.year}}</td>
+					<td ui-sref="forsaleitemdetail({autofeatureId:autofeature._id})">{{autofeature.description}}</td>
+					<!-- <td ui-sref="forsaleitemdetail({itemId:autofeature._id})">{{autofeature.image}}</td> -->
+					<td><button class="btn btn-sm btn-danger" ng-click="removeAutofeature(autofeature)">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button></td>
+					<td><button class="btn btn-sm btn-warning" ng-click="editAutofeature(autofeature)">
+						<span class="glyphicon glyphicon-edit"></span>
+					</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-  <form ng-show="autofeatureIsEditing" ng-submit="autofeatureEditConfirm()">
+	<form ng-show="autofeatureIsEditing" ng-submit="autofeatureEditConfirm()">
 		<div class = 'col-md-7 col-xs-12'>
 			<h1>Edit Auto Feature </h1>
 			<div class="form-group">
@@ -141,15 +152,6 @@
 			</div>
 			<button class="btn btn-success btn-sm" type="submit" >Confirm Edit</button>
 		</div>
-		<!-- <div class ='col-md-5 col-xs-12'>
-			<h3>Contact Info</h3>
-			<div class="form-group">
-				<label for="Make">Email</label>
-				<input ng-model="editItem.contactinfo.email" type="text" placeholder="Email" class="form-control" required>
-				<label for="Make">Phone Number</label>
-				<input ng-model="editItem.contactinfo.phone" type="text" placeholder="510-898-9232" class="form-control">
-				<label for="Make">Zip Code</label>
-				<input ng-model="editItem.contactinfo.zip" type="text" placeholder="92232" class="form-control" required>
-			</div>
-		</div> -->
 	</form>
+
+</div>
