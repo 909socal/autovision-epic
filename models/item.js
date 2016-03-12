@@ -39,33 +39,43 @@ itemSchema.statics.getUserItems = function(token, cb) {
 };
 
 itemSchema.statics.add = function(item, file, token, cb) {
-  var filename = file.originalname;  
-  var imageBuffer = file.buffer;
-  var ext = filename.match(/\.\w+$/)[0] || '';
-  var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
-  
-  var imageToUpload = {
-    Bucket:process.env.AWS_BUCKET,
-    Key:key, 
-    Body:imageBuffer 
-  };
+  if (file) {
+    var filename = file.originalname;
+    var imageBuffer = file.buffer;
+    var ext = filename.match(/\.\w+$/)[0] || '';
+    var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
+    
+    var imageToUpload = {
+      Bucket:process.env.AWS_BUCKET,
+      Key:key, 
+      Body:imageBuffer 
+    };
+    s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
+      var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
 
-  s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
-    var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
-
+      var payload = jwt.decode(token, process.env.JWT_SECRET);
+      var userid = payload._id; 
+      var newItem = new Item(item); 
+      newItem.ownerObj = userid; 
+      newItem.image.key = key; 
+      newItem.image.url = url; 
+      newItem.image.name = filename; 
+      newItem.save(function(err, savedItem){
+        if (err) return cb(err);
+        
+        return cb(null, savedItem); 
+      });
+    }); // s3.putObject()
+  } else {
     var payload = jwt.decode(token, process.env.JWT_SECRET);
     var userid = payload._id; 
     var newItem = new Item(item); 
     newItem.ownerObj = userid; 
-    newItem.image.key = key; 
-    newItem.image.url = url; 
-    newItem.image.name = filename; 
     newItem.save(function(err, savedItem){
       if (err) return cb(err);
-      
-      cb(null, savedItem); 
-    });
-  }); // s3.putObject()
+      return cb(null, savedItem); 
+    }); 
+  }
 };
 
 itemSchema.statics.edit = function(itemObj, itemId, cb) {
