@@ -9,7 +9,7 @@
 		<div>
 			<ul class="list-inline">
 				<li><a class="btn pull-left" ng-click="toggleArray()">{{showButton}}</a></li>
-				<li><a class='btn pull-right' href="#/featuresadd">Add Feature</a></li>
+				<li><a class='btn pull-right' href="#/featuresadd">Add Car Feature</a></li>
 			</ul>
 		</div>
 
@@ -30,10 +30,15 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-body">
-      	<img src={{displayCar.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="500" height="400">
+      	<img src={{displayCar.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="80%" height="80%">
       </div>
-
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <div class="text-center">
+      	<h6>{{displayCar.paragraph.model}}</h6>
+      	<h6>{{displayCar.paragraph.make}}</h6>
+      	<h6>{{displayCar.paragraph.user}}</h6>
+      </div>
+			
+      <button type="button" class="btn btn-default waves-effect waves-green" data-dismiss="modal">Close</button>
 
     </div>
   </div>

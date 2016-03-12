@@ -6,6 +6,7 @@ app.controller('forsaleitemCtrl', function($scope, $rootScope, $state, Item, Aut
   Item.getAllItems()
   .then(function(res){
     $scope.items = res.data; 
+
     $scope.category = $state.params.type;
   });
 
