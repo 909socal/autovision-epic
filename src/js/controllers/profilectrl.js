@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, $localStorage, Item, Autofeature, Auth) {
+app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, $localStorage, $location, $anchorScroll, Item, Autofeature, Auth) {
   // $rootScope.user = Auth.data; 
   $scope.isEditing = false; 
   $scope.editItem = {}; 
@@ -26,6 +26,11 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     //console.log('Hi', $scope.items);
   });
 
+  // $scope.scrollTo = function(id) {
+  //   $location.hash(id);
+  //   $anchorScroll();
+  // }
+
   $scope.remove = function(item){
     var realIndex = $scope.items.indexOf(item); 
     $scope.items.splice(realIndex, 1);
@@ -38,7 +43,10 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     Autofeature.remove(autofeature._id.toString()); 
   }
 
-  $scope.edit = function(item){
+  $scope.edit = function(item, id){
+    $location.hash(id);
+    $anchorScroll();
+
     if (item && item._id) {
       var itemId = item._id.toString();
     };
