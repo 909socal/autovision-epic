@@ -21,8 +21,9 @@ body {
   color: black;
 }
 
-.form-control{
-  width: 40%;
+form{
+  width: 70%;
+
 }
 
 .navbar{
@@ -87,11 +88,17 @@ img:hover  {
 }
 .navbar{
   font-size: 15px;
+  color: black; 
 }
 .navbar-brand{
   font-size: 30px;
 
 }
+
+.navi{
+ margin-top: 5px;
+}
+
 
 td {
   color: black;
