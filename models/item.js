@@ -41,7 +41,7 @@ itemSchema.statics.getUserItems = function(token, cb) {
 itemSchema.statics.add = function(item, file, token, cb) {
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
-  
+
   if (file) {
     var filename = file.originalname;
     var imageBuffer = file.buffer;
@@ -63,7 +63,6 @@ itemSchema.statics.add = function(item, file, token, cb) {
       newItem.image.name = filename; 
       newItem.save(function(err, savedItem){
         if (err) return cb(err);
-        
         return cb(null, savedItem); 
       });
     }); // s3.putObject()

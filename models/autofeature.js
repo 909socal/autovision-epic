@@ -37,34 +37,46 @@ autofeatureSchema.statics.getUserAutofeatures = function(token, cb) {
 };
 
 autofeatureSchema.statics.add = function(autofeature, file, token, cb) {
-  var filename = file.originalname;  
-  var imageBuffer = file.buffer;
-  var ext = filename.match(/\.\w+$/)[0] || '';
-  var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
-  
+  var payload = jwt.decode(token, process.env.JWT_SECRET);
+  var userid = payload._id; 
+  console.log("Iin autofeature add");
+  if (file) {
+    console.log("file true");
+    var filename = file.originalname;  
+    var imageBuffer = file.buffer;
+    var ext = filename.match(/\.\w+$/)[0] || '';
+    var key = uuid.v1() + ext;// Guarantee a unique name. + ext to account for different types of files 
+    
 
-  var imageToUpload = {
-    Bucket:process.env.AWS_BUCKET,
-    Key:key, 
-    Body:imageBuffer 
-  };
+    var imageToUpload = {
+      Bucket:process.env.AWS_BUCKET,
+      Key:key, 
+      Body:imageBuffer 
+    };
 
-  s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
-    var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
+    s3.putObject(imageToUpload, function(err, data) {  // uploads to s3
+      var url = process.env.AWS_URL + process.env.AWS_BUCKET + '/' + key;
 
-    var payload = jwt.decode(token, process.env.JWT_SECRET);
-    var userid = payload._id; 
+      var newAutofeature = new Autofeature(autofeature); 
+      newAutofeature.ownerObj = userid; 
+      newAutofeature.image.key = key; 
+      newAutofeature.image.url = url; 
+      newAutofeature.image.name = filename; 
+      newAutofeature.save(function(err, savedAutofeature){
+        if (err) return cb(err);
+        return cb(null, savedAutofeature); 
+      });
+    }); // s3.putObject()
+  } else {
+    console.log("file false");
     var newAutofeature = new Autofeature(autofeature); 
     newAutofeature.ownerObj = userid; 
-    newAutofeature.image.key = key; 
-    newAutofeature.image.url = url; 
-    newAutofeature.image.name = filename; 
     newAutofeature.save(function(err, savedAutofeature){
-      if (err) return cb(err);
-      
-      cb(null, savedAutofeature); 
+      if (err) return cb(err);   
+      return cb(null, savedAutofeature); 
     });
-  }); // s3.putObject()
+  }
+
 };
 
 autofeatureSchema.statics.edit = function(autofeatureObj, autofeatureId, cb) {

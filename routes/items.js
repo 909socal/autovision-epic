@@ -28,10 +28,6 @@ router.get('/:token', function(req, res, next) {
 });
 
 router.post('/:token', upload.array('images'), function(req, res, next) {
-  // var image = {}; 
-  // if (req.files && req.files[0]) {
-  //   image = req.files[0];
-  // };
   Item.add(req.body, req.files[0], req.params.token, function(err, savedItem) {
     res.status(err ? 400:200).send(err||savedItem);
   }); 
