@@ -8,7 +8,6 @@ var AWS = require('aws-sdk');
 var s3 = new AWS.S3(); 
 var uuid = require('node-uuid');
 var multer = require('multer');
-var async = require('async');
 
 var Autofeature; 
 
