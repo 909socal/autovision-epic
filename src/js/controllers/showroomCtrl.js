@@ -10,7 +10,7 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
 
 	Autofeature.getUserAutofeatures($rootScope.user.data)
 	.then(function(res){
-
+		console.log("RES . DATA: in showroom: \n", res.data);
 		var arrOfAutofeatures = res.data; 
 		
 		$scope.showBool = false; 
@@ -24,8 +24,13 @@ app.controller('showroomCtrl', function($scope, $rootScope, $localStorage, Autof
 		}
 
 		$scope.showroomUsersCars = res.data.map(function(car){
+			var imageurl = '';
+			if (car.image && car.image.url) {
+				imageurl = car.image.url; 
+			};
+
 			var displayFeature = {
-				imgSrc: car.image.url,
+				imgSrc: imageurl,
 				paragraph: {
 					model: car.model,
 					make: car.make,
