@@ -11,6 +11,10 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $rootScope.user = $localStorage.token;
   };
 
+  if (!$rootScope.user) {
+    $state.go('register');
+  }
+
   Item.getUserItems($rootScope.user.data)
   .then(function(res){
     $scope.items = res.data; 

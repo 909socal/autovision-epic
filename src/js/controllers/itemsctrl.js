@@ -3,6 +3,10 @@ var app = angular.module('app');
 app.controller('itemsCtrl', function($state , $scope, $rootScope, $localStorage, Item) {
   $rootScope.user = $localStorage.token;
 
+  if (!$rootScope.user) {
+    $state.go('register');
+  }
+
   $("form").submit(function(event) {
     event.preventDefault();
     var newitem = new FormData(this);

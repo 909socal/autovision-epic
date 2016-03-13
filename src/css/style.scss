@@ -11,7 +11,6 @@
   margin-top: 30px;
 }
 
-
 #test {
   padding: 0px;
 }
@@ -49,6 +48,10 @@ form{
   background-size: contain;
   height: 420px;
   width: 100vw;
+}
+
+#test img {
+  padding-top: 60px;
 }
 
 .junkyard {
@@ -108,8 +111,6 @@ img:hover  {
   font-size: 30px;
 
 }
-
-
 
 
 .navi {
@@ -294,8 +295,6 @@ footer .footer-below {
   background-color: black;
 }
 
-
-
 a {
   color: black;
   text-decoration: none;
@@ -306,3 +305,79 @@ a:hover{
   color: blue; 
   text-decoration: none;
 }
+
+/*BEGIN NAVBAR STYLING*/
+.navbar .navbar-nav {
+  display: inline-block;
+  float: right;
+  vertical-align: top;
+  padding-top: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.navbar .navbar-nav li a, .navbar-brand.brand {
+  padding-bottom: 20px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+  color: black;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+  border: 0px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: black;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: white;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: black;
+}
+
+.brand {
+  padding-left: 20px;
+  font-size: 28px;
+}
+
+.navbar .navbar-nav li a, .navbar-brand.brand {
+  padding-bottom: 20px;
+}
+
+.nav.navbar-nav > li > a {
+  color: black;
+  text-decoration: bold;
+}
+
+.navbar .navbar-nav, .navbar .navbar-collapse {
+  background-color: white;
+  border: 0px;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+  background-color: #19A79A;
+  color: white;
+  font-size: larger;
+}
+
+/*display nav links on same line when nav is collapsed*/
+@media (max-width: 767px) {
+  .navbar.navbar-default .navbar-nav {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .navbar.navbar-default .navbar-right > li,
+  .navbar.navbar-default .navbar-left > li {
+    display: inline-block;
+  }
+}
+
+/*END NAVBAR STYLING*/

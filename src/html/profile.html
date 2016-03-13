@@ -1,5 +1,5 @@
 <div class= 'container'>
-	<h1>Welcome, {{user.config.data.email}}</h1>
+	<h1 style="padding-top:100px">Welcome, {{user.config.data.email}}</h1>
 	<div class="userPic">
 		<img src="http://placehold.it/350x350">
 	</div>
@@ -10,9 +10,10 @@
 		<table class="table">
 			<thead>
 				<tr>
+					<th>Category</th>
 					<th>Description</th>
-					<th>Model</th>
 					<th>Make</th>
+					<th>Model</th>
 					<th>Year</th>
 					<th>Zip</th>
 					<th>Price</th>
@@ -20,9 +21,10 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in items track by $index">
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.category}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.description}}</td>
-					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
+					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.zip}}</td>
 					<td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.price | currency}}</td>
@@ -125,18 +127,8 @@
 				<input ng-model="autofeatureEditItem.year" placeholder="2014" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="Make">Description</label>
+				<label for="Make">Details</label>
 				<input ng-model="autofeatureEditItem.description"  placeholder=" Red GT3 Spoiler" class="form-control">
-			</div>
-			<div class="form-group">
-				<label >Category</label>
-				<select class="form-control" id="sell" ng-model="autofeatureEditItem.category">
-					<option name="Body" value="Body">Body</option>
-					<option name="Lighting" value="Lighting">Lighting</option>
-					<option name="Suspension" value="Suspension">Suspension</option>
-					<option name="Tires" value="Tires">Tires</option>
-					<option name="Wheels" value="Wheels">Wheels</option>
-				</select>
 			</div>
 			<button class="btn btn-success btn-sm" type="submit">Confirm Edit</button>
 		</div>
