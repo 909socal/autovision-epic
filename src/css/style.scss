@@ -16,8 +16,8 @@
 }
 
 #test img {
-  height: auto; 
-  width: 100%; 
+  height: auto;
+  width: 100%;
 }
 
 .bg-gray {
@@ -91,7 +91,7 @@ form{
 }
 
 .saletag:hover {
-  color: green; 
+  color: green;
   box-shadow: 5px 5px 7px #888888;
   cursor: pointer;
 }
@@ -105,13 +105,8 @@ img:hover  {
 }
 .navbar{
   font-size: 15px;
-  color: black; 
+  color: black;
 }
-.navbar-brand{
-  font-size: 30px;
-
-}
-
 
 .navi {
  margin-top: 5px;
@@ -298,11 +293,10 @@ footer .footer-below {
 a {
   color: black;
   text-decoration: none;
-
 }
 
 a:hover{
-  color: blue; 
+  color: blue;
   text-decoration: none;
 }
 
@@ -312,12 +306,11 @@ a:hover{
   float: right;
   vertical-align: top;
   padding-top: 5px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-right: 40px;
 }
 
 .navbar .navbar-nav li a, .navbar-brand.brand {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -342,18 +335,18 @@ a:hover{
   border-color: black;
 }
 
-.brand {
-  padding-left: 20px;
-  font-size: 28px;
+.navbar-header {
+  background-color: white;
+  padding-bottom: 10px;
 }
 
-.navbar .navbar-nav li a, .navbar-brand.brand {
-  padding-bottom: 20px;
+.brand {
+  padding-left: 40px;
 }
 
 .nav.navbar-nav > li > a {
   color: black;
-  text-decoration: bold;
+  font-family: 'Playfair Display', serif;
 }
 
 .navbar .navbar-nav, .navbar .navbar-collapse {
@@ -374,6 +367,7 @@ a:hover{
     text-align: center;
     margin: 0;
   }
+
   .navbar.navbar-default .navbar-right > li,
   .navbar.navbar-default .navbar-left > li {
     display: inline-block;
