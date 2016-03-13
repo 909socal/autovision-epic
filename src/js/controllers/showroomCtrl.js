@@ -11,40 +11,6 @@ app.controller('showroomCtrl', function($scope, $rootScope, $state, $localStorag
 	$scope.goToAutofeatureDetails = function(detail) {
 		$state.go('autofeaturedetail({autofeatureId:detail._id})');
 	}
-
-	Autofeature.getUserAutofeatures($rootScope.user.data)
-	.then(function(res){
-		var arrOfAutofeatures = res.data; 
-		
-		$scope.showBool = false; 
-		$scope.showButton = "Community Showroom";
-		$scope.showroomArray = $scope.showroomCars; 
-		
-		$scope.toggleArray = function(){
-			$scope.showBool = !$scope.showBool; 
-			$scope.showButton = $scope.showBool ? "AutoVision Showroom" : "Community Showroom"; 
-			$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
-		}
-
-		$scope.showroomUsersCars = res.data.map(function(car){
-			var imageurl = '';
-			if (car.image && car.image.url) {
-				imageurl = car.image.url; 
-			};
-
-			var displayFeature = {
-				_id: car._id, 
-				imgSrc: imageurl,
-				paragraph: {
-					model: car.model,
-					make: car.make,
-					user: $rootScope.user.config.data.email
-				}
-			};
-
-			return displayFeature; 
-		})
-	});
 	
 	$scope.showroomCars = [
 	{
@@ -167,6 +133,51 @@ app.controller('showroomCtrl', function($scope, $rootScope, $state, $localStorag
 			user: 'UserName: AutoVision'
 		}
 	}	
-	]	
-});
+	];
 
+	$scope.showBool = false; 
+	$scope.showButton = "Users Showroom";
+	$scope.showroomArray = $scope.showroomCars; 
+
+//getting all auto features
+if ($rootScope.user) {
+	Autofeature.getAllAutofeatures()
+	.then(function(res){
+		console.log('inside getallautofeatures');
+		console.log('array  of features', res.data);
+		var arrOfAutofeatures = res.data; 
+
+		$scope.showroomUsersCars = res.data.map(function(car){
+			var imageurl = '';
+			if (car.image && car.image.url) {
+				imageurl = car.image.url; 
+			};
+
+			var displayFeature = {
+				_id: car._id, 
+				imgSrc: imageurl,
+				paragraph: {
+					model: car.model,
+					make: car.make,
+					user: $rootScope.user.config.data.email
+				}
+			};
+			return displayFeature; 
+		});
+	});
+}
+
+	$scope.toggleArray = function(){
+		if (!$rootScope.user) {
+			$state.go('register');
+		}
+		else {
+			//$scope.toggleArray = function(){
+				console.log('hit toggle array');
+				$scope.showBool = !$scope.showBool; 
+				$scope.showButton = $scope.showBool ? "AutoVision Showroom" : "Users Showroom"; 
+				$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
+			//}
+		}
+	};
+});

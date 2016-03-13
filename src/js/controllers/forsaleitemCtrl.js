@@ -6,8 +6,10 @@ app.controller('forsaleitemCtrl', function($scope, $rootScope, $state, Item, Aut
   Item.getAllItems()
   .then(function(res){
     $scope.items = res.data; 
-
-    $scope.category = $state.params.type;
+    var title = $state.params.type;
+    $scope.category = title;
+    console.log('category:', $scope.category);
+    $scope.title = title.charAt(0).toUpperCase() + title.slice(1);
   });
 
   $scope.goToShowroom = function() {

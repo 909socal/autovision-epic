@@ -27,6 +27,15 @@ var autofeatureSchema = new mongoose.Schema({
   available:{type:Boolean, default:true}
 });
 
+autofeatureSchema.statics.getCommunityAutofeatures = function(cb) {
+  console.log('in get route of data model')
+  Autofeature.find({}, function(err, autofeatures) {
+    console.log('autofeatures in data model: ', autofeatures);
+    if (err) return cb(err);
+    cb(null, autofeatures); 
+  })
+};
+
 autofeatureSchema.statics.getUserAutofeatures = function(token, cb) {
   var payload = jwt.decode(token, process.env.JWT_SECRET);
   var userid = payload._id; 
