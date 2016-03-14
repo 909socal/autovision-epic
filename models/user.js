@@ -80,7 +80,6 @@ userSchema.statics.isAuthenticated = function(req, res, next) {
 };
 
 userSchema.statics.reset= function(inputUser, cb){
-  console.log('inputUser in datamodel is: ', inputUser);
   var email = inputUser.user;
   var password = inputUser.newPassword;
   User.findOne({email: email}, function(err, user){
@@ -91,7 +90,6 @@ userSchema.statics.reset= function(inputUser, cb){
         user.password = hash;
         user.save(function(err, savedUser){
           savedUser.password = null;
-          console.log('saved user in user model is: ', savedUser);
           cb(err, savedUser);
         });
       });

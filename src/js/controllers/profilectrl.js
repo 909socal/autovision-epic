@@ -41,11 +41,8 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     
     Auth.login(resetUser)
     .then((data)=>{
-      console.log("RESET AUTHSERVICE LOGIN TOKEN", data);
-      console.log('new password is: ', $scope.newPassword);
       Auth.resetPassword($rootScope.user.config.data.email, $scope.newPassword)
       .then((data) => {
-        console.log('successful password reset ', data);
         swal("Successful password reset");
       });
     },
@@ -53,7 +50,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       swal("Current password invalid");
       console.log('inside err', err);
     });
-  
   }
 
   $scope.remove = function(item){
