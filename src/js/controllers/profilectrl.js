@@ -46,8 +46,7 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
       Auth.resetPassword($rootScope.user.config.data.email, $scope.newPassword)
       .then((data) => {
         console.log('successful password reset ', data);
-
-
+        swal("Successful password reset");
       });
     },
     function err(err) {
