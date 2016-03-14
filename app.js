@@ -9,11 +9,18 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/autovision'
+// GLOBALS
+var MONGO_URL = process.env.MONGOLAB_URI;
+var JWT_SECRET = process.env.JWT_SECRET;
+
+var mongoUrl = MONGO_URL || 'mongodb://localhost/autovision';
 var mongoose = require('mongoose');
 mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
 });
+
+if (!mongoUrl) throw new Error('MongoURL required');
+if (!JWT_SECRET) throw new Error('JWT_SECRET required');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
