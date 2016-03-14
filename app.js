@@ -19,8 +19,8 @@ mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
 });
 
-if (!mongoUrl) throw new Error('MongoURL required');
-if (!JWT_SECRET) throw new Error('JWT_SECRET required');
+//if (!mongoUrl) throw new Error('MongoURL required');
+//if (!JWT_SECRET) throw new Error('JWT_SECRET required');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
