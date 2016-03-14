@@ -47,7 +47,6 @@ userSchema.statics.authenticate = function(inputUser, cb){
     if(err || !dbUser) return cb(err || 'Incorrect email or password.');
     bcrypt.compare(inputUser.password, dbUser.password, function(err, isGood){
       if(err || !isGood) return cb(err || 'Incorrect email or password.');
-      console.log("DBUSER: \n\n", dbUser);
       dbUser.password = null;
       cb(null, dbUser);
     });
@@ -77,6 +76,26 @@ userSchema.statics.isAuthenticated = function(req, res, next) {
     user.password = null;
     req.user = user;
     next();
+  });
+};
+
+userSchema.statics.reset= function(inputUser, cb){
+  console.log('inputUser in datamodel is: ', inputUser);
+  var email = inputUser.user;
+  var password = inputUser.newPassword;
+  User.findOne({email: email}, function(err, user){
+    if(err) return cb(err);
+    bcrypt.genSalt(10, function(err1, salt) {
+      bcrypt.hash(password, salt, null, function(err2, hash) {
+        if(err1 || err2) return cb(err1 || err2);
+        user.password = hash;
+        user.save(function(err, savedUser){
+          savedUser.password = null;
+          console.log('saved user in user model is: ', savedUser);
+          cb(err, savedUser);
+        });
+      });
+    });
   });
 };
 

@@ -39,4 +39,12 @@ router.post('/login', function(req, res, next){
   });
 })
 
+router.put('/reset', function(req, res, next){
+  console.log('RESET ROUTE', req.body);
+  User.reset(req.body, function(err, savedUser){
+    console.log('successful password update in route', savedUser);
+    res.send(savedUser);
+  });
+});
+
 module.exports = router;

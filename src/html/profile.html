@@ -1,5 +1,17 @@
 <div class= 'container'>
 	<h1 style="padding-top:100px">Welcome, {{user.config.data.email}}</h1>
+	<button ng-click="toggleResetPassword()">Reset Password</button>
+	<form ng-show="resetPassword">
+    <div class="form-group">
+      <label for="password">Current Password</label>
+      <input id="currentPassword" type="password" placeholder="Password" class="password form-control" ng-model="currentPassword">
+    </div>
+    <div class="form-group">
+      <label for="password2">New Password</label>
+      <input id="newPassword" type="password" placeholder="Password" class="password form-control" ng-model="newPassword">
+    </div>
+    <button type="submit" class="btn btn-default"  ng-click="confirmResetPassword()">Reset</button>
+  </form>
 	<div class="userPic">
 		<img src="http://placehold.it/350x350">
 	</div>
