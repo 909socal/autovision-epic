@@ -1,6 +1,6 @@
 <div class= 'container'>
 	<h1 style="padding-top:100px">Welcome, {{user.config.data.email}}</h1>
-	<button ng-click="toggleResetPassword()">Reset Password</button>
+  <a class='btn pull-right' ng-click="toggleResetPassword()">Reset Password</a>
 	<form ng-show="resetPassword">
     <div class="form-group">
       <label for="password">Current Password</label>
@@ -82,11 +82,16 @@
 			<div class="form-group">
 				<label >Category</label>
 				<select class="form-control" id="sel1" ng-model="editItem.category">
-					<option name="Body" value="Body">Body</option>
-					<option name="Lighting" value="Lighting">Lighting</option>
-					<option name="Suspension" value="Suspension">Suspension</option>
-					<option name="Tires" value="Tires">Tires</option>
-					<option name="Wheels" value="Wheels">Wheels</option>
+		   	  <option name="Body" value="Body">Choose a Category</option>
+		      <option name="Body" value="Body">Body</option>
+		      <option name="Lighting" value="Lighting">Lighting</option>
+		      <option name="Engine" value="Engine">Engine</option>   
+		      <option name="Interior" value="Interior">Interior</option>
+		      <option name="Drivetrain" value="Drivetrain">Drivetrain</option>
+		      <option name="Performance" value="Performance">Performance</option>
+		      <option name="Suspension" value="Suspension">Suspension</option>
+		      <option name="Tires" value="Tires">Tires</option>
+		      <option name="Wheels" value="Wheels">Wheels</option>
 				</select>
 			</div>
 			<button class="btn btn-success btn-sm" type="submit" >Confirm Edit</button>

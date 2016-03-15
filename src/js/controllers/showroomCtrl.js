@@ -143,8 +143,6 @@ app.controller('showroomCtrl', function($scope, $rootScope, $state, $localStorag
 if ($rootScope.user) {
 	Autofeature.getAllAutofeatures()
 	.then(function(res){
-		console.log('inside getallautofeatures');
-		console.log('array  of features', res.data);
 		var arrOfAutofeatures = res.data; 
 
 		$scope.showroomUsersCars = res.data.map(function(car){
@@ -172,12 +170,9 @@ if ($rootScope.user) {
 			$state.go('register');
 		}
 		else {
-			//$scope.toggleArray = function(){
-				console.log('hit toggle array');
 				$scope.showBool = !$scope.showBool; 
 				$scope.showButton = $scope.showBool ? "AutoVision Showroom" : "Users Showroom"; 
 				$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
-			//}
 		}
 	};
 });

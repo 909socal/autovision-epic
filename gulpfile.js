@@ -17,13 +17,14 @@ var config = {
       js: './public/js/',
       css: './public/css/',
       html: './public/html/',
-      images: './public/images/'
+      images: './public/images/',
+      public: './public/'
     },
     src: {
       js: './src/js/**/*.js',
       sass: './src/css/**/*.scss',
       html: './src/html/**/*.html',
-      images: './src/images/**/*.jpg'
+      images: './src/**/*.+(jpg|png)'
     }
   }
 };
@@ -69,7 +70,7 @@ gulp.task('html', ['clean-html'], function() {
 
 gulp.task('images', ['clean-images'], function() {
   return gulp.src(config.paths.src.images)
-    .pipe(gulp.dest(config.paths.dest.images))
+    .pipe(gulp.dest(config.paths.dest.public))
 });
 
 

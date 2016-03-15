@@ -5,7 +5,9 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   $scope.editItem = {}; 
 
   $scope.autofeatureIsEditing = false; 
-  $scope.autofeatureEditItem = {}; 
+  $scope.autofeatureEditItem = {};
+
+  $scope.resetPassword = false;
 
   if ($localStorage.token && $localStorage.token.config) {
     $rootScope.user = $localStorage.token;
@@ -24,10 +26,8 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
   Autofeature.getUserAutofeatures($rootScope.user.data)
   .then(function(res){
     $scope.autofeatures = res.data; 
-    $scope.category = $state.params.type;
   });
 
-  $scope.resetPassword = false;
 
   $scope.toggleResetPassword = function() {
     $scope.resetPassword = !$scope.resetPassword; 
@@ -147,10 +147,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.autofeatureEditItem = {};
     $scope.autofeatureEditIndex = -1;  
   }    
-
-
-
-  // console.log($localStorage);
 
 
 
