@@ -108,16 +108,31 @@ userSchema.statics.forgotPassword = function(userEmail, cb) {
   User.findOne({email:userEmail}, function(err, user){
     if(err) return cb(err);
     var temporaryPassword = uuid.v1();
-    var data = {
-      from: 'Autovision <mdeggies@sandbox19714487a4e84db7abe48144d77098b7.mailgun.org>', //sent from here
-      to: userEmail,
-      subject: 'Password Reset from Autovision',
-      text: 'Here is your temporary password: ' + temporaryPassword + ' Please login with your username and temporary password. You may reset password in your account. https://autovision.herokuapp.com/#/'
-    };
-    mailgun.messages().send(data, function (error, body) {
-      console.log('mailgun data:', body);
-      cb(err, user);
-    });    
+
+    bcrypt.genSalt(10, function(err1, salt) {
+      bcrypt.hash(temporaryPassword, salt, null, function(err2, hash) {
+        if(err1 || err2) return cb(err1 || err2);
+        user.password = hash;
+        user.save(function(err, savedUser){
+          savedUser.password = null;
+
+          var data = {
+            from: 'Autovision <mdeggies@sandbox19714487a4e84db7abe48144d77098b7.mailgun.org>', //sent from here
+            to: userEmail,
+            subject: 'Password Reset from Autovision',
+            text: 'Here is your temporary password: ' + temporaryPassword + ' Please login with your username and temporary password. You may reset password in your account. https://autovision.herokuapp.com/#/'
+          };
+
+          mailgun.messages().send(data, function (error, body) {
+            console.log('mailgun data:', body);
+            //cb(err, user);
+            cb(err, savedUser);
+          });
+
+          
+        });
+      });
+    });
   });
 };
 
