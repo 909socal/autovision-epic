@@ -1,6 +1,6 @@
 var app = angular.module('app');
 
-app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, $localStorage, $location, $anchorScroll, Item, Autofeature, Auth) {
+app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams, $localStorage, $location, $anchorScroll, $window, Item, Autofeature, Auth) {
   $scope.isEditing = false; 
   $scope.editItem = {}; 
 
@@ -48,7 +48,6 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     },
     function err(err) {
       swal("Current password invalid");
-      console.log('inside err', err);
     });
   }
 
@@ -106,8 +105,8 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.editIndex = -1;   
   }
 
-    $scope.editAutofeature = function(autofeature, id) { 
-     $location.hash(id);
+  $scope.editAutofeature = function(autofeature, id) { 
+    $location.hash(id);
     $anchorScroll();   
     if (autofeature && autofeature._id) {
       var autofeatureId = autofeature._id.toString();
@@ -147,9 +146,4 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.autofeatureEditItem = {};
     $scope.autofeatureEditIndex = -1;  
   }    
-
-
-
-
-
 });

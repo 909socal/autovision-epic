@@ -25,7 +25,6 @@
   }
 
   this.forgotPassword = (email) => {
-    console.log('in forgot passwords', email);
     var userEmail = {
       email:email
     }
@@ -36,5 +35,4 @@
     this.data = $localStorage.token; 
     $rootScope.user = $localStorage.token; 
   }
-
 });

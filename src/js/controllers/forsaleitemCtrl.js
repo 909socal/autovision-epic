@@ -8,7 +8,6 @@ app.controller('forsaleitemCtrl', function($scope, $rootScope, $state, Item, Aut
     $scope.items = res.data;
     var title = $state.params.type;
     $scope.category = title;
-    //console.log('category:', $scope.category);
     $scope.title = title.charAt(0).toUpperCase() + title.slice(1);
   });
 

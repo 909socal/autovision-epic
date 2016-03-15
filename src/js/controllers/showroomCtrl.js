@@ -139,40 +139,39 @@ app.controller('showroomCtrl', function($scope, $rootScope, $state, $localStorag
 	$scope.showButton = "Users Showroom";
 	$scope.showroomArray = $scope.showroomCars; 
 
-//getting all auto features
-if ($rootScope.user) {
-	Autofeature.getAllAutofeatures()
-	.then(function(res){
-		var arrOfAutofeatures = res.data; 
+	if ($rootScope.user) {
+		Autofeature.getAllAutofeatures()
+		.then(function(res){
+			var arrOfAutofeatures = res.data; 
 
-		$scope.showroomUsersCars = res.data.map(function(car){
-			var imageurl = '';
-			if (car.image && car.image.url) {
-				imageurl = car.image.url; 
-			};
+			$scope.showroomUsersCars = res.data.map(function(car){
+				var imageurl = '';
+				if (car.image && car.image.url) {
+					imageurl = car.image.url; 
+				};
 
-			var displayFeature = {
-				_id: car._id, 
-				imgSrc: imageurl,
-				paragraph: {
-					model: car.model,
-					make: car.make,
-					user: $rootScope.user.config.data.email
-				}
-			};
-			return displayFeature; 
+				var displayFeature = {
+					_id: car._id, 
+					imgSrc: imageurl,
+					paragraph: {
+						model: car.model,
+						make: car.make,
+						user: $rootScope.user.config.data.email
+					}
+				};
+				return displayFeature; 
+			});
 		});
-	});
-}
+	}
 
 	$scope.toggleArray = function(){
 		if (!$rootScope.user) {
 			$state.go('register');
 		}
 		else {
-				$scope.showBool = !$scope.showBool; 
-				$scope.showButton = $scope.showBool ? "AutoVision Showroom" : "Users Showroom"; 
-				$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
+			$scope.showBool = !$scope.showBool; 
+			$scope.showButton = $scope.showBool ? "AutoVision Showroom" : "Users Showroom"; 
+			$scope.showroomArray = $scope.showBool ? $scope.showroomUsersCars : $scope.showroomCars; 
 		}
 	};
 });

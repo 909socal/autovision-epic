@@ -31,7 +31,6 @@ app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage
     },
     function err(err) {
       swal("Invalid Password or Username");
-      console.log('inside err', err);
     });
   }
 
