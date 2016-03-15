@@ -14,12 +14,12 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-4" ng-repeat="car in showroomArray">
-			<div class="card">
+			<div class="card" data-toggle="modal" data-target="#myModal" ng-click="displayModal(car)">
 				<div class="card-header card-image waves-effect waves-block waves-light"  >
-					<img ng-click="displayModal(car)" data-toggle="modal" data-target="#myModal" src={{car.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
+					<img  src={{car.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
 				</div>
 				<div class="card-content text-center">
-					<p ui-sref="autofeaturedetail({autofeatureId:car._id})" ng-repeat="detail in car.paragraph">
+					<p ng-repeat="detail in car.paragraph">
 						{{detail}}
 						<br>
 					</p>
