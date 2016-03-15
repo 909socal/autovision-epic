@@ -97,5 +97,13 @@ userSchema.statics.reset= function(inputUser, cb){
   });
 };
 
+userSchema.statics.forgotPassword = function(userEmail, cb) {
+  console.log('forgot password model', userEmail);
+  User.findOne({email:userEmail}, function(err, user){
+    if(err) return cb(err);
+    cb(err, user);
+  });
+};
+
 User = mongoose.model('User', userSchema);
 module.exports = User;

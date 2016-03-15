@@ -24,8 +24,12 @@ app.service('Auth', function($http, $state, $localStorage, $rootScope) {
     return $http({method: 'PUT', url: '/users/reset', data: resetUser});
   }
 
-  this.forgotPassword = (user) => {
-
+  this.forgotPassword = (email) => {
+    console.log('in forgot passwords', email);
+    var userEmail = {
+      email:email
+    }
+    return $http({method: 'POST', url: '/users/forgotpassword', data: userEmail});
   }
 
   this.user = function() {
