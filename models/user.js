@@ -4,6 +4,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-node');
 var jwt = require('jwt-simple');
+var uuid = require('node-uuid');
+
+var api_key = 'key-50a933ab7e14e4cc21f23d9dbe377bdc';
+var domain = 'sandbox19714487a4e84db7abe48144d77098b7.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
 
 var User;
 
@@ -101,7 +107,17 @@ userSchema.statics.forgotPassword = function(userEmail, cb) {
   console.log('forgot password model', userEmail);
   User.findOne({email:userEmail}, function(err, user){
     if(err) return cb(err);
-    cb(err, user);
+    var temporaryPassword = uuid.v1();
+    var data = {
+      from: 'Autovision <mdeggies@sandbox19714487a4e84db7abe48144d77098b7.mailgun.org>', //sent from here
+      to: userEmail,
+      subject: 'Password Reset from Autovision',
+      text: 'Here is your temporary password: ' + temporaryPassword + ' Please login with your username and temporary password. You may reset password in your account. https://autovision.herokuapp.com/#/'
+    };
+    mailgun.messages().send(data, function (error, body) {
+      console.log('mailgun data:', body);
+      cb(err, user);
+    });    
   });
 };
 

@@ -49,18 +49,7 @@ router.post('/forgotpassword', function(req, res, next){
   console.log('in forgotpassword route', req.body);
   User.forgotPassword(req.body.email, function(err, user){
     if(err) return res.status(401).send(err);
-    console.log('successfully found user in ROUTE', user);
-
-    var data = {
-      from: 'Autovision <mdeggies@sandbox19714487a4e84db7abe48144d77098b7.mailgun.org>', //sent from here
-      to: req.body.email,
-      subject: 'Password Reset from Autovision',
-      text: 'Here is your temporary password. Please login with your username and temporary password. You may reset password in your account. https://autovision.herokuapp.com/#/'
-    };
-    mailgun.messages().send(data, function (error, body) {
-      console.log('mailgun data:', body);
-      res.send('Email successfully sent');
-    });
+    res.send('Successfully sent forgot password email');
   });
 });
 
