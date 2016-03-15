@@ -3,9 +3,7 @@
 var express = require('express');
 var router = express.Router();
 
-var api_key = 'key-50a933ab7e14e4cc21f23d9dbe377bdc';
-var domain = 'sandbox19714487a4e84db7abe48144d77098b7.mailgun.org';
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
 
 var authMiddleware = require('../config/auth');
 var User = require('../models/user');
