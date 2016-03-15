@@ -3,10 +3,12 @@
 var express = require('express');
 var router = express.Router();
 
-var Item = require('../models/item'); 
-var User = require('../models/user'); 
 var multer = require('multer');
 var fs = require('fs');
+
+var Item = require('../models/item'); 
+var User = require('../models/user'); 
+
 var upload = multer({ storage: multer.memoryStorage() });
 
 router.get('/', function(req, res, next) {

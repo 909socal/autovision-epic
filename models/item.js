@@ -3,12 +3,11 @@ require('dotenv').config(); // Loads environment variables
 var mongoose = require('mongoose');
 var fs = require('fs');
 var jwt = require('jwt-simple');
-
 var AWS = require('aws-sdk');
-var s3 = new AWS.S3(); 
 var uuid = require('node-uuid');
 var multer = require('multer');
 
+var s3 = new AWS.S3(); 
 var Item; 
 
 var itemSchema = new mongoose.Schema({

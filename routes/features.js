@@ -3,18 +3,17 @@
 var express = require('express');
 var router = express.Router();
 
-var Autofeature = require('../models/autofeature'); 
-var User = require('../models/user'); 
 var multer = require('multer');
 var fs = require('fs');
+
+var Autofeature = require('../models/autofeature'); 
+var User = require('../models/user'); 
+
 var upload = multer({ storage: multer.memoryStorage() });
 
-
 /* Get all user autofeatures */
-router.get('/', function(req, res, next) {
-  console.log('in get features route')
-  Autofeature.getCommunityAutofeatures(function(err, userAutofeatures) {
-    console.log('user auto features in get route: ', userAutofeatures);
+router.get('/', function(req, res, next) {  
+  Autofeature.getCommunityAutofeatures(function(err, userAutofeatures) {    
     res.status(err ? 400:200).send(err||userAutofeatures);
   });
 });
