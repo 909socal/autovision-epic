@@ -1,47 +1,42 @@
 <div class='container'>
-  
-  <h2 style="padding-top:100px">{{title}} </h2>
-  <form>
-    <div class="form-group">
-      <label for="filter">Search:</label>
-      <input ng-model="filterText" class="form-control", type="text", id="filter">
-    </div>
 
-    <div class="form-group">
-      <label for="modelSearch">Filter By Model:</label>
-      <input type="text" placeholder="Porsche" ng-model="filterModel" class="form-control", id="filter" >
+  <h2 style="padding-top:100px">{{title}} </h2>
+  <div>
+    <div class='row'>
+        <form class=" col-md-12  col-xs-12">
+         <div class="form-group">
+           <h6 for="filter">Search:</h6>
+           <input ng-model="filterText" class="form-control", type="text", id="filter">
+         </div>
+    </div>
+    <div class="row">
+         <div class="form-group col-md-6  col-xs-12">
+           <h6 for="modelSearch">Filter By Model:</h6>
+           <input type="text" placeholder="Porsche" ng-model="filterModel" class="form-control", id="filter" >
+         </div>
+         
+         <div class="form-group col-md-6  col-xs-12">
+           <h6 for="makeSearch">Filter By Make</h6>
+           <input type="text" placeholder="911" class="form-control" ng-model="filterMake" class="form-control", id="filter">
+         </div>
+       </form>
+    </div>
+  </div>
+      <div class="col-xs-12 col-sm-3" ng-repeat="item in items | filter: category | filter: filterText | filter: filterModel | filter: filterMake">
+         <div class="card" ui-sref="forsaleitemdetail({itemId:item._id})">
+            <div class="card-header card-image waves-effect waves-block waves-light"  >
+              <img src={{item.image.url}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
+            </div>
+            <div class="card-content" >
+              <p ui-sref="autofeaturedetail({autofeatureId:car._id})" ng-repeat="detail in car.paragraph">  </p>
+              <label for="">Description: </label>
+              <p class='text-center'>{{item.description}}</p>
+              <label >Price</label>
+              <p class='text-center'>Price: ${{item.price}}</p>
+             
+            </div>
+        </div>
     </div>
     
-    <div class="form-group">
-      <label for="makeSearch">Filter By Make</label>
-      <input type="text" placeholder="911" class="form-control" ng-model="filterMake" class="form-control", id="filter">
-    </div>
-        
-  </form>
 </div>
-<hr>
-<div class="container table-responsive">
-  <h2 class='text-center'>For Sale</h2>
-  <table class="table ">
-    <thead>
-      <tr>
-        <th>Description</th>
-        <th>Model</th>
-        <th>Make</th>
-        <th>year</th>
-        <th>Zip</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="item in items | filter: category | filter: filterText | filter: filterModel | filter: filterMake">
-        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.description}}</td>
-        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.model}}</td>
-        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.make}}</td>
-        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.year}}</td>
-        <td ui-sref="forsaleitemdetail({itemId:item._id})">{{item.zip}}</td>
-        <td ui-sref="forsaleitemdetail({itemId:item._id})">${{item.price}}</td>
-      </tr>
-    </tbody>
-  </table>
 </div>
