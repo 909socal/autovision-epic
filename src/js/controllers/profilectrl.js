@@ -27,6 +27,31 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.category = $state.params.type;
   });
 
+  $scope.resetPassword = false;
+
+  $scope.toggleResetPassword = function() {
+    $scope.resetPassword = !$scope.resetPassword; 
+  }
+
+  $scope.confirmResetPassword = function() {
+    var resetUser = {
+      email: $rootScope.user.config.data.email,
+      password: $scope.currentPassword
+    }
+    
+    Auth.login(resetUser)
+    .then((data)=>{
+      Auth.resetPassword($rootScope.user.config.data.email, $scope.newPassword)
+      .then((data) => {
+        swal("Successful password reset");
+      });
+    },
+    function err(err) {
+      swal("Current password invalid");
+      console.log('inside err', err);
+    });
+  }
+
   $scope.remove = function(item){
     var realIndex = $scope.items.indexOf(item); 
     $scope.items.splice(realIndex, 1);
@@ -122,4 +147,13 @@ app.controller('profileCtrl', function($scope, $rootScope, $state, $stateParams,
     $scope.autofeatureEditItem = {};
     $scope.autofeatureEditIndex = -1;  
   }    
+
+
+
+  // console.log($localStorage);
+
+
+
+
+
 });

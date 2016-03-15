@@ -34,10 +34,23 @@ router.post('/register', function(req, res, next){
 router.post('/login', function(req, res, next){
   User.authenticate(req.body, function(err, user){
     if (err) return res.status(401).send(err);
-    console.log('user:',user);
     var token = user.token();
     res.cookie('token', token).send(token);
   });
 })
+
+router.put('/reset', function(req, res, next){
+  User.reset(req.body, function(err, savedUser){
+    res.send(savedUser);
+  });
+});
+
+router.post('/forgotpassword', function(req, res, next){
+  console.log('in forgotpassword route', req.body);
+  User.forgotPassword(req.body.email, function(err, user){
+    if(err) return res.status(401).send(err);
+    res.send('Successfully sent forgot password email');
+  });
+});
 
 module.exports = router;
