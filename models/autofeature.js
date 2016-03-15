@@ -3,11 +3,11 @@ require('dotenv').config(); // Loads environment variables
 var mongoose = require('mongoose');
 var fs = require('fs');
 var jwt = require('jwt-simple');
-
 var AWS = require('aws-sdk');
-var s3 = new AWS.S3(); 
 var uuid = require('node-uuid');
 var multer = require('multer');
+
+var s3 = new AWS.S3(); 
 
 var Autofeature; 
 
@@ -27,10 +27,8 @@ var autofeatureSchema = new mongoose.Schema({
   available:{type:Boolean, default:true}
 });
 
-autofeatureSchema.statics.getCommunityAutofeatures = function(cb) {
-  console.log('in get route of data model')
+autofeatureSchema.statics.getCommunityAutofeatures = function(cb) { 
   Autofeature.find({}, function(err, autofeatures) {
-    console.log('autofeatures in data model: ', autofeatures);
     if (err) return cb(err);
     cb(null, autofeatures); 
   })
@@ -50,7 +48,6 @@ autofeatureSchema.statics.add = function(autofeature, file, token, cb) {
   var userid = payload._id; 
 
   if (file) {
-    console.log('file true');
     var filename = file.originalname;  
     var imageBuffer = file.buffer;
     var ext = filename.match(/\.\w+$/)[0] || '';
@@ -75,8 +72,7 @@ autofeatureSchema.statics.add = function(autofeature, file, token, cb) {
         return cb(null, savedAutofeature); 
       });
     }); // s3.putObject()
-  } else {
-    console.log("file false");
+  } else {    
     var newAutofeature = new Autofeature(autofeature); 
     newAutofeature.ownerObj = userid; 
     newAutofeature.save(function(err, savedAutofeature){
