@@ -1,6 +1,6 @@
 <div class= 'container'>
 	<h1 style="padding-top:100px">Welcome, {{user.config.data.email}}</h1>
-	<button ng-click="toggleResetPassword()">Reset Password</button>
+  <a class='btn pull-right' ng-click="toggleResetPassword()">Reset Password</a>
 	<form ng-show="resetPassword">
     <div class="form-group">
       <label for="password">Current Password</label>

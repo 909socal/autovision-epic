@@ -1,4 +1,4 @@
-app.service('Auth', function($http, $state, $localStorage, $rootScope) {
+ app.service('Auth', function($http, $state, $localStorage, $rootScope) {
   this.register = function(user) {    
     $http({method: 'POST', url: '/users/register', data: user}).then(function success(data){
       $state.go('login');
