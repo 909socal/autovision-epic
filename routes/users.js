@@ -2,12 +2,13 @@
 
 var express = require('express');
 var router = express.Router();
-var authMiddleware = require('../config/auth');
-var User = require('../models/user');
 
 var api_key = 'key-50a933ab7e14e4cc21f23d9dbe377bdc';
 var domain = 'sandbox19714487a4e84db7abe48144d77098b7.mailgun.org';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
+var authMiddleware = require('../config/auth');
+var User = require('../models/user');
 
 router.get('/', authMiddleware, function(req, res, next) {
   if (!req.user) { console.log("No user!"); return; };
@@ -45,8 +46,7 @@ router.put('/reset', function(req, res, next){
   });
 });
 
-router.post('/forgotpassword', function(req, res, next){
-  console.log('in forgotpassword route', req.body);
+router.post('/forgotpassword', function(req, res, next){  
   User.forgotPassword(req.body.email, function(err, user){
     if(err) return res.status(401).send(err);
     res.send('Successfully sent forgot password email');
