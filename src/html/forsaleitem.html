@@ -22,7 +22,7 @@
        </form>
     </div>
   </div>
-      <div class="col-xs-12 col-sm-3" ng-repeat="item in items | filter: category | filter: filterText | filter: filterModel | filter: filterMake">
+      <div class="col-xs-12 col-sm-4" ng-repeat="item in items | filter: category | filter: filterText | filter: filterModel | filter: filterMake">
          <div class="card" ui-sref="forsaleitemdetail({itemId:item._id})">
             <div class="card-header card-image waves-effect waves-block waves-light"  >
               <img src={{item.image.url}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
