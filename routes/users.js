@@ -15,8 +15,9 @@ router.post('/register', function(req, res, next){
     };
     mailgun.messages().send(data, function (error, body) {
       console.log('mailgun data:',body);
+      res.send(user);
     });
-    res.send(user);
+    
   });
 })
 
