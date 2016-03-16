@@ -4,11 +4,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-node');
 var jwt = require('jwt-simple');
 var uuid = require('node-uuid');
-
-var api_key = 'key-50a933ab7e14e4cc21f23d9dbe377bdc';
-var domain = 'sandbox19714487a4e84db7abe48144d77098b7.mailgun.org';
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-
+var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
 
 var Schema = mongoose.Schema;
 var User;

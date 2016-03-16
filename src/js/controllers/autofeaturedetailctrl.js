@@ -5,8 +5,6 @@ app.controller('autofeaturedetailCtrl', function($scope, $rootScope, $state, $st
 
   Autofeature.getAutofeature($state.params.autofeatureId)
   .then(function(res) {
-    console.log('res.data is: ', res.data);
-    // $scope.imageURL = res.data.image.url;
     $scope.autofeatureDetails = res.data; 
   });
 });

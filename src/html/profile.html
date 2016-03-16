@@ -120,7 +120,7 @@
 					<td><button class="btn btn-sm" ng-click="removeAutofeature(autofeature)">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button></td>
-					<td><button class="btn btn-sm" ng-click="editAutofeature(autofeature, 'autofeatureEditForm')">
+					<td><button class="btn btn-sm" ng-click="editAutofeature(autofeature, 'editFeatureForm')">
 						<span class="glyphicon glyphicon-edit"></span>
 					</button></td>
 				</tr>
@@ -128,7 +128,7 @@
 		</table>
 	</div>
 
-	<form ng-show="autofeatureIsEditing" ng-submit="autofeatureEditConfirm()" id="autofeatureEditForm">
+	<form ng-show="autofeatureIsEditing" ng-submit="autofeatureEditConfirm()" id='editFeatureForm'>
 		<div class = 'col-md-7 col-xs-12'>
 			<h1>Edit Car </h1>
 			<div class="form-group">
