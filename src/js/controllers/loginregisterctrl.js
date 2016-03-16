@@ -24,8 +24,7 @@ app.controller('loginregisterCtrl', function($scope, $state, Auth, $localStorage
 
     Auth.login(user)
     .then((data)=>{
-      this.token = data;
-      $localStorage.token = this.token;
+      $localStorage.token = data; 
       $rootScope.user = data;
       $state.go('profile');
     },

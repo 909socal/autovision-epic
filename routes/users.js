@@ -2,18 +2,8 @@
 
 var express = require('express');
 var router = express.Router();
-
 var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
-
-var authMiddleware = require('../config/auth');
 var User = require('../models/user');
-
-router.get('/', authMiddleware, function(req, res, next) {
-  if (!req.user) { console.log("No user!"); return; };
-  User.findById(req.user._id, function(err, user) {
-    res.send(user);
-  });
-})
 
 router.post('/register', function(req, res, next){
   User.register(req.body, function(err, user){
@@ -34,7 +24,7 @@ router.post('/login', function(req, res, next){
   User.authenticate(req.body, function(err, user){
     if (err) return res.status(401).send(err);
     var token = user.token();
-    res.cookie('token', token).send(token);
+    res.status(200).send(token);
   });
 })
 
