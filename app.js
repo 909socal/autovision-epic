@@ -10,10 +10,9 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // GLOBALS
-var MONGO_URI = process.env.MONGOLAB_URI;
+var MLAB_URI = process.env.MLAB_URI;
 var JWT_SECRET = process.env.JWT_SECRET;
-
-var mongoUrl = MONGO_URI || 'mongodb://localhost/autovision';
+var mongoUrl = process.env.MLAB_URI || 'mongodb://localhost/autovision';
 var mongoose = require('mongoose');
 mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
