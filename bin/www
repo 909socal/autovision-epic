@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-require('dotenv').config();
+require('dotenv').config(); // Loads environment variables 
 var app = require('../app');
 var debug = require('debug')('autovision:server');
 var http = require('http');
