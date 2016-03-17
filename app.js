@@ -13,7 +13,7 @@ var app = express();
 var MONGO_URL = process.env.MONGOLAB_URI;
 var JWT_SECRET = process.env.JWT_SECRET;
 
-var mongoUrl = MONGO_URL || 'mongodb://localhost/autovision';
+var mongoUrl = MONGO_URI || 'mongodb://localhost/autovision';
 var mongoose = require('mongoose');
 mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);
