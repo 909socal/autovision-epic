@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // GLOBALS
-var MONGO_URL = process.env.MONGOLAB_URI;
+var MONGO_URI = process.env.MONGOLAB_URI;
 var JWT_SECRET = process.env.JWT_SECRET;
 
 var mongoUrl = MONGO_URI || 'mongodb://localhost/autovision';
