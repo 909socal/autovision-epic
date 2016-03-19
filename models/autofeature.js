@@ -31,7 +31,7 @@ autofeatureSchema.statics.getCommunityAutofeatures = function(cb) {
   Autofeature.find({}, function(err, autofeatures) {
     if (err) return cb(err);
     cb(null, autofeatures); 
-  })
+  }).populate("ownerObj");
 };
 
 autofeatureSchema.statics.getUserAutofeatures = function(token, cb) {
