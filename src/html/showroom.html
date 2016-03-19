@@ -13,10 +13,10 @@
 			</ul>
 		</div>
 
-		<div class="col-xs-12 col-sm-4" ng-repeat="car in showroomArray">
+		<div class="col-xs-12 col-md-4 col-sm-12" ng-repeat="car in showroomArray">
 			<div class="card" data-toggle="modal" data-target="#myModal" ng-click="displayModal(car)">
 				<div class="card-header card-image waves-effect waves-block waves-light"  >
-					<img  src={{car.imgSrc}} class="img-rounded activator" alt="Cinque Terre" width="350" height="280">
+					<img  src={{car.imgSrc}} class="img-rounded activator resizeimg" alt="Cinque Terre" height="226">
 				</div>
 				<div class="card-content text-center">
 					<p ng-repeat="detail in car.paragraph">

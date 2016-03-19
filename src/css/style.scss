@@ -3,7 +3,18 @@
   box-shadow: none;
 }
 
+@media (max-width: 990px) {
+  .resizeimg{ 
+    height: auto;
+  }
+}
 
+@media (min-width: 1000px) {
+  .resizeimg{ 
+    width: auto;
+    height: 350px;
+  }
+}
 
 .mycard{
   border: 5px solid black;
