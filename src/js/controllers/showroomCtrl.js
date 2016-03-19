@@ -143,11 +143,7 @@ app.controller('showroomCtrl', function($scope, $rootScope, $state, $localStorag
 		Autofeature.getAllAutofeatures()
 		.then(function(res){
 			var arrOfAutofeatures = res.data; 
-			console.log('res.data: ', res.data);
 			$scope.showroomUsersCars = res.data.map(function(car){
-				console.log('car is: ', car);
-				console.log('car is: ', car.ownerObj.email);
-
 				var imageurl = '';
 				if (car.image && car.image.url) {
 					imageurl = car.image.url; 
