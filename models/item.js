@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config(); // Loads environment variables 
+
 var mongoose = require('mongoose');
 var fs = require('fs');
 var jwt = require('jwt-simple');
