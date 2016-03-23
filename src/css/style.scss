@@ -3,7 +3,7 @@
   box-shadow: none;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 999px) {
   .resizeimg{ 
     height: auto;
   }
@@ -384,3 +384,10 @@ a:hover{
 }
 
 /*END NAVBAR STYLING*/
+
+.box {
+     width: 214px;
+    height: 128px;
+  overflow: scroll;
+
+}
