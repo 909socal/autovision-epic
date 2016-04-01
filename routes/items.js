@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 router.get('/single/:itemId', function(req, res, next) {
   Item.findById(req.params.itemId, function(err, item) {
     res.status(err ? 400:200).send(err||item);
-  });
+  }).populate("ownerObj");
 });
 
 router.get('/:token', function(req, res, next) {
